@@ -90,7 +90,7 @@ class HumedityAndTemperature(db.Model):
         }
 
 class Sokect(db.Model):
-    __tablename__: "Socket"
+    __tablename__: "socket"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), unique=True, nullable=False)
@@ -115,7 +115,7 @@ class Sokect(db.Model):
 
 #Esta tablita va con la relacional la de medio
 class Appointment (db.Model):
-    __tablename__: "Appointment"
+    __tablename__: "appointment"
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), unique=True, nullable=False)
@@ -142,12 +142,11 @@ class Appointment (db.Model):
 
 # Esta tablita va solita 
 class Habits(db.Model):
-    __tablename__: "Habits"
+    __tablename__: "habits"
 
     id = db.Column(db.Integer, primary_key=True)
     habits = db.Column(db.String(), unique=True, nullable=False)
-    data = db.Column(db.String, unique=True , nullable=False)
-
+    
     def __repr__(self):
         return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}, data: {self.data}'
 
