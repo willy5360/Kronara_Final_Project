@@ -4,17 +4,8 @@ import ButtonSignUp from "../component/button-sign-up.jsx";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/">
-						<ButtonSignUp />
-					</Link>
-				</div>
-			</div>
-		</nav>
+		<div>
+			<Link to="/ButtonSignUp"><ButtonSignUp /></Link>
+		</div>
 	);
 };
