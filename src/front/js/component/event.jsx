@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-import MultipleSelectChips from "@bit/lubuskie.material-ui.multiple-select-chips";
+
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -85,7 +85,7 @@ const Event = ({ handleClose }) => {
 							/>
 						</Grid>
 						<Grid item xs={8}>
-							<MultipleSelectChips
+							{/* <MultipleSelectChips
 								// label="Label"
 								src={options.img}
 								value={value}
@@ -93,7 +93,7 @@ const Event = ({ handleClose }) => {
 								options={options}
 								error={error}
 								setError={setError}
-								{...register("options")}
+								{...register("options")} */}
 							/>
 						</Grid>
 					</Grid>
@@ -228,4 +228,5 @@ const Event = ({ handleClose }) => {
 		</div>
 	);
 };
+
 export default Event;

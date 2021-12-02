@@ -6,10 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-import { Event } from "./component/event.jsx";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
 
 //create your first component
 const Layout = () => {
@@ -24,7 +21,6 @@ const Layout = () => {
 
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/event" element={<Event />} />
 				</Routes>
 
 				{/* <Footer /> */}
