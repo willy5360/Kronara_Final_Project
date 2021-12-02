@@ -37,10 +37,9 @@ const Event = ({ handleClose }) => {
 
 	console.log("aqui esta el register", register);
 
-	const [value, setValue] = useState([]);
-	const [error, setError] = useState("");
+	
 	const options = [{ label: "Willy", value: 1 }, { label: "Ana", value: 2 }, { label: "Another person", value: 3 }];
-	const [selectedDate, handleDateChange] = useState(new Date());
+	
 	const [alert, setAlert] = React.useState("");
 	const classes = useStyles();
 	const handleChange = event => {
@@ -49,7 +48,7 @@ const Event = ({ handleClose }) => {
 
 	return (
 		<div className="main__appoitment">
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)} className="event__form">
 				<div className="event__inputs">
 					<h1>Create a event</h1>
 
@@ -74,7 +73,7 @@ const Event = ({ handleClose }) => {
 						<Grid item xs={1}>
 							<i className="fas fa-users" />
 						</Grid>
-						<Grid item xs={3}>
+						<Grid item xs={5}>
 							<TextField
 								id="Invite"
 								name="invite"
@@ -84,18 +83,8 @@ const Event = ({ handleClose }) => {
 								// autoComplete="billing address-line2"
 							/>
 						</Grid>
-						<Grid item xs={8}>
-							{/* <MultipleSelectChips
-								// label="Label"
-								src={options.img}
-								value={value}
-								setValue={setValue}
-								options={options}
-								error={error}
-								setError={setError}
-								{...register("options")} */}
-							/>
-						</Grid>
+					
+						
 					</Grid>
 
 					<Grid container spacing={3}>
@@ -113,7 +102,7 @@ const Event = ({ handleClose }) => {
 					</Grid>
 
 					<Grid container spacing={2}>
-						<Grid item xs={6}>
+						<Grid item xs={3}>
 							<div variant="h6" className="event__start__time">
 								Start
 							</div>
@@ -133,7 +122,7 @@ const Event = ({ handleClose }) => {
 					</Grid>
 
 					<Grid container spacing={2}>
-						<Grid item xs={6}>
+						<Grid item xs={3}>
 							<div variant="h6" className="event__end__time">
 								End
 							</div>
