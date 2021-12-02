@@ -6,15 +6,16 @@ form{
     border-radius: 1rem;
     border: rgba(222, 222, 222, 1) 0.1rem solid;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
-    width: 40rem;
-    height: 47rem;
+    max-width: 40rem;
+    min-width: none;
+    min-height: none;
     background-color: rgba(196, 196, 196, 0.24);
     color: rgba(196, 196, 196, 0.24);
-   
+    
     font-family: 'Lato', sans-serif;
 }
 .event__inputs{
-    padding: 4rem;}
+    padding: 1rem;}
 
 h1{
     margin-bottom: 1.5rem;
@@ -33,7 +34,7 @@ h1{
 
 .event__start__time{
     display: flex;
-    margin-left: 3rem;
+    // margin-left: 3rem;
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
@@ -44,7 +45,7 @@ h1{
     align-items:flex-end
 }
 .event__end__time{
-    margin-left: 3rem;
+    
     font-size: 1.2rem;
     font-weight: bold;
    
@@ -57,17 +58,17 @@ h1{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    width: 3rem;
-    // justify-content: space-between;
+    padding: 1rem 0;
+    border-radius: 0 0 1rem 1rem;
+    border-top: rgba(222, 222, 222, 1) 0.1rem solid;
+   
+    
     background-color: rgba(196, 196, 196, 0.44);
     background-size: cover;
-    // padding: 3rem;
-    // position: relative;
+ 
 }
 .event__buttons__cancel{
     margin-left: 3rem;
-    // position: absolute;
-    // // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+   
 }
+
