@@ -1,59 +1,107 @@
-.form__sign__up__new__user {
-    width: 490px;
-    height: 610px;
-    text-align: left;
-    border: 1px solid #ADB7CE;
-    border-radius: 10px;
-    padding: 35px;
-    color: #0E3551;
-    margin-top: 8rem;
-    margin-left: 3rem;
-    background-color: #ADB7CE;
-}
+// @media only screen and (max-width: 600px) {
+//     .container_main_form_sig_up {
+//         background: linear-gradient(90deg, rgba(5,41,74,1) 59%, rgba(14,53,81,1) 91%);
+//         display: flex;
+//         justify-content: center;
+//         color: #64DFD4;
+//     }
 
-.form__sign__up__new__user header {
-    width: 100%;
-    font-size: 2.83rem;
-    color: #0E3551;
-    padding-left: 20px;
-}
+//     .form__sign__up__new__user {
+//         width: 50%;
+//     }
 
-.form__body__sign__up__new__user {
-    display: grid;
-    text-align: left;
-    width: 100%;
-    font-size: 1.25rem;
-    input {
-        border-width: 0px 0px 2px 0px;
-        background-color: transparent;
-        border-color: #9F9F9F;
+//     .form__body__sign__up__new__user {
+//         display: grid;
+//         text-align: left;
+//     }
+    
+// }
+
+// @media only screen and (min-width: 768px){
+    .container_main_form_sig_up {
+        background-image: url("../img/pexels-marcus-aurelius-67879601.jpg");
+        background-repeat: no-repeat;
+        width: 100%;    
+        height: 100%;
+        padding-top: 8rem;
+        margin: auto;
+        padding-left: 3rem;
+    }
+    
+    .form__sign__up__new__user {
+        width: 30.625rem;
+        text-align: left;
+        border: 0.063rem solid #ADB7CE;
+        border-radius: 0.625rem;
+        padding: 2.188rem;
+        color: #0E3551;
+        background-color: #ADB7CE;
+        opacity: 0.7;
+    }
+    
+    .form__sign__up__new__user header {
+        width: 100%;
+        color: #0E3551;
+        h2 {
+            padding: 0.313rem;
+            font-size: 2.83rem;
+        }
+        span {
+            font-size: 1rem;
+            background-color: #FF3232;
+            color: #FFFFFF;
+            padding: 0.8rem ;
+            border-radius: 0.188rem;
+        }
+    }
+    
+    .form__body__sign__up__new__user {
+        display: grid;
+        text-align: left;
+        width: 100%;
         font-size: 1.25rem;
+        input {
+            border-width: 0px 0px 2px 0px;
+            background-color: transparent;
+            border-color: #9F9F9F;
+            font-size: 1.25rem;
+        }
+        label {
+            padding: 0.625rem;
+        }
     }
-    label {
-        padding: 15px;
+    
+    .form__body__sign__up__new__user span {
+        color: #FE6847;
     }
-}
-
-.form__footer__sign__up__new__user {
-    display: grid;
-    justify-content: center;
-    margin-top: 10px;
-
-    button {
-        background-color: #0E3551;
-        border-radius: 10px;
-        width: 380px;
-        height: 50px;
-        color: #FFFFFF;
+    
+    .form__footer__sign__up__new__user {
+        display: grid;
+        justify-content: center;
+        margin-top: 0.625rem;
+    
+        button {
+            background-color: #0E3551;
+            border-radius: 0.625rem;
+            width: 23.75rem;
+            height: 3.125rem;
+            color: #FFFFFF;
+        }
+    
+        span {
+            text-align: center;
+            border: #FF0000;
+        }
     }
-
-    span {
-        text-align: center;
+    
+    .form__body__sign__up_conditional label{
+        font-size: 0.65rem;
+        font-weight: 100;
     }
-}
-
-//.form__body__sign__up_conditional,
-//.form__body__sign__up_conditional_checkbox {
-//   width: 50%;
-//   display: flex;
-//}
+    
+    // .form__body__sign__up_conditional,
+    // .form__body__sign__up_conditional_checkbox {
+    //    width: 5%;
+    //    display: inline;
+    // }
+//  }

@@ -4,7 +4,7 @@ import ButtonSignUp from "../component/button-sign-up.jsx";
 
 export const Navbar = () => {
 	return (
-		<div>
+		<div className="NavBar">
 			<Link to="/ButtonSignUp"><ButtonSignUp /></Link>
 		</div>
 	);

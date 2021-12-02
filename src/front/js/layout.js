@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
-import { Footer } from "./component/footer";
 import FormSignUp from "./pages/formulario_sign_up.jsx";
 import ButtonSignUp from "./component/button-sign-up.jsx";
 
@@ -13,15 +12,12 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/FormSignUp" element={<FormSignUp />} />
-				</Routes>
-				<Footer />
-			</BrowserRouter>
-		</div>
+		<BrowserRouter basename={basename}>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/FormSignUp" element={<FormSignUp />} />
+			</Routes>
+		</BrowserRouter>
 	);
 };
 

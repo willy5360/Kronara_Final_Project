@@ -22,7 +22,7 @@ class Home(db.Model):
             "name": self.name
         }
 
-#User se relaciona con la home y con la media
+#Member se relaciona con la home y con la media
 class Member(db.Model):
     __tablename__: "member"
 
@@ -49,6 +49,11 @@ class Member(db.Model):
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+        
 class ToDoList(db.Model):
     __tablename__: "to_do_list"
 
@@ -90,7 +95,7 @@ class HumedityAndTemperature(db.Model):
         }
 
 class Sokect(db.Model):
-    __tablename__: "Socket"
+    __tablename__: "socket"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), unique=True, nullable=False)
@@ -113,9 +118,9 @@ class Sokect(db.Model):
         }
 
 
-#Esta tablita va con la relacional la de medio
+#Esta tablita va con la relacional (la de medio)
 class Appointment (db.Model):
-    __tablename__: "Appointment"
+    __tablename__: "appointment"
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), unique=True, nullable=False)
@@ -142,11 +147,10 @@ class Appointment (db.Model):
 
 # Esta tablita va solita 
 class Habits(db.Model):
-    __tablename__: "Habits"
+    __tablename__: "habits"
 
     id = db.Column(db.Integer, primary_key=True)
     habits = db.Column(db.String(), unique=True, nullable=False)
-    data = db.Column(db.String, unique=True , nullable=False)
 
     def __repr__(self):
         return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}, data: {self.data}'
