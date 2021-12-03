@@ -31,6 +31,8 @@ class Member(db.Model):
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    city = db.Column(db.String(), nullable=False)
+    photo_user = db.Column(db.String(), unique=True, nullable=False)
     birth_date = db.Column(db.Date(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
