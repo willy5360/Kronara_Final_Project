@@ -52,7 +52,7 @@ const FormSignUp = () => {
 					/>
 					{errors.password && errors.password.type === "minLength" && <span>too short</span>}
 
-					<label htmlFor="condition" className="form-label form__body__sign__up_conditional">
+					<label htmlFor="condition" className="form__body__sign__up_conditional">
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry
 					</label>
 					<input

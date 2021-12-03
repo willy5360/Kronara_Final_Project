@@ -1,23 +1,76 @@
-// @media only screen and (max-width: 600px) {
-//     .container_main_form_sig_up {
-//         background: linear-gradient(90deg, rgba(5,41,74,1) 59%, rgba(14,53,81,1) 91%);
-//         display: flex;
-//         justify-content: center;
-//         color: #64DFD4;
-//     }
+ @media only screen and (max-width: 600px) {
+     .container_main_form_sig_up {
+         background: linear-gradient(90deg, rgba(5,41,74,1) 59%, rgba(14,53,81,1) 91%);
+         display: flex;
+         justify-content: center;
+         font-weight: lighter;
+            //  padding-top: 3rem;
+         
+         header h2 {
+           visibility: hidden;
+           display: none;
+         }
 
-//     .form__sign__up__new__user {
-//         width: 50%;
-//     }
+         header span {
+            font-size: 0.8rem;
+            background-color: #FF3232;
+            color: #FFFFFF;
+            padding: 0.2rem ;
+            border-radius: 0.188rem;
+         }
+     }
 
-//     .form__body__sign__up__new__user {
-//         display: grid;
-//         text-align: left;
-//     }
+     .form__sign__up__new__user {
+         width: 50%;
+         color: #C4C4C4;
+     }
+
+     .form__body__sign__up__new__user {
+         display: grid;
+         text-align: left;
+
+         input {
+            padding: 0.25rem;
+            background-color: #FFFFFF;
+            opacity: 0.25;
+            border: none;
+            border-radius: 0.313rem;
+        }
+
+        label {
+            padding: 10px;
+        }
+     }
+
+     .form__footer__sign__up__new__user {
+        display: grid;
+        justify-content: center;
     
-// }
+        button {
+            background-color: #ADB7CE;
+            border-radius: 0.313rem;
+            padding: 0.25rem 5.2rem;
+            color: #000000;
+            font-weight: lighter;
+            margin: 1.25rem;
+        }
 
-// @media only screen and (min-width: 768px){
+        span {
+            text-align: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+     }
+
+    .form__body__sign__up_conditional,
+    .form__body__sign__up_conditional_checkbox {
+        visibility: none;
+        display: none;
+    }
+    
+ }
+
+ @media only screen and (min-width: 768px){
     .container_main_form_sig_up {
         background-image: url("../img/pexels-marcus-aurelius-67879601.jpg");
         background-repeat: no-repeat;
@@ -104,4 +157,4 @@
     //    width: 5%;
     //    display: inline;
     // }
-//  }
+}
