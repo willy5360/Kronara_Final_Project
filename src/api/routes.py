@@ -35,9 +35,18 @@ def create_event():
     if not body:
         return jsonify({'error': 'Missing parameters'}), 400
 
-    event = user( event = newEvent)
+    event = user( event = event)
     try:
         event_created = event.create()
         return jsonify(event_created.to_dict()), 201
 
+    )
     
+   
+    new_user = User(username = new_user_username, password = new_user_password, _is_active = True)
+
+    try:
+        new_use_created = new_user.adding_new_user()
+        return jsonify(new_user_created.to_dict()), 201
+    except exc.IntegrityError:
+        return jsonify({'error':'can not create new user'}), 400

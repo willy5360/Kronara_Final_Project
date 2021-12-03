@@ -17,13 +17,12 @@ const Layout = () => {
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
-				{/* <Navbar /> */}
-
+				
 				<Routes>
 					<Route path="/" element={<Home />} />
 				</Routes>
 
-				{/* <Footer /> */}
+				
 			</BrowserRouter>
 		</div>
 	);
