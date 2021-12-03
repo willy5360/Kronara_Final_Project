@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import DaySquare from "./daySquare.jsx";
+import "../../styles/daySquare.scss";
 
 const MonthSquare = () => {
 	const today = new Date();
 	const NumbersToDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 	const [calendar, setCalendar] = useState([]);
-	const [currentDay, setCurrentDay] = useState(today.getDate());
 	const [week, setWeek] = useState([]);
 	const [month, setMonth] = useState(today.getMonth());
 	const [year, setYear] = useState(today.getFullYear());
@@ -67,7 +67,6 @@ const MonthSquare = () => {
 	];
 
 	let firstDay = new Date(year, month, 1).getDay() - 1; //me devueleve el primer dia en numero
-	console.log("aqui esta el firstDay", NumbersToDays[firstDay]); // y esto me devuelve un string
 
 	const month_days = Array.from({ length: numberToMonth[month].day }, (_, i) => i + 1);
 
@@ -86,12 +85,12 @@ const MonthSquare = () => {
 					);
 				}
 				// condicional que pinta en el dia actual del mes
-				if (dayNumber == currentDay && month == today.getMonth() && year == today.getFullYear()) {
+				if (dayNumber == today.getDate() && month == today.getMonth() && year == today.getFullYear()) {
 					return (
 						<DaySquare
 							key={index.toString()}
 							day={dayNumber}
-							istoday={"day_square_today"}
+							istoday={"day_square--today"}
 							isNumberOne={""}
 						/>
 					);
@@ -108,29 +107,29 @@ const MonthSquare = () => {
 	}, [month, year]);
 
 	return (
-		<div className="main__container__calendar">
+		<div className="main__container">
 			<button
-				className="calendar_month_previous_button"
+				className="main__container--button"
 				onClick={() => (month == 0 ? setMonth(11) : setMonth(month - 1))}>
 				<i className="fas fa-chevron-circle-left"></i>
 			</button>
 			<div className="calendar">
-				<div className="calendar_year">
-					<button className="calendar_year_previous_button" onClick={() => setYear(year - 1)}>
+				<div className="calendar__year">
+					<button className="calendar__year--previous_button" onClick={() => setYear(year - 1)}>
 						<i className="fas fa-chevron-circle-left"></i>
 					</button>
 					{year}
-					<button className="calendar_year_next_button" onClick={() => setYear(year + 1)}>
+					<button className="calendar__year--next_button" onClick={() => setYear(year + 1)}>
 						<i className="fas fa-chevron-circle-right"></i>
 					</button>
 				</div>
-				<div className="calendar_month_name">{numberToMonth[month].month}</div>
-				<ul className="calendar_days">{week}</ul>
+				<div className="calendar__currentMonth">{numberToMonth[month].month}</div>
+				<ul className="calendar__weekDays">{week}</ul>
 				<div className="calendar_main_month">{calendar}</div>
 			</div>
 			<div className="calendar__void__todoList"></div>
 			<button
-				className="calendar_month_next_button"
+				className="main__container--button"
 				onClick={() => (month == 11 ? setMonth(0) : setMonth(month + 1))}>
 				<i className="fas fa-chevron-circle-right"></i>
 			</button>
