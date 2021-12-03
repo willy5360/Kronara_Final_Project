@@ -16,3 +16,28 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+MIGRATE = Migrate(app,db)
+db.init_app(app)
+CORS(app)
+
+api = Blueprint('api', __name__)
+
+@api.route('/event', methods=['POST'])
+def create_event():
+    appoitment = request.json.get('appoitment', None)
+    invite = request.json.get('invite', None)
+    email = request.json.get('email', None)
+    location = request.json.get('location', None)
+    # NewEvent = request.json.get('', None)
+    # NewEvent = request.json.get('', None)
+    
+    if not body:
+        return jsonify({'error': 'Missing parameters'}), 400
+
+    event = user( event = newEvent)
+    try:
+        event_created = event.create()
+        return jsonify(event_created.to_dict()), 201
+
+    

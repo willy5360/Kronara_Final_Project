@@ -1,49 +1,44 @@
+const PORT = 3001;
+const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
 			demo: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					baseUrl: `{PROTOCOL}://${PORT}-${HOST}/api/`,
+					currentEvent :[]
+					
 				}
 			]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			register: async data => {
+				try {
+					let response = await fetch(getStore().baseURL.concat("event"), {
+						method: "POST",
+						mode: "cors",
+						redirect: "follow",
+						headers: new Headers({
+							"Content-Type": "text/plain"
+						}),
+						body: JSON.stringify(data)
+					});
+					console.log(response);
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+					if (response.ok){
+						let newEvent =await response.json();
+						setStore({currentEvent: {...getStore().member, ...responseAsJson.results }});
+						
+					}
+			}catch(error){
+				console.log(error);
 			}
+		}
 		}
 	};
 };
+
 
 export default getState;

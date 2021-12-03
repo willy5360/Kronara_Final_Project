@@ -78,7 +78,7 @@ const Event = ({ handleClose }) => {
 								id="Invite"
 								name="invite"
 								label="Invite a friend"
-								{...register("Invite")}
+								{...register("invite")}
 								// fullWidth
 								// autoComplete="billing address-line2"
 							/>
@@ -152,7 +152,7 @@ const Event = ({ handleClose }) => {
 								label="Email"
 								fullWidth
 								autoComplete="kronara@gmail.com"
-								{...register("Email")}
+								{...register("email")}
 							/>
 						</Grid>
 					</Grid>
@@ -187,7 +187,7 @@ const Event = ({ handleClose }) => {
 							<i className="fas fa-map-marker-alt" />
 						</Grid>
 						<Grid item xs={11}>
-							<TextField id="Location" name="Location" label="Location" {...register("Location")} />
+							<TextField id="Location" name="Location" label="Location" {...register("location")} />
 						</Grid>
 					</Grid>
 
