@@ -12,6 +12,12 @@ const FormSignUp = () => {
 		console.log(data);
 	};
 
+	// const setSuccessRegister = required => {
+	// 	if (required == true) {
+	// 		console.log("Register completed");
+	// 	}
+	// };
+
 	return (
 		<div className="container_main_form_sig_up">
 			<form className="form__sign__up__new__user" onSubmit={handleSubmit(onSubmit)}>

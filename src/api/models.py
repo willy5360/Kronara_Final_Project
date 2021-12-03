@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-AppointmentUser = db.Table('Appointment_member',
+AppointmentMember = db.Table('Appointment_member',
     db.Column( "member", db.Integer, db.ForeignKey('member.id'), primary_key=True),
     db.Column( "appointment", db.Integer, db.ForeignKey('appointment.id'), primary_key=True)
 )
@@ -34,7 +34,7 @@ class Member(db.Model):
     birth_date = db.Column(db.Date(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
-    user_has_an_appointment = db.relationship("Appointment", secondary=AppointmentUser, back_populates="an_appointment_for_a_user")
+    member_has_an_appointment = db.relationship("Appointment", secondary=AppointmentMember, back_populates="an_appointment_for_a_member")
 
     def __repr__(self):
         return f'member  {self.username} , id: {self.id}, password: {self.password}, email: {self.email}, is_active: {self.is_active}, birth_date: {self.birth_date},  id_home:  {self.home_id}'
@@ -46,13 +46,28 @@ class Member(db.Model):
             "is_active": self.is_active,
             "birth_date": self.birth_date,
             "home_id": self.home_id,
-            "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
+            "appointment": [appointment.to_dict() for appointment in self.member_has_an_appointment]
         }
 
-    def create(self):
+    def create_member(self):
         db.session.add(self)
         db.session.commit()
-        return self
+
+    
+    @classmethod
+    def get_by_email(cls,email):
+        member = cls.query.filter_by(email=email).one_or_none()
+        return member
+    
+    @classmethod 
+    def get_member_by_id(cls,id): 
+        member = cls.query.get(id)
+        return member
+
+    @classmethod 
+    def get_all_member(cls):
+        all_members = cls.query.all()
+        return all_members
         
 class ToDoList(db.Model):
     __tablename__: "to_do_list"
@@ -119,7 +134,7 @@ class Sokect(db.Model):
 
 
 #Esta tablita va con la relacional (la de medio)
-class Appointment (db.Model):
+class Appointment(db.Model):
     __tablename__: "appointment"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -129,7 +144,7 @@ class Appointment (db.Model):
     ubication = db.Column(db.String(), unique=True, nullable=False)
     notes   = db.Column(db.String(), unique=True, nullable=False)
 
-    an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
+    an_appointment_for_a_member = db.relationship("Member", secondary=AppointmentMember, back_populates="member_has_an_appointment")
 
     def __repr__(self):
         return f'Sokect  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, ubication: {self.ubication}, notes: {self.notes}'
@@ -142,7 +157,7 @@ class Appointment (db.Model):
             "time_ends": self.time_ends,
             "ubication": self.ubication,
             "notes": self.notes,
-            "member": [member.to_dict() for member in self.an_appointment_for_a_user]
+            "member": [member.to_dict() for member in self.an_appointment_for_a_member]
         }
 
 # Esta tablita va solita 
@@ -159,5 +174,4 @@ class Habits(db.Model):
         return {
             "id": self.id,
             "habits": self.habits,
-            "data": self.data
         }
