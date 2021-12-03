@@ -1,14 +1,14 @@
 const webpack = require('webpack');
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const dotenv = require('dotenv');
 
+dotenv.config();
 
 module.exports = {
-  entry: [
-    './src/front/js/index.js'
-  ],
+  entry: ['babel-polyfill','./src/front/js/index.js'],
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, 'public'),
     publicPath: '/'
   },
@@ -17,7 +17,12 @@ module.exports = {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
         },
         {
           test: /\.(css|scss)$/, use: [{
@@ -27,11 +32,11 @@ module.exports = {
           }, {
               loader: "sass-loader" // compiles Sass to CSS
           }]
-        }, //css only files
-        {
-          test: /\.(png|svg|jpg|gif|jpeg|webp)$/, use: {
+        },
+        { 
+          test: /\.(png|svg|jpg|gif)$/, use: {
             loader: 'file-loader',
-            options: { name: '[name].[ext]' }
+            options: { name: '[name].[ext]' } 
           }
         }, //for images
         { test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/, use: ['file-loader'] } //for fonts
@@ -41,6 +46,10 @@ module.exports = {
     extensions: ['*', '.js']
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       Popper: 'popper.js',
