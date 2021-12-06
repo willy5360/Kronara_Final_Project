@@ -31,6 +31,8 @@ class Member(db.Model):
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    city = db.Column(db.String(), nullable=False)
+    photo_user = db.Column(db.String(), unique=True, nullable=False)
     birth_date = db.Column(db.Date(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
@@ -118,16 +120,18 @@ class Appointment (db.Model):
     __tablename__: "appointment"
 
     id = db.Column(db.Integer, primary_key=True)
-    appointment = db.Column(db.String(), unique=True, nullable=False)
-    time_start = db.Column(db.Date, unique=True, nullable=False)
-    time_ends = db.Column(db.Date, unique=True, nullable=False)
-    ubication = db.Column(db.String(), unique=True, nullable=False)
-    notes   = db.Column(db.String(), unique=True, nullable=False)
+    appointment = db.Column(db.String(), nullable=False)
+    friend = db.Column(db.String(), nullable=False)
+    time_start = db.Column(db.Date, nullable=False)
+    time_ends = db.Column(db.Date,  nullable=False)
+    email = db.Column(db.String(), nullable= False)
+    location = db.Column(db.String(), nullable=False)
+    notes   = db.Column(db.String(), nullable=False)
 
     an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
     def __repr__(self):
-        return f'Sokect  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, ubication: {self.ubication}, notes: {self.notes}'
+        return f'Sokect  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, location: {self.location}, notes: {self.notes}'
 
     def to_dict(self):
         return {
@@ -135,7 +139,7 @@ class Appointment (db.Model):
             "appointment": self.appointment,
             "time_start": self.time_start,
             "time_ends": self.time_ends,
-            "ubication": self.ubication,
+            "location": self.location,
             "notes": self.notes,
             "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
