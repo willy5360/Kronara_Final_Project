@@ -48,7 +48,7 @@ def create_event():
     if not appoitment:
         return jsonify({'error': 'Missing parameters'}), 400
 
-    new_event = Event()
+    new_event = Appoitment()
     new_event.appoitment = appoitment
     new_event.friend = friend
     new_event.time_start = time_start 
@@ -56,12 +56,13 @@ def create_event():
     new_event.email = email
     new_event.location = location
     new_event.notes = notes
+    new_event.an_appointment_for_a_use= an_appointment_for_a_use
   
 
     try:
         event_created = new_event.create_event()
     
-     except exc.IntegrityError:
+    except exc.IntegrityError:
         return jsonify({'error':'fail in data'}), 400
 
     return jsonify(new_event.to_dict()), 201

@@ -7,7 +7,7 @@ h2{
     color: white;
     margin-left: 1rem;
 }
-.main__container__appoitment {
+.main__container__appointment {
     font-family: lato;
     color: rgba(129, 129, 129, 1);
     font-weight: bold;
@@ -27,23 +27,23 @@ h2{
 }
 
 
-.main__appoitment__form{
+.main__appointment__form{
     width: 31.75rem;
-    height: 35rem;
+    height: 36rem;
     margin: 3rem;
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.625rem;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
     
-    padding: 1.5rem;
     background-color: rgba(196, 196, 196, 0.24);
-    
+    justify-content: center;
 
 }
-.appoitment__input{
+.appointment__input{
 display: grid;
 grid-template-columns: 0.2fr 1fr 2fr;
 margin: 1rem;
+padding: 1.5rem;
 }
 * {
     box-shadow: none;
@@ -53,40 +53,40 @@ display: grid;
 grid-template-columns: 0.2fr 2fr 1fr;
 margin: 1rem;
 }
-.appoitment__start{
+.appointment__start{
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin: 1rem;
     padding-left: 1rem
 }
-.appoitment__end{
+.appointment__end{
     display: grid;
 grid-template-columns:  2fr 1fr;
 margin: 1rem;
 padding-left: 1rem
 }
-.appoitment__mail{
+.appointment__mail{
     display: grid;
 grid-template-columns: 0.2fr 1fr 2fr;
 margin: 1rem;
 }
-.appoitment__alert{
+.appointment__alert{
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;}
-.appoitment__location{
+.appointment__location{
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;
 }
-.appoitment__notes{
+.appointment__notes{
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;
 }
 
 
-.appoitment__all__day{
+.appointment__all__day{
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;
@@ -172,7 +172,7 @@ p:before{content:attr(type);
     font-size:14px;
     color:#5a5a5a}
 
-.main__appoitment__form .form__submit {
+.main__appointment__form .form__submit {
 	position: relative;
 		top: -5px;
 	flex: 1 1 100px;
@@ -185,18 +185,19 @@ p:before{content:attr(type);
 	color: #FFFFFF;
 	box-shadow: 0 12px 7px -5px rgba(0,0,0,0.35);
 	transition: box-shadow .2s, top .2s, background-color .2s, flex-basis .2s;
+    width: 50%;
 }
-.main__appoitment__form .form__submit:hover,
-.main__appoitment__form .form__submit:focus {
+.main__appointment__form .form__submit:hover,
+.main__appointment__form .form__submit:focus {
 	box-shadow: 0 0 0 0 rgba(0,0,0,0.35);
 	top: 0;
 }
-.main__appoitment__form .form__submit:focus {
+.main__appointment__form .form__submit:focus {
 	background-color: rgba(196, 196, 196, 0.53);
 	outline: 0;
 }
 
-.main__appoitment__form .form__cancel {
+.main__appointment__form .form__cancel {
 	position: relative;
 		top: -5px;
 	flex: 1 1 100px;
@@ -209,21 +210,28 @@ p:before{content:attr(type);
 	color: #FFFFFF;
 	box-shadow: 0 12px 7px -5px rgba(0,0,0,0.35);
 	transition: box-shadow .2s, top .2s, background-color .2s, flex-basis .2s;
+    width: 90%;
 }
-.main__appoitment__form .form__cancel:hover,
-.main__appoitment__form .form__cancel:focus {
+.main__appointment__form .form__cancel:hover,
+.main__appointment__form .form__cancel:focus {
 	box-shadow: 0 0 0 0 rgba(0,0,0,0.35);
 	top: 0;
 }
-.main__appoitment__form .form__cancel:focus {
+.main__appointment__form .form__cancel:focus {
 	background-color: rgba(196, 196, 196, 0.53);
 	outline: 0;
 }
 
-.appoitment__buttons{
+.appointment__buttons{
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(196, 196, 196, 0.44);
+    padding-bottom: 0.5rem;
+    border-radius: 0 0 1rem 1rem;
+    border-top: white solid 1px;
+}
+a{
+    width: 50%;
 }
 
 $blue: #5183f5;
@@ -286,7 +294,7 @@ $blue: #5183f5;
 }
 
 input[type="checkbox"]:checked + label {
-	background: $blue;
+	background: #989da9;
 	color: white;
 }
 

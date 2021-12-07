@@ -10,20 +10,20 @@ const Event = () => {
 	const onSubmit = data => console.log(data);
 	 
 	return (
-	<div className="main__container__appoitment">
-	  <form onSubmit={handleSubmit(onSubmit)} className="main__appoitment__form">
+	<div className="main__container__appointment">
+	  <form onSubmit={handleSubmit(onSubmit)} className="main__appointment__form">
 		  <div className= "event__inputs">
 		 	<h2>Create a event</h2>
-			<div className="appoitment__input">
+			<div className="appointment__input">
 				<i className="fas fa-calendar-check" />
-				<label>Appoitment:</label>
-				<input {...register("Appoitment")} />
+				<label htmlFor="appointment">Appointment:</label>
+				<input id="appointment" {...register("appointment")} />
 			</div>
 
-			<div className="appoitmen__friend">
+			<div className="appointment__friend">
 				<i className="fas fa-users" />
-				<label>Invite a friend</label>
-				<select {...register("friend")}>
+				<label htmlFor="friend">Invite a friend</label>
+				<select id="friend" {...register("friend")}>
 				<option value="">Add a friend</option>
 				<option value="Willy">Willy</option>
 				<option value="Ana">Ana</option>
@@ -31,7 +31,7 @@ const Event = () => {
 				</select>
 			</div>
 
-			<div className="appoitment__all__day">
+			<div className="appointment__all__day">
 			<i className="far fa-clock" />
 					<span>All day</span>
 				<div className="switch-holder">
@@ -44,28 +44,28 @@ const Event = () => {
 			</div>
 			</div>
 
-			<div className="appoitment__start">
+			<div className="appointment__start">
 				<span>Start</span>
 				<input type="time" id="appt" name="appt"></input>
 			</div>
 
-			<div className="appoitment__end">
+			<div className="appointment__end">
 				<span>End</span>
 				<input type="time" id="appt" name="appt"></input>
 			</div>
 
 
 
-		<div className="appoitment__mail">
+		<div className="appointment__mail">
 			<i className="far fa-calendar-alt" />
-			<label>Email</label>
-			<input {...register("Email")} />
+			<label htmlFor="email">Email</label>
+			<input id="email" {...register("email")} />
 		</div>
 
-		<div className="appoitment__alert">
+		<div className="appointment__alert">
 			<i className="far fa-bell" />
-			<label>Alert</label>
-			<select {...register("alert")}>
+			<label htmlFor="alert">Alert</label>
+			<select id="alert" {...register("alert")}>
 				<option value="At time">At time of event</option>
 				<option value="5 mins">5 mins before</option>
 				<option value="10 mins">10 mins before</option>
@@ -75,23 +75,23 @@ const Event = () => {
 			
 		</div>
 
-		<div className="appoitment__location">
+		<div className="appointment__location">
 			<i className="fas fa-map-marker-alt" />
-			<label>Location</label>
-			<input {...register("Location")} />
+			<label htmlFor="location">Location</label>
+			<input id="location" {...register("location")} />
 		</div>
 
-		<div className="appoitment__notes">
+		<div className="appointment__notes">
 			<i className="far fa-sticky-note" />
-			<label>Notes</label>
-			<input {...register("notes")} />
+			<label htmlFor="notes">Notes</label>
+			<input id="notes" {...register("notes")} />
 		</div>
 
 		</div>
 
-		<div className= "appoitment__buttons">
-		<button type="reset" className="form__cancel" ><Link  to={'/'}>  <span>canel</span></Link></button>
-		<button type="submit" className="form__submit">Send</button>
+		<div className= "appointment__buttons">
+		<Link  to={'/'} ><button type="reset" className="form__cancel"  >  CANCEL</button></Link>
+		<button type="submit" className="form__submit">SEND</button>
 		</div>
 	  </form>
 	 
