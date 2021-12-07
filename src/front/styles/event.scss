@@ -40,18 +40,18 @@ h2{
     
     background-color: rgba(196, 196, 196, 0.24);
     justify-content: center;
+    border: white solid 1px;
 
 }
 .appointment__input{
 display: grid;
 grid-template-columns: 0.2fr 1fr 2fr;
 margin: 1rem;
-padding: 1.5rem;
 }
 * {
     box-shadow: none;
 }
-.appoitmen__friend{
+.appointment__friend{
 display: grid;
 grid-template-columns: 0.2fr 2fr 1fr;
 margin: 1rem;
@@ -229,7 +229,7 @@ p:before{content:attr(type);
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(196, 196, 196, 0.44);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.3rem;
     border-radius: 0 0 1rem 1rem;
     border-top: white solid 1px;
 }

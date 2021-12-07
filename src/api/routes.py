@@ -37,7 +37,7 @@ api = Blueprint('api', __name__)
 
 @api.route('/event', methods=['POST'])
 def create_event():
-    appoitment = request.json.get('appoitment', None)
+    appointment = request.json.get('appointment', None)
     friend = request.json.get('friend', None)
     time_start = request.json.get('start', None)
     time_end = request.json.get('start', None)
@@ -45,11 +45,11 @@ def create_event():
     location = request.json.get('location', None)
     notes = request.json.get('notes', None)
   
-    if not appoitment:
+    if not appointment:
         return jsonify({'error': 'Missing parameters'}), 400
 
-    new_event = Appoitment()
-    new_event.appoitment = appoitment
+    new_event = Appointment()
+    new_event.appointment = appointment
     new_event.friend = friend
     new_event.time_start = time_start 
     new_event.time_end = time_end

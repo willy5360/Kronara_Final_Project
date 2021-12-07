@@ -122,12 +122,12 @@ class Appointment (db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), nullable=False)
-    friend = db.Column(db.String(), nullable=False)
-    time_start = db.Column(db.Date, nullable=False)
-    time_ends = db.Column(db.Date,  nullable=False)
-    email = db.Column(db.String(), nullable= False)
-    location = db.Column(db.String(), nullable=False)
-    notes   = db.Column(db.String(), nullable=False)
+    friend = db.Column(db.String(), nullable=True)
+    time_start = db.Column(db.Date, nullable=True)
+    time_ends = db.Column(db.Date,  nullable=True)
+    email = db.Column(db.String(), nullable= True)
+    location = db.Column(db.String(), nullable=True)
+    notes   = db.Column(db.String(), nullable=True)
 
     an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
