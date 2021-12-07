@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DaySquare from "./daySquare.jsx";
+import WeatherWidget from "./weatherWidget.jsx"
 import "../../styles/daySquare.scss";
 
 const MonthSquare = () => {
@@ -127,7 +128,10 @@ const MonthSquare = () => {
 				<ul className="calendar__weekDays">{week}</ul>
 				<div className="calendar_main_month">{calendar}</div>
 			</div>
-			<div className="calendar__void__todoList"></div>
+			<div className="calendar__lefside">
+				<WeatherWidget />
+				<div className="calendar__void__todoList">  </div>
+			</div>
 			<button
 				className="main__container--button"
 				onClick={() => (month == 11 ? setMonth(0) : setMonth(month + 1))}>
