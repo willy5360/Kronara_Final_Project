@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import "../../styles/form_sign_up_new_user.scss";
 
-const FormSignUp = () => {
+function FormSignUp() {
 	const {
 		register,
 		handleSubmit,
@@ -68,12 +69,13 @@ const FormSignUp = () => {
 						Send
 					</button>
 					<span>
-						Already an account? <a href="">Log in</a>
+						Already an account?
+						<a href="">Log in</a>
 					</span>
 				</div>
 			</form>
 		</div>
 	);
-};
+}
 
 export default FormSignUp;

@@ -1,14 +1,58 @@
-.navbar_sign_up {
-    display: flex;
-    justify-content: right;
-    margin: 20px;
-    border-radius: 2px;
+@media only screen and (min-width: 800px) {
+    .navbar_sign_up {
+        display: flex;
+        justify-content: right;
+        margin: 20px;
+        border-radius: 2px;
+    }
+
+    .navbar_sign_up_button {
+        color: #0E3551;
+        background-color: #ADB7CE;
+        border: none;
+        width: 9.37rem;
+        height: 1.875rem;
+    }    
 }
 
-.navbar_sign_up_button {
-    color: #0E3551;
-    background-color: #ADB7CE;
-    border: none;
-    width: 9.37rem;
-    height: 1.875rem;
+@media only screen and (max-width: 799px) {
+
+    .navbar_sign_up {
+        display: flex;
+        justify-content: center;
+        border-radius: 2px;
+    }
+
+    .navbar_sign_up_button {
+       width: 18.75rem; 
+       height: 2.813rem;
+       padding: 0.75rem;
+       border: none;
+       opacity: 0.75;
+       border-radius: 2px;
+       background-color: #ADB7CE;
+       color: black;
+       box-shadow: 5px 5px 5px #3b424d;
+    }
+ 
+}
+
+@media only screen and (max-width: 599px) {
+    .navbar_sign_up {
+        display: flex;
+        justify-content: center;
+        border-radius: 2px;
+    }
+
+    .navbar_sign_up_button {
+       width: 18.75rem; 
+       height: 2.813rem;
+       padding: 0.75rem;
+       border: none;
+       opacity: 0.75;
+       border-radius: 2px;
+       background-color: #ADB7CE;
+       color: black;
+       box-shadow: 5px 5px 5px #3b424d;
+    }   
 }

@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			register: async data => {
 				try {
-					let response = await fetch(getStore().baseUrl.concat("member"), {
+					let response = await fetch(getStore().baseUrl.concat("/member", id), {
 						method: "POST",
 						mode: "cors",
 						redirect: "follow",

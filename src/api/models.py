@@ -27,12 +27,12 @@ class Member(db.Model):
     __tablename__: "member"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(), unique=True, nullable=False)
+    username = db.Column(db.String(), unique=True, nullable=False)  # cambiar a name 
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=False)
-    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
+    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=True)
 
     member_has_an_appointment = db.relationship("Appointment", secondary=AppointmentMember, back_populates="an_appointment_for_a_member")
 
@@ -52,7 +52,7 @@ class Member(db.Model):
     def create_member(self):
         db.session.add(self)
         db.session.commit()
-
+        return self
     
     @classmethod
     def get_by_email(cls,email):

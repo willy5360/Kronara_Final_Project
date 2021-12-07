@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
 import FormSignUp from "./pages/formulario_sign_up.jsx";
-import ButtonSignUp from "./component/button-sign-up.jsx";
+import FormLogin from "./pages/form-login.jsx";
 
 //create your first component
 const Layout = () => {
@@ -16,6 +16,7 @@ const Layout = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/FormSignUp" element={<FormSignUp />} />
+				<Route path="/FormLogin" element={<FormLogin />} />
 			</Routes>
 		</BrowserRouter>
 	);
