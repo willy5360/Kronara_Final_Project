@@ -1,8 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
-AppointmentMember = db.Table('Appointment_member',
+AppointmentUser = db.Table('appointment_member',
     db.Column( "member", db.Integer, db.ForeignKey('member.id'), primary_key=True),
     db.Column( "appointment", db.Integer, db.ForeignKey('appointment.id'), primary_key=True)
 )
@@ -12,6 +13,7 @@ class Home(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), unique=True, nullable=False)
+    city = db.Column(db.String(), nullable=False)
 
     def __repr__(self):
         return f'home  {self.name} , id: {self.id}'
@@ -27,12 +29,13 @@ class Member(db.Model):
     __tablename__: "member"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(), unique=True, nullable=False)  # cambiar a name 
+    username = db.Column(db.String(), unique=True, nullable=False)
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=True)
-    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=True)
+    photo_user = db.Column(db.String(), unique=True, nullable=False)
+    birth_date = db.Column(db.Date(), unique=False, nullable=False)
+    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     member_has_an_appointment = db.relationship("Appointment", secondary=AppointmentMember, back_populates="an_appointment_for_a_member")
 
@@ -92,7 +95,7 @@ class HumedityAndTemperature(db.Model):
     __tablename__: "humedity_and_temperature"
 
     id = db.Column(db.Integer, primary_key=True)
-    time_stamp = db.Column(db.Date, unique=True, nullable=False)
+    time_stamp = db.Column(db.DateTime, nullable=False)
     temperature = db.Column(db.Float(), unique=False, nullable=False)
     humedity = db.Column(db.Float(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
@@ -115,8 +118,8 @@ class Sokect(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(), unique=True, nullable=False)
     state = db.Column(db.Boolean(), unique=False, nullable=False)
-    start_date = db.Column(db.Date, unique=True, nullable=False)
-    end_date = db.Column(db.Date, unique=True, nullable=False)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     def __repr__(self):
@@ -133,18 +136,18 @@ class Sokect(db.Model):
         }
 
 
-#Esta tablita va con la relacional (la de medio)
-class Appointment(db.Model):
+#Esta tablita va con la relacional la de medio
+class Appointment (db.Model):
     __tablename__: "appointment"
 
     id = db.Column(db.Integer, primary_key=True)
-    appointment = db.Column(db.String(), unique=True, nullable=False)
-    time_start = db.Column(db.Date, unique=True, nullable=False)
-    time_ends = db.Column(db.Date, unique=True, nullable=False)
-    ubication = db.Column(db.String(), unique=True, nullable=False)
-    notes   = db.Column(db.String(), unique=True, nullable=False)
+    appointment = db.Column(db.String(), nullable=False)
+    time_start = db.Column(db.DateTime, nullable=False)
+    time_ends = db.Column(db.DateTime, nullable=False)
+    ubication = db.Column(db.String(), nullable=False)
+    notes   = db.Column(db.String(), nullable=False)
 
-    an_appointment_for_a_member = db.relationship("Member", secondary=AppointmentMember, back_populates="member_has_an_appointment")
+    an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
     def __repr__(self):
         return f'Sokect  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, ubication: {self.ubication}, notes: {self.notes}'
@@ -165,10 +168,10 @@ class Habits(db.Model):
     __tablename__: "habits"
 
     id = db.Column(db.Integer, primary_key=True)
-    habits = db.Column(db.String(), unique=True, nullable=False)
-
+    habits = db.Column(db.String(), nullable=False)
+    
     def __repr__(self):
-        return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}, data: {self.data}'
+        return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}'
 
     def to_dict(self):
         return {
