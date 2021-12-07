@@ -2,7 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Task = props => {
-	return <li onClick={() => props.delete(props.id)}>{props.label}</li>;
+	return(
+	<div>
+		 <input type="checkbox" name />
+		 <li onClick={() => props.delete(props.id)}>{props.label}</li>;
+</div>
+	)
 };
 
 Task.propTypes = {

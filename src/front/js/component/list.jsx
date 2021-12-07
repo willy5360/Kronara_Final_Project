@@ -71,7 +71,7 @@ const List = () => {
 	};
 
 	return (
-		<frangement>
+		<div className="main__list__container">
 			{/* {failOnUpdating && <h1>{failOnUpdating}</h1>} */}
 			{/* setUpdate()  */}
 			<h1>To do list</h1>
@@ -86,7 +86,7 @@ const List = () => {
 				<input type="text" placeholder="Add a task"></input>
 			</form>
 			<ul>{toDoList}</ul>
-		</frangement>
+			</div>
 	);
 };
 
