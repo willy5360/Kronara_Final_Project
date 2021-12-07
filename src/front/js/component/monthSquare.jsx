@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
 import DaySquare from "./daySquare.jsx";
 import "../../styles/daySquare.scss";
 
@@ -14,6 +15,28 @@ const MonthSquare = () => {
 	const IsLeapYear = year => {
 		return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 	};
+
+	const { store, actions } = useContext(Context)
+    const [holidayDate, setHolidayDate] = useState({
+            name:[],
+            month:[],
+            day:[]
+        })
+
+
+    // useEffect(()=>{
+        
+    //     if (store.holiday.length != 0){
+    //         setHolidayDate(
+    //             {    
+    //                 name: [store.holiday.map(day => day.name)], 
+    //                 month: [store.holiday.map(day => new Date(day.date).getMonth())],
+    //                 day: [store.holiday.map(day => new Date(day.date).getDate())]   
+    //             }
+    //         )
+    //     }
+
+    // },[store.holiday])
 
 	const numberToMonth = [
 		{
@@ -71,6 +94,16 @@ const MonthSquare = () => {
 	const month_days = Array.from({ length: numberToMonth[month].day }, (_, i) => i + 1);
 
 	useEffect(() => {
+
+		if (store.holiday.length != 0){
+            setHolidayDate(
+                {    
+                    name: [store.holiday.map(day => day.name)], 
+                    month: [store.holiday.map(day => new Date(day.date).getMonth())],
+                    day: [store.holiday.map(day => new Date(day.date).getDate())]   
+                }
+            )
+        }
 		setCalendar(
 			month_days.map((dayNumber, index) => {
 				// condicional que empuja el dia 1 correspondiente al mes seleccionado
@@ -84,6 +117,24 @@ const MonthSquare = () => {
 						/>
 					);
 				}
+				
+				// for (let k in holidayDate.month){
+				// 	console.log(holidayDate.month[k])
+					for (let j in holidayDate.day){
+						console.log(holidayDate.day[j])
+						if(dayNumber == holidayDate.day[j]){
+							return (
+								<DaySquare
+									key={index.toString()}
+									day={dayNumber}
+									istoday={"day_square--holiday"}
+									isNumberOne={""}
+								/>
+							);
+						}
+					}
+				// }
+			
 				// condicional que pinta en el dia actual del mes
 				if (dayNumber == today.getDate() && month == today.getMonth() && year == today.getFullYear()) {
 					return (
@@ -104,7 +155,7 @@ const MonthSquare = () => {
 				return <li key={index.toString()}>{day}</li>;
 			})
 		);
-	}, [month, year]);
+	}, [month, year, store.holiday]);
 
 	return (
 		<div className="main__container">
