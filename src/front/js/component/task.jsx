@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const Task = props => {
 	return(
-	<div>
+	<div className="list__task">
 		 <input type="checkbox" name />
-		 <li onClick={() => props.delete(props.id)}>{props.label}</li>;
+		 <li onClick={() => props.delete(props.id)}>{props.label}</li>
 </div>
 	)
 };
