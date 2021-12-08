@@ -12,8 +12,8 @@ from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
-# from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
-
+# from flask_jwt_extended import create_access_token, get_jwt_identity,  JWTManager
+from flask_jwt_extended import jwt_required
 from sqlalchemy import exc
 
 
@@ -29,14 +29,16 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
-MIGRATE = Migrate(app,db)
-db.init_app(app)
-CORS(app)
 
 api = Blueprint('api', __name__)
 
-@api.route('/event', methods=['POST'])
-def create_event():
+@api.route('/family/<int:id>/event', methods=['POST'])
+@jwt_required()
+def create_event(id):
+    id_user = get_jwt_identity()
+    if id != id_user.get('home_id', None):
+        return jsonify({'error': 'no esta autorizado'}), 403
+    
     appointment = request.json.get('appointment', None)
     friend = request.json.get('friend', None)
     time_start = request.json.get('start', None)
@@ -48,19 +50,10 @@ def create_event():
     if not appointment:
         return jsonify({'error': 'Missing parameters'}), 400
 
-    new_event = Appointment()
-    new_event.appointment = appointment
-    new_event.friend = friend
-    new_event.time_start = time_start 
-    new_event.time_end = time_end
-    new_event.email = email
-    new_event.location = location
-    new_event.notes = notes
-    new_event.an_appointment_for_a_use= an_appointment_for_a_use
-  
+    new_event = Appointment(appointment = appointment, time_start = time_start, time_end = time_end, email = email, location = location, notes = notes )
 
     try:
-        event_created = new_event.create_event()
+        event_created = new_event.create_event(friends, )
     
     except exc.IntegrityError:
         return jsonify({'error':'fail in data'}), 400

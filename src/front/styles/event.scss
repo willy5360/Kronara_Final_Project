@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Road+Rage&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Road+Rage&display=swap');
 @import "index.scss";
 
 h2{
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.5rem;
-    color: white;
+    color: rgba(35, 165, 173, 1);
     margin-left: 1rem;
+    font-weight: bold;
+}
+i{
+    color: black;
 }
 .main__container__appointment {
     font-family: lato;
@@ -32,7 +36,7 @@ h2{
 
 .main__appointment__form{
     width: 31.75rem;
-    height: 36rem;
+    height: 37.7rem;
     margin: 3rem;
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.625rem;
@@ -53,20 +57,24 @@ margin: 1rem;
 }
 .appointment__friend{
 display: grid;
-grid-template-columns: 0.2fr 2fr 1fr;
+grid-template-columns: 0.2fr 2fr;
 margin: 1rem;
+}
+.appointment__friend__checkbox{
+    display:flex;
+    padding-left: 3rem;
 }
 .appointment__start{
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin: 1rem;
-    padding-left: 1rem
+    padding-left: 2rem
 }
 .appointment__end{
     display: grid;
 grid-template-columns:  2fr 1fr;
 margin: 1rem;
-padding-left: 1rem
+padding-left: 2rem
 }
 .appointment__mail{
     display: grid;
@@ -95,69 +103,7 @@ margin: 1rem;
     margin: 1rem;
 }
 
-.switch-holder {
-    display: flex;
-   
-    justify-content: space-between;
-    align-items: center;
-}
 
-.switch-label {
-    width: 150px;
-}
-
-.switch-label i {
-    margin-right: 5px;
-}
-
-.switch-toggle {
-    height: 40px;
-}
-
-.switch-toggle input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    z-index: -2;
-}
-
-.switch-toggle input[type="checkbox"] + label {
-    position: relative;
-    display: inline-block;
-    width: 5rem;
-    height: 2rem;
-    border-radius: 20px;
-    margin: 0;
-    cursor: pointer;
-    box-shadow: inset -8px -8px 15px rgba(255,255,255,.6),
-                inset 10px 10px 10px rgba(0,0,0, .25);
-    
-}
-
-.switch-toggle input[type="checkbox"] + label::before {
-    position: absolute;
-    content: 'NO';
-    font-size: 13px;
-    text-align: center;
-    line-height: 25px;
-    top: 8px;
-    left: 8px;
-    width: 2.2rem;
-    height: 1.2rem;
-    border-radius: 20px;
-    background-color: #d1dad3;
-    box-shadow: -3px -3px 5px rgba(255,255,255,.5),
-                3px 3px 5px rgba(0,0,0, .25);
-    transition: .3s ease-in-out;
-}
-
-.switch-toggle input[type="checkbox"]:checked + label::before {
-    left: 50%;
-    content: 'YES';
-    color: #fff;
-    background-color:rgba(26, 85, 125, 1);
-    box-shadow: -3px -3px 5px rgba(255,255,255,.5),
-                3px 3px 5px #6c757d;
-}
 input{
     width:100%;
     box-sizing:border-box;
@@ -165,15 +111,31 @@ input{
     outline:none;
     resize:none;
     border:0;
-    border-bottom:2px solid #bebed2}
+    border-bottom:2px solid #bebed2;
+    color:#0a020285;
+}
 
 input:focus{
-    border-bottom:2px solid #78788c}
+    border-bottom:2px solid rgba(35, 165, 173, 1);
+    background: transparent;
+
+
+}
+
+
 p:before{content:attr(type);
     display:block;
     margin:28px 0 0;
     font-size:14px;
-    color:#5a5a5a}
+    color:#5a5a5a;
+    background-color: transparent;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #05294acf inset !important;
+    -webkit-text-fill-color: #0a020285 !important;
+}
+
 
 .main__appointment__form .form__submit {
 	position: relative;
@@ -296,9 +258,52 @@ $blue: #5183f5;
 	}
 }
 
-input[type="checkbox"]:checked + label {
-	background: #989da9;
-	color: white;
+.select-dropdown,
+.select-dropdown * {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	box-sizing: border-box;
+    font-weight: bold;
 }
+.select-dropdown {
+	position: relative;
+	border-radius: 4px;
+    outline: none;
+    background: none;
+    font-weight: bold;
+    color: #0a020285;
+}
+.select-dropdown select {
+	font-size: 1rem;
+	font-weight: normal;
+	max-width: 100%;
+	padding: 8px 24px 8px 10px;
+	border: none;
+    
+	background-color: transparent;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	appearance: none;
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+	outline: none;
+	box-shadow: none;
+    font-weight: bold;
+}
+.select-dropdown:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	width: 0;
+	height: 0;
+	margin-top: -2px;
+	border-top: 5px solid #aaa;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+    background-color: none;
+}
+
 
 

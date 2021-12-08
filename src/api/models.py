@@ -122,7 +122,6 @@ class Appointment (db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), nullable=False)
-    friend = db.Column(db.String(), nullable=True)
     time_start = db.Column(db.Date, nullable=True)
     time_ends = db.Column(db.Date,  nullable=True)
     email = db.Column(db.String(), nullable= True)
@@ -144,6 +143,16 @@ class Appointment (db.Model):
             "notes": self.notes,
             "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
+
+    def create(self,friends):
+        db.session.add(self)
+        for friend in friends:
+            self.an_appointment_for_a_user.append(friend)
+        db.session.commit()
+        return self
+
+    
+
 
 # Esta tablita va solita 
 class Habits(db.Model):
