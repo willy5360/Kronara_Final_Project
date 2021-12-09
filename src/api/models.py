@@ -52,21 +52,21 @@ class Member(db.Model):
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
-class ToDoList(db.Model):
+class Task(db.Model):
     __tablename__: "to_do_list"
 
     id = db.Column(db.Integer, primary_key=True)
-    task = db.Column(db.String(), unique=True, nullable=False)
+    item = db.Column(db.String(), unique=False, nullable=False)
     done = db.Column(db.Boolean(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'ToDoList  {self.task} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
+        return f'Task  {self.item} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
 
     def to_dict(self):
         return {
             "id": self.id,
-            "task": self.task,
+            "item": self.item,
             "done": self.done,
             "home_id": self.id_home
         }
@@ -151,6 +151,31 @@ class Appointment (db.Model):
         db.session.commit()
         return self
 
+    @classmethod
+    def get_by_id(cls,id_appointment):
+        appointment= cls.query.filter_by(id=id_appointment).one_or_none()
+        return appointment
+    
+
+    @classmethod
+    def get_all(cls):
+        appointments= cls.query.all()
+        return appointments
+
+    def update(self, item):
+        self.item=item
+        db.session.commit()
+        return self
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
+    # @classmethod
+    # def get_by_item(cls,item):
+    #     account = cls.query.filter_by(item = item).one_or_none()
+    #     return account
     
 
 

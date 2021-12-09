@@ -1,23 +1,13 @@
 
 import React, { useState } from "react";
 import "../../styles/event.scss";
-import Select from "react-select";
+// import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-const checkboxesList = [
-	'New Jersey',
-	'Maryland',
-	'Connecticut',
-	'Florida',
-	'Massachussets',
-  ];
 
-const getDefaultCheckboxes = () =>
-  checkboxesList.map(checkbox => ({
-    name: checkbox,
-    checked: false,
-  }));
+
+
 
 const Event = () => {
 	const { register, handleSubmit } = useForm();

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Member,  Home, ToDoList, HumedityAndTemperature, Sokect, Appointment, Habits 
+from api.models import db, Member,  Home, Task, HumedityAndTemperature, Sokect, Appointment, Habits 
 from api.utils import generate_sitemap, APIException
 
 import os
@@ -60,7 +60,60 @@ def create_event(id):
 
     return jsonify(new_event.to_dict()), 201
 
+@app.route('/event', methods=['GET'])
+@jwt_required()
+def get_event():
+    id_user = get_jwt_identity()
+    if id != id_user.get('home_id', None):
+        return jsonify({'error': 'no esta autorizado'}), 403
+
+    appointment= Appointment.get_all()
+    all_appointments=[appointment.to_dict() for appointment in appointments]
+    return jsonify(all_appointments), 200
+
+@api.route('/family/<int:id>/event', methods=['GET'])
+@jwt_required()
+def get_event_by_id(id):
+    id_user = get_jwt_identity()
+    if id != id_user.get('home_id', None):
+        return jsonify({'error': 'no esta autorizado'}), 403
     
-   
-   
-   
+    appointment= Appointment.get_by_id(id)
+
+    if appointment:
+        return jsonify(appointment.to_dict()), 200
+
+        return jsonify({'error': 'appointment not found'}), 404
+
+@api.route('/appointment/<int:id>', methods=['PUT','PATCH'])
+@jwt_required()
+def update_appointment(id):
+    id_user = get_jwt_identity()
+    if id != id_user.get('home_id', None):
+        return jsonify({'error': 'no esta autorizado'}), 403
+    
+    new_item=request.json.get('item', None)
+
+    if not new_item:
+        return jsonify({'error': 'missing items'}), 400
+
+    appointment= Appointment.get_by_id(id)
+    if appointment:
+        appointment=appointment.update(new_item)
+
+    return jsonify({'error': 'appointment not found'}), 404
+
+@api.route('/appointment/<int:id>', methods=['DELETE'])
+@jwt_required()
+def delete_appointment(id):
+    id_user = get_jwt_identity()
+    if id != id_user.get('home_id', None):
+        return jsonify({'error': 'no esta autorizado'}), 403
+    
+    appointment=Appointment.get_by_id(id)
+    if appointment:
+        appointment.delete()
+        return jsonify(appointment.to_dict()), 200
+
+    return jsonify({'error':'appointment not found'}), 404
+
