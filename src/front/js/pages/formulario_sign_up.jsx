@@ -1,8 +1,11 @@
-import * as React from "react";
+import React from "react";
+import  { useContext } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/form_sign_up_new_user.scss";
+import { Context } from "../store/appContext"
 
 function FormSignUp() {
+	const { store , actions} = useContext(Context);
 	const {
 		register,
 		handleSubmit,
@@ -10,7 +13,9 @@ function FormSignUp() {
 	} = useForm();
 
 	const onSubmit = data => {
-		console.log(data);
+		actions.register(data);
+	
+		console.log(data)
 	};
 
 	// const setSuccessRegister = required => {
@@ -38,7 +43,7 @@ function FormSignUp() {
 						type="text"
 						name="name"
 						id="name"
-						{...register("name", { required: true, maxLength: 30, pattern: /^[a-zA-Z]+$/ })}
+						{...register("name", { required: true, maxLength: 30, pattern: /^[a-zA-Z0-9_ ]*$/ })}
 					/>
 
 					<label htmlFor="email">Email</label>

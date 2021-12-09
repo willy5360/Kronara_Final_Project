@@ -90,6 +90,7 @@
 
 @media only screen and (max-width: 799px) { 
     .container_main_form_sig_up {
+        color: #FFFFFF;
         background: linear-gradient(90deg, rgba(5,41,74,1) 59%, rgba(14,53,81,1) 91%);
         display: flex;
         justify-content: center;
@@ -114,7 +115,7 @@
 
     .form__sign__up__new__user {
         width: 50%;
-        color: #C4C4C4;
+        color: #FFFFFF;
     }
 
     .form__body__sign__up__new__user {
@@ -128,6 +129,11 @@
            border: none;
            border-radius: 0.313rem;
        }
+
+       input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px #05294acf inset !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+        }
 
        label {
            padding: 10px;

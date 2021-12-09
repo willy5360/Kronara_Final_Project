@@ -32,12 +32,12 @@ class Member(db.Model):
     username = db.Column(db.String(), unique=True, nullable=False)
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    photo_user = db.Column(db.String(), unique=True, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=False)
-    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False, default=True) #lo iniciamos en verdadero al crearse un usuario y lo cambiaremos a false cuando se elimine la cuenta
+    photo_user = db.Column(db.String(), unique=True, nullable=True) #si se quita el nullable siempre esta en true
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
+    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=True)
 
-    member_has_an_appointment = db.relationship("Appointment", secondary=AppointmentMember, back_populates="an_appointment_for_a_member")
+    user_has_an_appointment = db.relationship("Appointment", secondary=AppointmentUser, back_populates="an_appointment_for_a_user")
 
     def __repr__(self):
         return f'member  {self.username} , id: {self.id}, password: {self.password}, email: {self.email}, is_active: {self.is_active}, birth_date: {self.birth_date},  id_home:  {self.home_id}'
@@ -49,7 +49,7 @@ class Member(db.Model):
             "is_active": self.is_active,
             "birth_date": self.birth_date,
             "home_id": self.home_id,
-            "appointment": [appointment.to_dict() for appointment in self.member_has_an_appointment]
+            "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
     def create_member(self):
@@ -160,7 +160,7 @@ class Appointment (db.Model):
             "time_ends": self.time_ends,
             "ubication": self.ubication,
             "notes": self.notes,
-            "member": [member.to_dict() for member in self.an_appointment_for_a_member]
+            "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
 
 # Esta tablita va solita 

@@ -5,29 +5,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			baseUrl: `${PROTOCOL}://${PORT}-${HOST}/api/`,
-			currentMembers: []
+			currentMembers: [],
+			member: []
 		},
 		actions: {
-			register: async data => {
-				try {
-					let response = await fetch(getStore().baseUrl.concat("/member", id), {
-						method: "POST",
-						mode: "cors",
-						redirect: "follow",
-						headers: new Headers({
-							"Content-Type": "text/plain"
-						}),
-						body: JSON.stringify(data)
-					});
-					console.log(response);
-
-					if (response.ok) {
-						let newMember = await response.json();
-						setStore({ currentMembers: { ...getStore().member, ...responseAsJson.results } });
+			register: data => {
+				fetch(getStore().baseUrl.concat("member/"), {
+					method: "POST", 
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data)
+				})
+					.then (response => {
+						if (response.ok) {
+							return response.json();
+						}
+						throw new Error("fail getting data");
+					} )
+					.then(responseAsJSON => {
+						console.log(responseAsJSON.results)
+						setStore({ currentMembers: [...getStore().member, ...responseAsJSON.data]});
+					})
+					.catch(error => {
+						console.log(error);
+						console.log(getStore().baseUrl.concat("member/"));
 					}
-				} catch (error) {
-					console.log(error);
-				}
+				);
 			}
 		}
 	};
