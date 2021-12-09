@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 
+import { Footer } from "./component/footer";
 import { Home } from "./pages/home";
 import injectContext from "./store/appContext";
 
@@ -20,7 +20,7 @@ const Layout = () => {
 					
 				</Routes>
 
-				
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
