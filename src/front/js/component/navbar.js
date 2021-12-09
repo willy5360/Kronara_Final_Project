@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ButtonSignUp from "../component/button-sign-up.jsx";
+import ButtonLogin from "../component/button-login.jsx";
+import "../../styles/navbar.scss";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
+		<div className="NavBar">
+			<div className="NavBar_name_kronara">
+				<h2>Kronara</h2>
 			</div>
-		</nav>
+			<Link to="/ButtonLogin" className="navbar_button_login">
+				<ButtonLogin />
+			</Link>
+			<Link to="/ButtonSignUp">
+				<ButtonSignUp />
+			</Link>
+		</div>
 	);
 };
