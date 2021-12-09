@@ -1,0 +1,49 @@
+@media only screen and (min-width: 800px) {
+    .navbar_button_login {
+        display: none;
+        visibility: hidden;
+    }
+    
+    .navbar_login_button {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    
+        .navbar_login {
+            display: flex;
+            justify-content: center;
+            padding-top: 200px;
+            border-radius: 2px;
+        }
+    
+        .navbar_login_button {
+            width: 18.75rem; 
+            height: 2.813rem;
+            padding: 0.75rem;
+            margin: 20px;
+            border: none;
+            opacity: 0.75;
+            border-radius: 2px;
+            background-color: #FE6847;
+            color: black;
+            box-shadow: 5px 5px 5px #3b424d;
+        }
+}
+
+@media only screen and (max-width: 599px) {
+    .navbar_login_button {
+        width: 18.75rem; 
+        height: 2.813rem;
+        padding: 0.75rem;
+        margin: 20px;
+        border: none;
+        opacity: 0.75;
+        border-radius: 2px;
+        background-color: #FE6847;
+        color: black;
+        box-shadow: 5px 5px 5px #3b424d;
+    }
+}
