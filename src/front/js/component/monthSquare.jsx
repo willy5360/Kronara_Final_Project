@@ -128,7 +128,10 @@ const MonthSquare = () => {
 				<ul className="calendar__weekDays">{week}</ul>
 				<div className="calendar_main_month">{calendar}</div>
 			</div>
-			<div className="calendar__void__todoList"><List /></div>
+			<div className="calendar__void__todoList">
+				<List />
+				
+			</div>
 			<button
 				className="main__container--button"
 				onClick={() => (month == 11 ? setMonth(0) : setMonth(month + 1))}>
