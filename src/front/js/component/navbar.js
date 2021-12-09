@@ -10,12 +10,12 @@ export const Navbar = () => {
 			<div className="NavBar_name_kronara">
 				<h2>Kronara</h2>
 			</div>
-			<Link to="/ButtonLogin" className="navbar_button_login">
+			{/* <Link to="/ButtonLogin" className="navbar_button_login">
 				<ButtonLogin />
 			</Link>
 			<Link to="/ButtonSignUp">
 				<ButtonSignUp />
-			</Link>
+			</Link> */}
 		</div>
 	);
 };
