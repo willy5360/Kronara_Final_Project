@@ -10,7 +10,7 @@ const List = () => {
   	const onSubmit = data => console.log(data);
 
 	useEffect(() => {
-		fetch("https://salmon-smelt-5qlkark7.ws-eu21.gitpod.io/", {
+		fetch("https://3001-salmon-smelt-5qlkark7.ws-eu21.gitpod.io/api/task", {
 			method: "GET"
 		})
 			.then(response => {
@@ -29,7 +29,7 @@ const List = () => {
 	}, []);
 
 	useEffect(() => {
-		fetch("https://assets.breatheco.de/apis/fake/todos/user/gloria", {
+		fetch("https://3001-salmon-smelt-5qlkark7.ws-eu21.gitpod.io/api/task", {
 			method: "PUT",
 			body: JSON.stringify(list),
 			headers: {

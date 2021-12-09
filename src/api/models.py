@@ -57,17 +57,17 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     item = db.Column(db.String(), unique=False, nullable=False)
     done = db.Column(db.Boolean(), unique=False, nullable=False)
-    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
+    # home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'Task  {self.item} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
+        return f'Task  {self.item} , id: {self.id}, done: {self.done}'
 
     def to_dict(self):
         return {
             "id": self.id,
             "item": self.item,
-            "done": self.done,
-            "home_id": self.id_home
+            "done": self.done
+            # "home_id": self.id_home
         }
 
     @classmethod
