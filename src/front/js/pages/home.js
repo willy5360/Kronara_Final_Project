@@ -1,13 +1,17 @@
 import React, { Fragment, useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import MonthSquare from "../component/monthSquare.jsx";
+import { Navbar } from "../component/navbar.js";
+import { Container } from "react-bootstrap";
 
 export const Home = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
-		<Fragment>
-			<MonthSquare />
-		</Fragment>
-	);
+	<div className="container-home">
+		<div className="container-home-opacity">
+			<Navbar />
+		</div>
+	</div>
+	)
 };

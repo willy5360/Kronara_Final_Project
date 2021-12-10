@@ -24,7 +24,7 @@ class Home(db.Model):
             "name": self.name
         }
 
-#User se relaciona con la home y con la media
+#Member se relaciona con la home y con la media
 class Member(db.Model):
     __tablename__: "member"
 
@@ -32,10 +32,10 @@ class Member(db.Model):
     username = db.Column(db.String(), unique=True, nullable=False)
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    photo_user = db.Column(db.String(), unique=True, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=False)
-    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False, default=True) #lo iniciamos en verdadero al crearse un usuario y lo cambiaremos a false cuando se elimine la cuenta
+    photo_user = db.Column(db.String(), unique=True, nullable=True) #si se quita el nullable siempre esta en true
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
+    home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=True)
 
     user_has_an_appointment = db.relationship("Appointment", secondary=AppointmentUser, back_populates="an_appointment_for_a_user")
 
@@ -52,6 +52,26 @@ class Member(db.Model):
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
+    def create_member(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+    
+    @classmethod
+    def get_by_email(cls,email):
+        member = cls.query.filter_by(email=email).one_or_none()
+        return member
+    
+    @classmethod 
+    def get_member_by_id(cls,id): 
+        member = cls.query.get(id)
+        return member
+
+    @classmethod 
+    def get_all_member(cls):
+        all_members = cls.query.all()
+        return all_members
+        
 class ToDoList(db.Model):
     __tablename__: "to_do_list"
 
@@ -151,11 +171,10 @@ class Habits(db.Model):
     habits = db.Column(db.String(), nullable=False)
     
     def __repr__(self):
-        return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}, data: {self.data}'
+        return f'Sokect  {self.habits} , id: {self.id} , habits: {self.habits}'
 
     def to_dict(self):
         return {
             "id": self.id,
             "habits": self.habits,
-            "data": self.data
         }
