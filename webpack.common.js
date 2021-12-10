@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
-  entry: ['babel-polyfill','./src/front/js/index.js'],
+  entry: ['./src/front/js/index.js'],
   output: {
     filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, 'public'),
