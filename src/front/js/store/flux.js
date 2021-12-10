@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     throw new Error("fail loading weather");
                 })
                 .then(responseAsJSON => {
-                    console.log("aqui esta el response asjson", responseAsJSON.holidays);
+                    // console.log("aqui esta el response asjson", responseAsJSON.holidays);
                     setStore({holiday: responseAsJSON.holidays})
                 })
                 .catch(error => {
