@@ -7,6 +7,9 @@ import "../../styles/navbar.scss";
 export const Navbar = () => {
 	return (
 		<div className="NavBar">
+			<div className="NavBar_name_kronara_movil">
+				<h2>Welcome to Kronara!</h2>
+			</div>
 			<div className="NavBar_name_kronara">
 				<h2>Kronara</h2>
 			</div>
