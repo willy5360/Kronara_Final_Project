@@ -46,7 +46,6 @@ def create_member():
     name = request.json.get('name', None)
    
     if not (email and password and name):
-
         return jsonify({'error': 'Missing parameters'}), 409
 
     new_member = Member(  email = email , password = password, username = name, is_active = True )

@@ -13,9 +13,8 @@ function FormSignUp() {
 	} = useForm();
 
 	const onSubmit = data => {
-		actions.register(data);
-	
 		console.log(data)
+		actions.register(data);
 	};
 
 	// const setSuccessRegister = required => {
@@ -70,9 +69,7 @@ function FormSignUp() {
 				</div>
 
 				<div className="form__footer__sign__up__new__user">
-					<button className="form_sign_up_new_user_button" type="submit">
-						Send
-					</button>
+					<input value="Send" className="form_sign_up_new_user_button" type="submit" />
 					<span>
 						Already an account?
 						<a href="">Log in</a>

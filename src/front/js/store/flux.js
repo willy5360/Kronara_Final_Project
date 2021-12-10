@@ -8,8 +8,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentMembers: [],
 			member: []
 		},
+
 		actions: {
 			register: data => {
+				console.log('action: ', data);
 				fetch(getStore().baseUrl.concat("member/"), {
 					method: "POST", 
 					headers: {
@@ -25,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					} )
 					.then(responseAsJSON => {
 						console.log(responseAsJSON.results)
-						setStore({ currentMembers: [...getStore().member, ...responseAsJSON.data]});
+						setStore({ currentMembers: responseAsJSON.data});
 					})
 					.catch(error => {
 						console.log(error);
