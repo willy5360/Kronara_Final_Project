@@ -1,46 +1,28 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			currentHome:{
+				id: 1,
+				name: "jumbotronas",
+				city: "Madrid"
+			},
+			weather:{}
+
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			getWeather: () =>{
+				fetch(`${process.env.WEATHER_BASE_URL}q=${getStore().currentHome.city}&units=metric&APPID=${process.env.WEATHER_API_KEY}`)
+                .then(response => {
+                    if (response.ok) return response.json();
+                    throw new Error("fail loading weather");
+                })
+                .then(responseAsJSON => {
+                    console.log("aqui esta el response asjson", responseAsJSON.main);
+                    setStore({weather:{...responseAsJSON.main}})
+                })
+                .catch(error => {
+                    console.log(error);
+                })
 			}
 		}
 	};
