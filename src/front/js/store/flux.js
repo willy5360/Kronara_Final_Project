@@ -5,14 +5,12 @@ const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					baseUrl: `{PROTOCOL}://${PORT}-${HOST}/api/`,
-					currentEvent :[]
-					
-				}
-			]
+			currentHome:{
+				id: 1,
+				name: "jumbotronas",
+				city: "Madrid"
+			},
+			weather:{}
 		},
 		actions: {
 			register: async data => {
@@ -34,11 +32,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 						
 					}
 			}catch(error){
-				console.log(error);
-			}
+				console.log(error);			
+
 		}
-		}
-	};
+		
+		
+		},
+			getWeather: () =>{
+				fetch(`${process.env.WEATHER_BASE_URL}q=${getStore().currentHome.city}&units=metric&APPID=${process.env.WEATHER_API_KEY}`)
+					.then(response => {
+						if (response.ok) return response.json();
+						throw new Error("fail loading weather");
+					})
+					.then(responseAsJSON => {
+						console.log("aqui esta el response asjson", responseAsJSON.main);
+						setStore({weather:{...responseAsJSON.main}})
+					})
+					.catch(error => {
+						console.log(error);
+				})
+				}
+	}
+};
 };
 
 

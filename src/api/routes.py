@@ -24,7 +24,7 @@ api = Blueprint('api', __name__)
 def handle_hello():
 
     response_body = {
-        "message": "Hello! I'm a message that came from the backend"
+        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
     }
 
     return jsonify(response_body), 200
@@ -33,11 +33,11 @@ def handle_hello():
 api = Blueprint('api', __name__)
 
 @api.route('/family/<int:id>/event', methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def create_event(id):
-    id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+    # id_user = get_jwt_identity()
+    # if id != id_user.get('home_id', None):
+    #     return jsonify({'error': 'no esta autorizado'}), 403
     
     appointment = request.json.get('appointment', None)
     friend = request.json.get('friend', None)
@@ -60,23 +60,23 @@ def create_event(id):
 
     return jsonify(new_event.to_dict()), 201
 
-@app.route('/event', methods=['GET'])
-@jwt_required()
+@api.route('/event', methods=['GET'])
+# @jwt_required()
 def get_event():
-    id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+    # id_user = get_jwt_identity()
+    # if id != id_user.get('home_id', None):
+    #     return jsonify({'error': 'no esta autorizado'}), 403
 
     appointment= Appointment.get_all()
     all_appointments=[appointment.to_dict() for appointment in appointments]
     return jsonify(all_appointments), 200
 
 @api.route('/family/<int:id>/event', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 def get_event_by_id(id):
-    id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+    # id_user = get_jwt_identity()
+    # if id != id_user.get('home_id', None):
+    #     return jsonify({'error': 'no esta autorizado'}), 403
     
     appointment= Appointment.get_by_id(id)
 
@@ -86,11 +86,11 @@ def get_event_by_id(id):
         return jsonify({'error': 'appointment not found'}), 404
 
 @api.route('/appointment/<int:id>', methods=['PUT','PATCH'])
-@jwt_required()
+# @jwt_required()
 def update_appointment(id):
-    id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+    # id_user = get_jwt_identity()
+    # if id != id_user.get('home_id', None):
+    #     return jsonify({'error': 'no esta autorizado'}), 403
     
     new_item=request.json.get('item', None)
 
@@ -104,11 +104,11 @@ def update_appointment(id):
     return jsonify({'error': 'appointment not found'}), 404
 
 @api.route('/appointment/<int:id>', methods=['DELETE'])
-@jwt_required()
+# @jwt_required()
 def delete_appointment(id):
-    id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+    # id_user = get_jwt_identity()
+    # if id != id_user.get('home_id', None):
+    #     return jsonify({'error': 'no esta autorizado'}), 403
     
     appointment=Appointment.get_by_id(id)
     if appointment:

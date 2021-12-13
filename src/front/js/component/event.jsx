@@ -23,13 +23,13 @@ const Event = () => {
 		  <div className= "event__inputs">
 		 	<h2>Create a event</h2>
 			<div className="appointment__input">
-				<i className="fas fa-calendar-check" />
+				<i className="fas appointment__icons fa-calendar-check" />
 				<label htmlFor="appointment">Appointment:</label>
 				<input id="appointment" {...register("appointment")} />
 			</div>
 
 			<div className="appointment__friend">
-				<i className="fas fa-users" />
+				<i className="fas appointment__icons fa-users" />
 				<label htmlFor="friend">Invite a friend</label>
 				
 			</div>
@@ -41,7 +41,7 @@ const Event = () => {
 				</div>
 			
 			<div className="appointment__all__day">
-					<i className="far fa-clock" />
+					<i className="far appointment__icons fa-clock" />
 					<span>All day</span>
 					<input type="checkbox" hidden="hidden" id="username"/>
 					<label class="switch" for="username"></label>
@@ -60,13 +60,13 @@ const Event = () => {
 
 
 		<div className="appointment__mail">
-			<i className="far fa-calendar-alt" />
+			<i className="far appointment__icons fa-calendar-alt" />
 			<label htmlFor="email">Email</label>
 			<input id="email" {...register("email")} />
 		</div>
 
 		<div className="appointment__alert">
-			<i className="far fa-bell" />
+			<i className="far appointment__icons fa-bell" />
 			<label htmlFor="alert" >Alert</label>
 			<select id="alert" {...register("alert")} className="select-dropdown">
 				<option value="At time">At time of event</option>
@@ -79,13 +79,13 @@ const Event = () => {
 		</div>
 
 		<div className="appointment__location">
-			<i className="fas fa-map-marker-alt" />
+			<i className="fas appointment__icons fa-map-marker-alt" />
 			<label htmlFor="location">Location</label>
 			<input id="location" {...register("location")} />
 		</div>
 
 		<div className="appointment__notes">
-			<i className="far fa-sticky-note" />
+			<i className="far appointment__icons fa-sticky-note" />
 			<label htmlFor="notes">Notes</label>
 			<input id="notes" {...register("notes")} />
 		</div>
