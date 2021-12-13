@@ -67,7 +67,7 @@ def get_event():
     # if id != id_user.get('home_id', None):
     #     return jsonify({'error': 'no esta autorizado'}), 403
 
-    appointment= Appointment.get_all()
+    appointments= Appointment.get_all()
     all_appointments=[appointment.to_dict() for appointment in appointments]
     return jsonify(all_appointments), 200
 

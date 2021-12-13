@@ -53,7 +53,7 @@ class Member(db.Model):
         }
 
 class Task(db.Model):
-    __tablename__: "to_do_list"
+    __tablename__: "task"
 
     id = db.Column(db.Integer, primary_key=True)
     item = db.Column(db.String(), unique=False, nullable=False)
