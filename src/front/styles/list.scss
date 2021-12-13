@@ -2,12 +2,12 @@
 @import "index.scss";
 
 .main__list__container{
-    padding: 1.5rem;
+    padding: 1rem;
 }
 h1{
     color: rgba(100, 223, 212, 1);
 }
-.list__add{
+#task{
     padding:10px;
     box-sizing:border-box;
     background:none;
@@ -18,7 +18,7 @@ h1{
     border-bottom:2px solid #bebed2;
     
 }
-.list__add:focus{
+#task:focus{
     border-bottom:2px solid #78788c
 }
 p:before{content:attr(type);
@@ -29,9 +29,15 @@ p:before{content:attr(type);
 
 .list__task{
     display: grid;
-    grid-template-columns: 1fr 8fr;
-    margin-top: 1rem;
+    grid-template-columns: 1fr 5.3fr 1fr;
+    margin-top: 0.5rem;
+    background-color: rgba(196, 196, 196, 0.24);
+    border-radius: 0.4rem;
+    backdrop-filter: blur(1rem);
+    padding: 0.15rem 0.5rem;
     color: white;
+    align-items: center;
+    width: 17rem;
 }
 
 ul{
@@ -86,7 +92,7 @@ body {
     z-index: 1;
     position: absolute;
     width: 12rem;
-    margin-top: 5.9rem;
+    margin-top: 6.3rem;
     margin-left: 2rem;
   }
 
@@ -97,4 +103,8 @@ body {
  hr{
    margin-top: 2.5rem;
    color:white;
+ }
+ .list__task__button{
+  background: transparent;
+  border: none
  }

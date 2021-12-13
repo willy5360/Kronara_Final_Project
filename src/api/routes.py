@@ -74,7 +74,9 @@ def delete_task(id):
     task=Task.get_by_id(id)
     if task:
         task.delete()
-        return jsonify(task.to_dict()), 200
+        all_task = Task.get_all()
+        all_task_dict = [task.to_dict() for task in all_task]
+        return jsonify(all_task_dict), 200
 
     return jsonify({'error':'task not found'}), 404
 

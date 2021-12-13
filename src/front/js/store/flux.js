@@ -1,47 +1,63 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const PORT = 3001;
+	const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
+
+	
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			URL: `${PROTOCOL}://${PORT}-${HOST}/api/task/`,
+			list:[]
+			
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getTask:()=>{				
+				fetch(getStore().URL, {
+					method: "GET"
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error("Fail");
+						}
+						return response.json();
+					})
+					.then(responseAsJason => {
+						setStore({list: [ ...responseAsJason]});
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			
 			},
-
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
+			deleteTask:(indexList)=>{
+				fetch(getStore().URL.concat(indexList), {method: "DELETE"})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error("Fail");
+					}
+					return response.json();
+				})
+				.then(responseAsJason => {
+					return setStore({list: responseAsJason})
+				})
+				.catch(err => console.log(err));
+				
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			submitTask:(item)=>{
+				fetch(getStore().URL, {
+					method: "POST",
+					body: JSON.stringify(item),
+					headers:{
+						'Content-Type':'application/json'
+					}	
+				})
+				.then(res => res.json())
+				.then(responseAsJason => {
+					setStore({list: [ ...getStore().list , responseAsJason]});
+				})
+				.catch(err => console.log(err));
 			}
+			
+			
 		}
 	};
 };
