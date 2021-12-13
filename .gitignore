@@ -5,6 +5,8 @@
 !.gitignore
 !.github
 !.babelrc
+php_errorlog
+.log
 
 # do not ignore gitpod files
 !.gitpod.Dockerfile
