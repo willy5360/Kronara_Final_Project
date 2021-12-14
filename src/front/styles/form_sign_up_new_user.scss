@@ -1,6 +1,6 @@
 @media only screen and (min-width: 800px) {
   .container_main_form_sig_up {
-    background-image: url("../img/pexels-marcus-aurelius-67879601.jpg");
+    background-image: url("https://www.pexels.com/photo/6787960/download/?search_query=Feliz%20pareja%20de%20ancianos%20saludando%20a%20alguien%20por%20videollamada&tracking_id=k2nu7k9pve");
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -81,11 +81,25 @@
     font-weight: 100;
   }
 
+  .form__body__sign__up__city {
+    margin: 0.5rem;
+  }
+
   // .form__body__sign__up_conditional,
   // .form__body__sign__up_conditional_checkbox {
   //    width: 5%;
   //    display: inline;
   // }
+
+  .form_sig_up_type_of_home {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .form_sig_up_conditional {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media only screen and (max-width: 799px) {
@@ -165,11 +179,16 @@
     }
   }
 
-  .form__body__sign__up_conditional,
-  .form__body__sign__up_conditional_checkbox {
-    visibility: none;
-    display: none;
+  .form_sig_up_conditional {
+    display: flex;
+    align-items: center;
   }
+
+  // .form__body__sign__up_conditional,
+  // .form__body__sign__up_conditional_checkbox {
+  //   visibility: none;
+  //   display: none;
+  // }
 }
 
 @media only screen and (max-width: 599px) {
@@ -245,9 +264,8 @@
     }
   }
 
-  .form__body__sign__up_conditional,
-  .form__body__sign__up_conditional_checkbox {
-    visibility: none;
-    display: none;
+  .form_sig_up_conditional {
+    display: flex;
+    align-items: center;
   }
 }

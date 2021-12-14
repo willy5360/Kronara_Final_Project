@@ -1,11 +1,10 @@
-const PORT = 3001;
-const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
-
 const getState = ({ getStore, getActions, setStore }) => {
+  const PORT = 3001;
+  const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
+
   return {
     store: {
-      baseUrl: `${PROTOCOL}://${PORT}-${HOST}/api/`,
-      currentMembers: [],
+      baseUrl: `${PROTOCOL}://${PORT}-${HOST}/api/member/`,
       member: [],
       currentHome: {
         id: 1,
@@ -16,12 +15,14 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       register: (data) => {
-        fetch(getStore().baseUrl.concat("member/"), {
+        console.log("inicio flux", data);
+        fetch(getStore().baseUrl, {
           method: "POST",
+          // mode: "CORS",
+          body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
         })
           .then((response) => {
             if (response.ok) {
@@ -30,14 +31,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             throw new Error("fail getting data");
           })
           .then((responseAsJSON) => {
-            console.log(responseAsJSON.results);
+            console.log("aqui esta respose data", responseAsJSON);
             setStore({
-              currentMembers: [...getStore().member, ...responseAsJSON.data],
+              member: [...getStore().member, responseAsJSON],
             });
           })
           .catch((error) => {
-            console.log(error);
-            console.log(getStore().baseUrl.concat("member/"));
+            console.log("soy el error de la 41", error);
           });
       },
       getWeather: () => {
