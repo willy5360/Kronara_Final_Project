@@ -167,8 +167,8 @@ data = {
         {
             "id":1,
             "appointment":"Ir al cine",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_start":"20:15",
+            "time_ends":"20:15",
             "email":"willy@hotmail.com",
             "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato"
@@ -176,8 +176,8 @@ data = {
         {
             "id":2,
             "appointment":"limpiar el garage",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_start":"20:15",
+            "time_ends":"20:15",
             "email":"ana@hotmail.com",
             "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito"
@@ -185,8 +185,8 @@ data = {
         {
             "id":3,
             "appointment":"ir a donar libros",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_start":"20:15",
+            "time_ends":"20:15",
             "email":"gloria@hotmail.com",
             "location":"biblioteca de villaverde",
             "notes":"me sobran libros"

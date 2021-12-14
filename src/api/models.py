@@ -138,8 +138,8 @@ class Appointment (db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), nullable=False)
-    time_start = db.Column(db.Date, nullable=True)
-    time_ends = db.Column(db.Date,  nullable=True)
+    time_start = db.Column(db.String(), nullable=True)
+    time_ends = db.Column(db.String(),  nullable=True)
     email = db.Column(db.String(), nullable= True)
     location = db.Column(db.String(), nullable=True)
     notes   = db.Column(db.String(), nullable=True)
@@ -161,12 +161,12 @@ class Appointment (db.Model):
             # "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
 
-    # def create(self,friends):
-    #     db.session.add(self)
-    #     for friend in friends:
-    #         self.an_appointment_for_a_user.append(friend)
-    #     db.session.commit()
-    #     return self
+    def create_event_friend(self,friends):
+        db.session.add(self)
+        for friend in friends:
+            self.an_appointment_for_a_user.append(friend)
+        db.session.commit()
+        return self
 
     def create(self):
         db.session.add(self)

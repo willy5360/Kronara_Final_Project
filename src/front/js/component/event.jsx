@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/event.scss";
 // import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Event = () => {
   const { register, handleSubmit } = useForm();
@@ -10,9 +11,11 @@ const Event = () => {
   const [checked1, setChecked1] = useState(false);
   const handleClick = () => setChecked(!checked);
   const handleClick1 = () => setChecked1(!checked1);
+  const { store, actions } = useContext(Context);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (event) => {
+    console.log("aqui esta el even en front", event);
+    actions.newEvent(event);
   };
 
   return (
@@ -26,7 +29,10 @@ const Event = () => {
           <div className="appointment__input">
             <i className="fas appointment__icons fa-calendar-check" />
             <label htmlFor="appointment">Appointment:</label>
-            <input id="appointment" {...register("appointment")} />
+            <input
+              id="appointment"
+              {...register("appointment", { required: true })}
+            />
           </div>
 
           <div className="appointment__friend">
@@ -43,15 +49,6 @@ const Event = () => {
               name="Ana"
               {...register("Ana")}
             />
-            <label htmlFor="willy">willy</label>
-            <input
-              onClick={handleClick1}
-              checked={checked1}
-              type="checkbox"
-              id="Willy"
-              name="Willy"
-              {...register("Willy")}
-            />
           </div>
 
           <div className="appointment__all__day">
@@ -62,19 +59,24 @@ const Event = () => {
           </div>
 
           <div className="appointment__start">
-            <span>Start</span>
-            <input type="time" id="appt" name="appt"></input>
+            <label htmlFor="time_start">start</label>
+            <input
+              id="time_start"
+              {...register("time_start", { required: false })}
+            />
           </div>
-
           <div className="appointment__end">
-            <span>End</span>
-            <input type="time" id="appt" name="appt"></input>
+            <label htmlFor="time_ends">end</label>
+            <input
+              id="time_ends"
+              {...register("time_ends", { required: false })}
+            />
           </div>
 
           <div className="appointment__mail">
             <i className="far appointment__icons fa-calendar-alt" />
             <label htmlFor="email">Email</label>
-            <input id="email" {...register("email")} />
+            <input id="email" {...register("email", { required: false })} />
           </div>
 
           <div className="appointment__alert">
@@ -82,7 +84,7 @@ const Event = () => {
             <label htmlFor="alert">Alert</label>
             <select
               id="alert"
-              {...register("alert")}
+              // {...register("alert")}
               className="select-dropdown"
             >
               <option value="At time">At time of event</option>
@@ -96,13 +98,16 @@ const Event = () => {
           <div className="appointment__location">
             <i className="fas appointment__icons fa-map-marker-alt" />
             <label htmlFor="location">Location</label>
-            <input id="location" {...register("location")} />
+            <input
+              id="location"
+              {...register("location", { required: false })}
+            />
           </div>
 
           <div className="appointment__notes">
             <i className="far appointment__icons fa-sticky-note" />
             <label htmlFor="notes">Notes</label>
-            <input id="notes" {...register("notes")} />
+            <input id="notes" {...register("notes", { required: false })} />
           </div>
         </div>
 

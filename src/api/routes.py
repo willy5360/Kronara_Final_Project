@@ -8,7 +8,6 @@ from api.utils import generate_sitemap, APIException
 import os
 from datetime import timedelta
 
-from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
@@ -32,14 +31,18 @@ def handle_hello():
 
 api = Blueprint('api', __name__)
 
-@api.route('/home/<int:home_id>/member/<int:member_id>/event/', methods=['POST'])
+@api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['POST'])
 # @jwt_required()
 def create_event(home_id, member_id):
     # id_user = get_jwt_identity()
     # if id != id_user.get('home_id', None):
     #     return jsonify({'error': 'no esta autorizado'}), 403
+    print("estoy dentro de la ruta", request.json)
 
-    appointment = request.json.get('appointment', None)
+    body = request.get_json()
+   
+
+    appointment = request.json.get("appointment", None)
     friend = request.json.get('friend', None)
     time_start = request.json.get('time_start', None)
     time_ends = request.json.get('time_ends', None)
@@ -110,7 +113,7 @@ def update_appointment(id):
 
     return jsonify({'error': 'appointment not found'}), 404
 
-@api.route('/appointment/<int:id>', methods=['DELETE'])
+@api.route('//home/<int:home_id>/member/<int:member_id>/event/<int:id>', methods=['DELETE'])
 # @jwt_required()
 def delete_appointment(id):
     # id_user = get_jwt_identity()

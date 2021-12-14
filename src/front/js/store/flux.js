@@ -35,13 +35,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
       },
       newEvent: (event) => {
-        fetch(getStore().eventURL.concat("home/1/member/3/event"), {
+        console.log("aqui esta el event en el flux", JSON.stringify(event));
+        console.log(
+          "aqui esta el url",
+          getStore().eventURL.concat("home/1/member/2/event")
+        );
+        fetch(getStore().eventURL.concat("home/1/member/2/event"), {
           method: "POST",
           body: JSON.stringify(event),
-          headers: { "Content-Type": "application/json" },
-        }).then((response) => {
-          if (response.ok) return response.json();
-        });
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            console.log("aqui esta res", res);
+            res.json();
+          })
+          .then((responseAsJson) => {
+            setStore({
+              appointment: [...getStore().appointment, responseAsJson],
+            });
+          })
+          .catch((err) => console.log(err));
       },
       getWeather: () => {
         fetch(
