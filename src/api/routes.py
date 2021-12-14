@@ -32,33 +32,39 @@ def handle_hello():
 
 api = Blueprint('api', __name__)
 
-@api.route('/family/<int:id>/event', methods=['POST'])
+@api.route('/home/<int:home_id>/member/<int:member_id>/event/', methods=['POST'])
 # @jwt_required()
-def create_event(id):
+def create_event(home_id, member_id):
     # id_user = get_jwt_identity()
     # if id != id_user.get('home_id', None):
     #     return jsonify({'error': 'no esta autorizado'}), 403
-    
+
     appointment = request.json.get('appointment', None)
     friend = request.json.get('friend', None)
-    time_start = request.json.get('start', None)
-    time_end = request.json.get('start', None)
+    time_start = request.json.get('time_start', None)
+    time_ends = request.json.get('time_ends', None)
     email = request.json.get('email', None)
     location = request.json.get('location', None)
     notes = request.json.get('notes', None)
-  
-    if not appointment:
-        return jsonify({'error': 'Missing parameters'}), 400
 
-    new_event = Appointment(appointment = appointment, time_start = time_start, time_end = time_end, email = email, location = location, notes = notes )
+    home= Home.get_by_id(home_id)
+    member = Member.get_by_id(member_id)
 
-    try:
-        event_created = new_event.create_event(friends, )
+    if not home and member:
+        return jsonify({'error':'onloading event'}), 400
     
-    except exc.IntegrityError:
-        return jsonify({'error':'fail in data'}), 400
+        if not appointment:
+            return jsonify({'error': 'Missing parameters'}), 400
 
-    return jsonify(new_event.to_dict()), 201
+    new_event = Appointment(appointment = appointment, time_start = time_start, time_ends = time_ends, email = email, location = location, notes = notes )
+    
+    # try:
+    event_created = new_event.create()
+    
+    # except exc.IntegrityError:
+    #     return jsonify({'error':'fail in data'}), 400
+
+    return jsonify(event_created.to_dict()), 201
 
 @api.route('/event', methods=['GET'])
 # @jwt_required()
@@ -68,10 +74,11 @@ def get_event():
     #     return jsonify({'error': 'no esta autorizado'}), 403
 
     appointments= Appointment.get_all()
+
     all_appointments=[appointment.to_dict() for appointment in appointments]
     return jsonify(all_appointments), 200
 
-@api.route('/family/<int:id>/event', methods=['GET'])
+@api.route('/event/<int:id>/', methods=['GET'])
 # @jwt_required()
 def get_event_by_id(id):
     # id_user = get_jwt_identity()

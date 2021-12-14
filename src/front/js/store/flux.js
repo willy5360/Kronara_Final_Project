@@ -4,7 +4,7 @@ const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      eventURL: `${PROTOCOL}://${PORT}-${HOST}/api/event`,
+      eventURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
       appointment: [],
       currentHome: {
         id: 1,
@@ -14,8 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       weather: {},
     },
     actions: {
-      sendEvent: () => {
-        fetch(getStore().eventURL, {
+      getEvent: () => {
+        fetch(getStore().eventURL.concat("event"), {
           method: "GET",
         })
           .then((response) => {
@@ -25,11 +25,23 @@ const getState = ({ getStore, getActions, setStore }) => {
             return response.json();
           })
           .then((responseAsJson) => {
-            setStore({ appointment: [responseAsJson] });
+            console.log("aqui esta el response asjson", responseAsJson);
+            setStore({
+              appointment: [...getStore().appointment, responseAsJson],
+            });
           })
           .catch((error) => {
             console.log(error);
           });
+      },
+      newEvent: (event) => {
+        fetch(getStore().eventURL.concat("home/1/member/3/event"), {
+          method: "POST",
+          body: JSON.stringify(event),
+          headers: { "Content-Type": "application/json" },
+        }).then((response) => {
+          if (response.ok) return response.json();
+        });
       },
       getWeather: () => {
         fetch(
@@ -42,7 +54,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             throw new Error("fail loading weather");
           })
           .then((responseAsJSON) => {
-            console.log("aqui esta el response asjson", responseAsJSON.main);
             setStore({ weather: { ...responseAsJSON.main } });
           })
           .catch((error) => {

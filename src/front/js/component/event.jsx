@@ -6,14 +6,13 @@ import { Link } from "react-router-dom";
 
 const Event = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
   const [checked, setChecked] = useState(false);
   const [checked1, setChecked1] = useState(false);
   const handleClick = () => setChecked(!checked);
   const handleClick1 = () => setChecked1(!checked1);
 
   const onSubmit = (data) => {
-    actions.sendEvent(data);
+    console.log(data);
   };
 
   return (
