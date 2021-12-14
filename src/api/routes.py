@@ -1,22 +1,22 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
+
 import os
 from datetime import timedelta
 
-from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
-# from flask_cors import CORS
-# from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+from flask_cors import CORS
 
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, request, jsonify, url_for, Blueprint
+
 from api.models import db, Member, Home, ToDoList, HumedityAndTemperature, Sokect, Appointment, Habits
 from api.utils import generate_sitemap, APIException
 from sqlalchemy import exc
 
-# app.config["JWT_SECRET_KEY"] = os.environ.get('JWI_KEY')
-# jwt = JWTManager(app)
+app = Flask(__name__)
+
+JWTManager(app)
 
 api = Blueprint('api', __name__)
 
@@ -28,7 +28,7 @@ def get_member_by_id():
         all_members = [member.to_dict() for member in members]
         return jsonify(all_members), 200
     
-    return jsonify({'error':'Not member found'}), 200
+    return jsonify({'error':'Not member found'}), 404
 
 
 @api.route('/member/', methods=['POST'])
@@ -55,7 +55,7 @@ def create_member():
         if home:
             new_member = Member( 
                 username = name, 
-                password =  password,
+                password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8),
                 email = email, 
                 is_active = True,
                 home_id = home.id, 
@@ -78,22 +78,26 @@ def create_member():
     if new_home: 
         new_member = Member (
             username = name,
-            password = password, 
+            password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8), 
             email = email, 
             is_active = True, 
             home_id = new_home_created.id, 
         )
     else: 
         return jsonify({'error': "Home already exist"}), 404
-
+    
     try:
         new_member.create_member()
-        return jsonify(new_member.to_dict()), 201
+        access_token = create_access_token(identity=new_member.to_dict(), expires_delta = timedelta(minutes=100))
+        return jsonify({"token": access_token, "member" : new_member.to_dict()}), 201
+
 
     except exc.IntegrityError:
         return {'error': 'Something is wrong'}, 409
 
-# @api.route("/login", methods=["POST"])
+    
+
+# @api.route("/login/", methods=["POST"])
 # def login():
 #     email = request.json.get("email", None)
 #     password = request.json.get("password", None)

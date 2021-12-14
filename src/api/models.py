@@ -1,6 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-from werkzeug.security import check_password_hash
 
 db = SQLAlchemy()
 
@@ -87,22 +85,22 @@ class Member(db.Model):
         all_members = cls.query.all()
         return all_members
         
-    # def update(self, **kwargs):
-    #     for key, value in kwargs.items():
-    #         if key == "_password" and not value:
-    #             continue            
-    #         setattr(self, key, value)
-    #     db.session.commit()
-    #     return self
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key == "_password" and not value:
+                continue            
+            setattr(self, key, value)
+        db.session.commit()
+        return self
 
     def validate_password(self,password):
         is_valid = check_password_hash(self._password,password)
         print(is_valid)
         return is_valid
 
-    # def validate_password(self, password):
-    #     is_valid = check_password_hash(self._password, password)
-    #     return is_valid
+    def validate_password(self, password):
+        is_valid = check_password_hash(self._password, password)
+        return is_valid
         
 class ToDoList(db.Model):
     __tablename__: "to_do_list"
