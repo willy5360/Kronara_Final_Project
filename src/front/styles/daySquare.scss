@@ -1,17 +1,25 @@
 @import "index.scss";
 
-.main__container{
+.main__container {
     width: 74.625rem;
     height: 52.125rem;
     display: flex;
-    flex-direction:row ;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     align-self: center;
     background: $main-background;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: "Ubuntu", sans-serif;
 
-    &--button{
+    &--calendarContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+    }
+
+    &--button {
         border: none;
         background: transparent;
         font-size: 2rem;
@@ -20,14 +28,14 @@
     }
 }
 
-.calendar{
+.calendar {
     display: flex;
-    flex-direction:column ;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
 
-    &__weekDays{
+    &__weekDays {
         display: flex;
         flex-direction: row;
         width: 34.3rem;
@@ -44,21 +52,22 @@
         }
     }
 
-    &__currentMonth{
+    &__currentMonth {
         display: flex;
         flex-direction: row;
         width: 100%;
         font-size: 3rem;
     }
 
-    &__year{
+    &__year {
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 100%;
         font-size: 1.5rem;
 
-        &--previous_button , &--next_button{
+        &--previous_button,
+        &--next_button {
             border: none;
             background: transparent;
             font-size: 1.5rem;
@@ -66,7 +75,7 @@
         }
     }
 
-    &__lefside{
+    &__lefside {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -75,16 +84,17 @@
     }
 }
 
-.calendar__void__todoList{
+.calendar__void__todoList {
     width: 18.75rem;
     height: 31.25rem;
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+        rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
-
-.day_square{
+.day_square {
     display: flex;
     flex-direction: row;
     width: 4.5rem;
@@ -93,81 +103,83 @@
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.4rem;
     backdrop-filter: blur(1rem);
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-  
-    &--today{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+    &--today {
         display: flex;
         flex-direction: row;
         width: 4.5rem;
         margin: 0.2rem;
-        height: 4.5rem;   
+        height: 4.5rem;
         border-radius: 0.4rem;
         background: linear-gradient(145deg, #ff7239 80%, #e66030);
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+            rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+            rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
     }
 
     & span {
-        padding :0.3rem 0 0 0.3rem;
+        padding: 0.3rem 0 0 0.3rem;
         font-size: 0.8rem;
     }
 
-    &--today{
-        & span{
-            padding :0.3rem 0 0 0.3rem;
+    &--today {
+        & span {
+            padding: 0.3rem 0 0 0.3rem;
             font-size: 0.8rem;
         }
     }
 }
 
-
-
-.calendar_main_month{
+.calendar_main_month {
     display: flex;
     flex-wrap: wrap;
     width: 34.3rem;
     min-height: 19.6rem;
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-    
-    & div{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+    & div {
         & span {
-            width: 100%;         
+            width: 100%;
         }
     }
-   
+
     & div :hover {
         background-color: rgba(14, 14, 14, 0.2);
         border-radius: 0.4rem;
     }
-
 }
 
-.Monday{
+.Monday {
     margin-left: 0.2rem;
 }
 
-.Tuesday{
+.Tuesday {
     margin-left: 5.1rem;
 }
 
-.Wednesday{
+.Wednesday {
     margin-left: 10rem;
 }
 
-.Thursday{
+.Thursday {
     margin-left: 14.9rem;
 }
 
-.Friday{
+.Friday {
     margin-left: 19.8rem;
 }
 
-.Saturday{
+.Saturday {
     margin-left: 24.7rem;
 }
 
-.Sunday{
+.Sunday {
     margin-left: 29.6rem;
 }
-
