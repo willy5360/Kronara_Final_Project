@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
+            holiday: [],
             currentHome: {
                 id: 1,
                 name: "jumbotronas",
@@ -65,6 +66,21 @@ const getState = ({ getStore, getActions, setStore }) => {
             setCurrentMember: (member) => {
                 console.log("aqui esta el member", member);
                 setStore({ currentMember: member });
+            },
+            getHoliday: () => {
+                fetch(
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading Holiday");
+                    })
+                    .then((responseAsJSON) => {
+                        setStore({ holiday: responseAsJSON.holidays });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             },
         },
     };

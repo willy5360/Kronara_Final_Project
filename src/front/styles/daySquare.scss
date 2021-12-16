@@ -1,4 +1,9 @@
 @import "index.scss";
+@import "holidayCircle.scss";
+
+$base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
 
 .main__container {
     width: 74.625rem;
@@ -74,7 +79,6 @@
             color: rgba(255, 255, 255, 0.72);
         }
     }
-
     &__lefside {
         display: flex;
         flex-direction: column;
@@ -82,16 +86,26 @@
         align-items: center;
         height: 100%;
     }
-}
 
-.calendar__void__todoList {
-    width: 18.75rem;
-    height: 31.25rem;
-    background-color: rgba(196, 196, 196, 0.24);
-    border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    &__main_month {
+        display: flex;
+        flex-wrap: wrap;
+        width: 34.3rem;
+        min-height: 19.6rem;
+        background-color: rgba(196, 196, 196, 0.24);
+        border-radius: 0.625rem;
+        box-shadow: $base_shadow;
+    }
+
+    &__void__todoList {
+        width: 18.75rem;
+        height: 31.25rem;
+        background-color: rgba(196, 196, 196, 0.24);
+        border-radius: 0.625rem;
+        box-shadow: $base_shadow;
+        margin-left: 8rem;
+        margin-top: 11.3rem;
+    }
 }
 
 .day_square {
@@ -103,55 +117,95 @@
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.4rem;
     backdrop-filter: blur(1rem);
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    box-shadow: $base_shadow;
+    position: relative;
 
-    &--today {
+    &:active {
+        background-color: rgba(14, 14, 14, 0.1);
+        border-radius: 0.4rem;
+    }
+
+    &__today {
+        display: flex;
+        flex-direction: row;
+        width: 4.5rem;
+        margin: 0.2rem;
+        height: 4.5rem;
+        z-index: 0;
+        border-radius: 0.4rem;
+        background: linear-gradient(145deg, #ff7239 80%, #e66030);
+        box-shadow: $base_shadow;
+        position: relative;
+    }
+
+    &__holiday {
         display: flex;
         flex-direction: row;
         width: 4.5rem;
         margin: 0.2rem;
         height: 4.5rem;
         border-radius: 0.4rem;
-        background: linear-gradient(145deg, #ff7239 80%, #e66030);
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
-            rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
-            rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        // border: solid #c74444 0.2rem;
+        background: rgba(196, 196, 196, 0.24);
+        backdrop-filter: blur(1rem);
+        box-shadow: $base_shadow;
+        position: relative;
+
+        &--holytest {
+            width: 1rem;
+            height: 1rem;
+            background-image: radial-gradient(
+                circle farthest-corner at 14.2% 24%,
+                rgba(239, 61, 78, 1) 0%,
+                rgba(239, 61, 78, 0.81) 51.8%,
+                rgba(239, 61, 78, 0.63) 84.6%
+            );
+            border-radius: 50%;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+            z-index: 1;
+            position: absolute;
+            margin: 1.5rem 0 0 0.3rem;
+        }
     }
 
-    & span {
+    &--holidayName {
+        padding: 0.4rem;
+        font-size: 0.6rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &--dayNumber {
+        display: block;
+        z-index: 0;
         padding: 0.3rem 0 0 0.3rem;
         font-size: 0.8rem;
     }
 
-    &--today {
-        & span {
-            padding: 0.3rem 0 0 0.3rem;
-            font-size: 0.8rem;
-        }
-    }
-}
-
-.calendar_main_month {
-    display: flex;
-    flex-wrap: wrap;
-    width: 34.3rem;
-    min-height: 19.6rem;
-    background-color: rgba(196, 196, 196, 0.24);
-    border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-        rgba(0, 0, 0, 0.07) 0px 16px 16px;
-
-    & div {
-        & span {
-            width: 100%;
-        }
+    &__holiday--holytest:active + &--holidayName {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
     }
 
-    & div :hover {
-        background-color: rgba(14, 14, 14, 0.2);
+    &__holiday:active &--dayNumber {
+        display: none;
+    }
+
+    &__holiday--holytest:active {
+        display: none;
+    }
+
+    &__today:active,
+    &__holiday:active {
+        background-color: rgba(14, 14, 14, 0.1);
         border-radius: 0.4rem;
     }
 }
