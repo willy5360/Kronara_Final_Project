@@ -65,10 +65,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             setCurrentMember: (member) => {
                 console.log("aqui esta el member", member);
                 setStore({ currentMember: member });
-                console.log(
-                    "aqui el set store de member",
-                    getStore().currentMember
-                );
             },
         },
     };

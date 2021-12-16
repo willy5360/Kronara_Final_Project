@@ -22,8 +22,11 @@ const MemberWidget = () => {
                     return (
                         <img
                             key={index.toString()}
-                            onClick={actions.setCurrentMember(mappedMember)}
-                            className="memberWidget--profile"
+                            onClick={() => {
+                                actions.setCurrentMember(mappedMember);
+                                setSelectedMember(store.currentMember);
+                            }}
+                            className="memberWidget--profile unselected"
                             src={mappedMember.photo_user}
                         ></img>
                     );
