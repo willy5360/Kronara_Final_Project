@@ -33,6 +33,8 @@ function FormSignUp() {
             id="home"
             {...register("home", { required: true })}
           />
+
+          <label htmlFor="city">Select Your city</label>
           <select {...register("city")} className="form__body__sign__up__city">
             <option value="madrid" name="city">
               Madrid
@@ -119,6 +121,17 @@ function FormSignUp() {
               <span>too short</span>
             )}
 
+            <label htmlFor="photo_user">Photo user</label>
+            <input
+              className="input_photo_user"
+              type="file"
+              name="photo_user"
+              id="photo_user"
+              {...register(
+                "photo_user"
+                //  { required: true, minLength: 7 }
+              )}
+            />
             <div className="form_sig_up_type_of_home">
               <label>New home</label>
               <input
@@ -159,8 +172,7 @@ function FormSignUp() {
                 htmlFor="condition"
                 className="form__body__sign__up_conditional"
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry
+                Lorem Ipsum is simply dummy text of the printing
               </label>
             </div>
           </div>
@@ -171,10 +183,10 @@ function FormSignUp() {
             className="form_sign_up_new_user_button"
             type="submit"
           />
-          <span>
-            Already an account?
+          <div className="already_account_container">
+            <p>Already an account?</p>
             <a href="">Log in</a>
-          </span>
+          </div>
         </div>
       </form>
     </div>

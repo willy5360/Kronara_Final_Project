@@ -1,0 +1,62 @@
+@import "index.scss";
+
+@media only screen and (min-width: 800px) {
+  .container_main_form_login {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 799px) {
+  .container_main_form_login {
+    color: #ffffff;
+    background: $main-background;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-weight: lighter;
+    padding-top: 12rem;
+    height: inherit;
+  }
+
+  .already_account_container {
+    display: flex;
+    text-align: right;
+    padding: 5px;
+    font-size: 0.938rem;
+    font-weight: lighter;
+    justify-content: flex-end;
+  }
+
+  .form_login {
+    display: flex;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    input {
+      padding: 0.25rem;
+      background-color: #ffffff;
+      opacity: 0.25;
+      margin-top: 1.25rem;
+      border: none;
+      border-radius: 0.313rem;
+      padding: 6px 20px;
+      width: 21.875rem;
+    }
+    button {
+      background-color: #adb7ce;
+      border-radius: 0.313rem;
+      color: #000000;
+      font-weight: lighter;
+      margin-top: 1.25rem;
+      width: 21.875rem;
+      padding: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .container_main_form_login {
+    color: #ffffff;
+    background: $main-background;
+  }
+}

@@ -97,19 +97,15 @@ def create_member():
 
     
 
-# @api.route("/login/", methods=["POST"])
-# def login():
-#     email = request.json.get("email", None)
-#     password = request.json.get("password", None)
+@api.route("/login/", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
 
-#     if email and password:
-#         member = member.get_by_email(email)
+    member = Member.get_by_email(email)
 
-#         if member:
-#             '''check password'''
-#             access_token = create_access_token(identity=member.to_dict())
-#             return jsonify({'token': access_token}), 200
+    if member and check_password_hash(member.password, password):
+        access_token = create_access_token(identity=member.to_dict(), expires_delta= timedelta(minutes=100))
+        return jsonify({'token': access_token}), 200
 
-#         return jsonify({'error':'Not found'}), 200
-
-#     return jsonify({"msg": "Wrong username or password"}), 401
+    return jsonify({"msg": "Wrong username or password"}), 401

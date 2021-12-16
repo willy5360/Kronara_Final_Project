@@ -53,10 +53,12 @@ class Member(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "username": self.username,
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
-            "home_id": self.home_id
+            "home_id": self.home_id,
+            "photo_user": self.photo_user
             # "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
@@ -98,9 +100,9 @@ class Member(db.Model):
         print(is_valid)
         return is_valid
 
-    def validate_password(self, password):
-        is_valid = check_password_hash(self._password, password)
-        return is_valid
+    # def validate_password(self, password):
+    #     is_valid = check_password_hash(self._password, password)
+    #     return is_valid
         
 class ToDoList(db.Model):
     __tablename__: "to_do_list"

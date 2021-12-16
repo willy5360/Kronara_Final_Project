@@ -10,6 +10,9 @@ export const Navbar = () => {
       <div className="NavBar_name_kronara">
         <h2>Kronara</h2>
       </div>
+      <div className="NavBar_name_kronara_tablet_movil">
+        <h2>Welcome to Kronara!</h2>
+      </div>
       <Link to="/ButtonLogin" className="navbar_button_login">
         <ButtonLogin />
       </Link>

@@ -1,15 +1,32 @@
 @media only screen and (min-width: 800px) {
-  .NavBar{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .NavBar_name_kronara_tablet_movil {
+    display: none;
   }
 }
 
 @media only screen and (max-width: 799px) {
-
+  .NavBar_name_kronara h2 {
+    display: none;
+  }
+  .NavBar_name_kronara_tablet_movil {
+    text-align: center;
+    padding-top: 12.5rem;
+    color: #64dfd4;
+  }
 }
 
 @media only screen and (max-width: 599px) {
-    
+  .NavBar_name_kronara h2 {
+    text-align: center;
+  }
+  .NavBar_name_kronara_tablet_movil {
+    text-align: center;
+    padding-top: 12.5rem;
+    color: #64dfd4;
+  }
 }
