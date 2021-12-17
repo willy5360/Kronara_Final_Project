@@ -20,7 +20,7 @@ data = {
     "Member":[
         {
             "id":1,
-            "username":"Ana Gonzales",
+            "username":"Ana",
             "password":"1234",
             "email":"ana@jumbotrona.com",
             "is_active":True,
@@ -30,7 +30,7 @@ data = {
         },
         {
             "id":2,
-            "username": "Gloria Silvia",
+            "username": "Gloria",
             "password": "1234",
             "email": "gloria@jumbotrona.com",
             "is_active":True,
@@ -40,7 +40,7 @@ data = {
         },
         {
             "id":3,
-            "username":"Williams Padilla",
+            "username":"Willy",
             "password":"1234",
             "email":"willy@jumbotrona.com",
             "is_active":True,
@@ -77,7 +77,87 @@ data = {
             "photo_user":"https://images.pexels.com/photos/3807713/pexels-photo-3807713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
             "birth_date":date(1990,6,2),
             "home_id": 2
+        },
+        {
+            "id":15,
+            "username":"gabi",
+            "password":"1234",
+            "email":"ana@jumbotrona.com",
+            "is_active":True,
+            "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+            "birth_date":date(1999,5,5),
+            "home_id":1
+        },
+        {
+            "id":16,
+            "username":"silvia",
+            "password":"1234",
+            "email":"ana@jumbotrona.com",
+            "is_active":True,
+            "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+            "birth_date":date(1999,5,5),
+            "home_id":1
+        },
+        {
+            "id":17,
+            "username":"frankie",
+            "password":"1234",
+            "email":"ana@jumbotrona.com",
+            "is_active":True,
+            "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+            "birth_date":date(1999,5,5),
+            "home_id":1
         }
+        # {
+        #     "id":18,
+        #     "username":"jimena",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":19,
+        #     "username":"eliana",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":20,
+        #     "username":"cielo",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":21,
+        #     "username":"victor",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":22,
+        #     "username":"perro",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # }
     ],
 
     "Task":[
@@ -169,7 +249,6 @@ data = {
             "appointment":"Ir al cine",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"willy@hotmail.com",
             "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato"
         },
@@ -178,7 +257,6 @@ data = {
             "appointment":"limpiar el garage",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"ana@hotmail.com",
             "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito"
         },
@@ -187,7 +265,6 @@ data = {
             "appointment":"ir a donar libros",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"gloria@hotmail.com",
             "location":"biblioteca de villaverde",
             "notes":"me sobran libros"
         },

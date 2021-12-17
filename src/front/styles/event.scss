@@ -1,133 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Road+Rage&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Road+Rage&display=swap");
 @import "index.scss";
 
-h2{
-    font-family: 'Ubuntu', sans-serif;
+h2 {
+    font-family: "Ubuntu", sans-serif;
     font-size: 1.5rem;
     color: rgba(35, 165, 173, 1);
     margin-left: 1rem;
     font-weight: bold;
 }
-.appointment__icons{
+.appointment__icons {
     color: black;
 }
 .main__container__appointment {
     font-family: lato;
-    color: rgba(129, 129, 129, 1);
+    color: white;
     font-weight: bold;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
+    font-size: 1rem;
     background: $main-background;
     width: 74.625rem;
-    height: 52.125rem;
+    min-height: 52.125rem;
     display: flex;
-    flex-direction:row ;
+    flex-direction: row;
     align-self: center;
     z-index: -1000;
-
 }
-.event__inputs{
+.event__inputs {
     padding: 1.5rem;
 }
 
-
-.main__appointment__form{
+.main__appointment__form {
     width: 31.75rem;
-    height: 37.7rem;
+    min-height: 26.6rem;
     margin: 3rem;
-    background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-    
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
     background-color: rgba(196, 196, 196, 0.24);
     justify-content: center;
     border: white solid 1px;
-
 }
-.appointment__input{
-display: grid;
-grid-template-columns: 0.2fr 1fr 2fr;
-margin: 1rem;
+.appointment__input {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 2fr;
+    margin: 1rem;
 }
 * {
     box-shadow: none;
 }
-.appointment__friend{
-display: grid;
-grid-template-columns: 0.2fr 2fr;
-margin: 1rem;
-}
-.appointment__friend__checkbox{
-    display:flex;
-    padding-left: 3rem;
-}
-.appointment__start{
+.appointment__friend {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 0.2fr 3fr;
     margin: 1rem;
-    padding-left: 2rem
 }
-.appointment__end{
+
+.appointment__start {
     display: grid;
-grid-template-columns:  2fr 1fr;
-margin: 1rem;
-padding-left: 2rem
+    grid-template-columns: 4fr 1fr;
+    margin: 1rem;
+    padding-left: 2rem;
 }
-.appointment__mail{
+.appointment__end {
     display: grid;
-grid-template-columns: 0.2fr 1fr 2fr;
-margin: 1rem;
+    grid-template-columns: 4fr 1fr;
+    margin: 1rem;
+    padding-left: 2rem;
 }
-.appointment__alert{
-    display: grid;
-    grid-template-columns: 0.2fr 1fr 2fr;
-    margin: 1rem;}
-.appointment__location{
+.appointment__mail {
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;
 }
-.appointment__notes{
+.appointment__alert {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 2fr;
+    margin: 1rem;
+}
+.appointment__location {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 2fr;
+    margin: 1rem;
+}
+.appointment__notes {
     display: grid;
     grid-template-columns: 0.2fr 1fr 2fr;
     margin: 1rem;
 }
 
-
-.appointment__all__day{
+.appointment__all__day {
     display: grid;
     grid-template-columns: 0.2fr 2.5fr 0.5fr;
     margin: 1rem;
 }
 
-
-input{
-    width:100%;
-    box-sizing:border-box;
-    background:none;
-    outline:none;
-    resize:none;
-    border:0;
-    border-bottom:2px solid #bebed2;
-    color:#0a020285;
+input {
+    width: 100%;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    border-bottom: 2px solid #bebed2;
+    color: #0a020285;
 }
 
-input:focus{
-    border-bottom:2px solid rgba(35, 165, 173, 1);
+input:focus {
+    border-bottom: 2px solid rgba(35, 165, 173, 1);
     background: transparent;
-
-
 }
 
-
-p:before{content:attr(type);
-    display:block;
-    margin:28px 0 0;
-    font-size:14px;
-    color:#5a5a5a;
+p:before {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: #5a5a5a;
     background-color: transparent;
 }
 
@@ -135,7 +127,7 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #05294acf inset !important;
     -webkit-text-fill-color: #0a020285 !important;
 }
-.switch {
+.appointment__all__day__switch {
     display: inline-block;
     position: relative;
     width: 50px;
@@ -147,8 +139,8 @@ input:-webkit-autofill {
     cursor: pointer;
     box-shadow: 0 12px 7px -5px rgb(0 0 0 / 35%);
 }
-.switch::before {
-    content: '';
+.appointment__all__day__switch::before {
+    content: "";
     position: absolute;
     top: 1px;
     left: 2px;
@@ -156,189 +148,296 @@ input:-webkit-autofill {
     height: 22px;
     background: #fafafa;
     border-radius: 50%;
-    transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.switch:active::before {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(128,128,128,0.1);
+.appointment__all__day__switch:active::before {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28),
+        0 0 0 20px rgba(128, 128, 128, 0.1);
 }
-input:checked + .switch {
+input:checked + .appointment__all__day__switch {
     background: #72da67;
 }
-input:checked + .switch::before {
+input:checked + .appointment__all__day__switch::before {
     left: 27px;
     background: #fff;
 }
-input:checked + .switch:active::before {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.28), 0 0 0 20px rgba(0,150,136,0.2);
+input:checked + .appointment__all__day__switch:active::before {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
 }
 
 .main__appointment__form .form__submit {
-	position: relative;
-		top: -5px;
-	flex: 1 1 100px;
-	margin: 10px;
-	cursor: pointer;
-	border: none;
-	padding: 0.75rem;
-	border-radius: 10px;
-	background-color:rgba(196, 196, 196, 0.53);
-	color: #FFFFFF;
-	box-shadow: 0 12px 7px -5px rgba(0,0,0,0.35);
-	transition: box-shadow .2s, top .2s, background-color .2s, flex-basis .2s;
+    position: relative;
+    top: -5px;
+    flex: 1 1 100px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    background-color: rgba(196, 196, 196, 0.53);
+    color: #ffffff;
+    box-shadow: 0 12px 7px -5px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.2s, top 0.2s, background-color 0.2s,
+        flex-basis 0.2s;
     width: 50%;
 }
 .main__appointment__form .form__submit:hover,
 .main__appointment__form .form__submit:focus {
-	box-shadow: 0 0 0 0 rgba(0,0,0,0.35);
-	top: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
+    top: 0;
 }
 .main__appointment__form .form__submit:focus {
-	background-color: rgba(196, 196, 196, 0.53);
-	outline: 0;
+    background-color: rgba(196, 196, 196, 0.53);
+    outline: 0;
 }
 
 .main__appointment__form .form__cancel {
-	position: relative;
-		top: -5px;
-	flex: 1 1 100px;
-	margin: 10px;
-	cursor: pointer;
-	border: none;
-	padding: 0.75rem;
-	border-radius: 10px;
-	background-color: rgba(196, 196, 196, 0.53);
-	color: #FFFFFF;
-	box-shadow: 0 12px 7px -5px rgba(0,0,0,0.35);
-	transition: box-shadow .2s, top .2s, background-color .2s, flex-basis .2s;
+    position: relative;
+    top: -5px;
+    flex: 1 1 100px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    background-color: rgba(196, 196, 196, 0.53);
+    color: #ffffff;
+    box-shadow: 0 12px 7px -5px rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.2s, top 0.2s, background-color 0.2s,
+        flex-basis 0.2s;
     width: 90%;
 }
 .main__appointment__form .form__cancel:hover,
 .main__appointment__form .form__cancel:focus {
-	box-shadow: 0 0 0 0 rgba(0,0,0,0.35);
-	top: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.35);
+    top: 0;
 }
 .main__appointment__form .form__cancel:focus {
-	background-color: rgba(196, 196, 196, 0.53);
-	outline: 0;
+    background-color: rgba(196, 196, 196, 0.53);
+    outline: 0;
 }
 
-.appointment__buttons{
+.appointment__buttons {
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(196, 196, 196, 0.44);
     padding-bottom: 0.3rem;
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0 0 0.5rem 0.5rem;
     border-top: white solid 1px;
 }
-a{
+a {
     width: 50%;
 }
 
 $blue: #5183f5;
 
 @mixin typography {
-	font-family: "PT Sans", sans-serif;
-	letter-spacing: 1.1px;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: $blue;
-	font-weight: 600;
+    font-family: "PT Sans", sans-serif;
+    letter-spacing: 1.1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: $blue;
+    font-weight: 600;
 }
 
 @mixin centered-layout {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .pill-container {
-	& input[type="checkbox"]{
-		opacity: 0;
-		position: fixed;
-		width: 0;
-	}
-	@include centered-layout;	
-	display:flex;
-	flex-direction: row;
-	width: 80%;
-	height: 3rem;
-	box-sizing: border-box;
-	.option-a {
-		border-top-left-radius: 20px;
-		border-bottom-left-radius: 20px;
-	}
-	.selector:last-child {
-		border-right: 2px solid $blue;
-		border-top-right-radius: 20px;
-		border-bottom-right-radius: 20px;
-	}
+    & input[type="checkbox"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+    }
+    @include centered-layout;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 3rem;
+    box-sizing: border-box;
+    .option-a {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .selector:last-child {
+        border-right: 2px solid $blue;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
 }
 
 .selector {
-	@include typography;
-	display: flex;
-	align-items: center;
-	justify-content:center;
-	flex-grow: 1;
-	cursor: pointer;
-	background: lighten($blue, 30%);
-	border: 2px solid $blue;
-	border-right: 0;
-	&:hover {
-		background: lighten($blue, 20%);
-		color: $blue;
-	}
+    @include typography;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    cursor: pointer;
+    background: lighten($blue, 30%);
+    border: 2px solid $blue;
+    border-right: 0;
+    &:hover {
+        background: lighten($blue, 20%);
+        color: $blue;
+    }
 }
 
 .select-dropdown,
 .select-dropdown * {
-	margin: 0;
-	padding: 0;
-	position: relative;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
     font-weight: bold;
 }
 .select-dropdown {
-	position: relative;
-	border-radius: 4px;
+    position: relative;
+    border-radius: 4px;
     outline: none;
     background: none;
     font-weight: bold;
     color: #0a020285;
 }
 .select-dropdown select {
-	font-size: 1rem;
-	font-weight: normal;
-	max-width: 100%;
-	padding: 8px 24px 8px 10px;
-	border: none;
-    
-	background-color: transparent;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-	appearance: none;
+    font-size: 1rem;
+    font-weight: normal;
+    max-width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
-.select-dropdown select:active, .select-dropdown select:focus {
-	outline: none;
-	box-shadow: none;
+.select-dropdown select:active,
+.select-dropdown select:focus {
+    outline: none;
+    box-shadow: none;
     font-weight: bold;
 }
 .select-dropdown:after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	right: 8px;
-	width: 0;
-	height: 0;
-	margin-top: -2px;
-	border-top: 5px solid #aaa;
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
     background-color: none;
 }
 
+/* -----CHECKBOX-----*/
 
+@media (prefers-reduced-motion: reduce) {
+    *,
+    :after,
+    :before {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 
+::selection {
+    -webkit-text-fill-color: var(--color-background);
+    background-color: var(--color-yellow);
+    color: var(--color-background);
+}
+
+.demo .demo--content {
+    background-color: #fff;
+}
+
+.demo .demo--place-center {
+    display: grid;
+    min-height: 20vh;
+    place-content: center;
+}
+
+.demo * {
+    background-color: initial;
+    border: initial;
+    border-radius: initial;
+    color: initial;
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    max-height: none;
+    padding: initial;
+    -webkit-text-decoration-color: initial;
+    atext-decoration-color: initial;
+    text-decoration-thickness: initial;
+}
+
+.appointment__friend__checkbox {
+    --form-control-color: rgba(100, 223, 212, 1);
+    font-family: system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.1;
+    display: flex;
+    gap: 0.5em;
+
+    margin: 1rem;
+}
+
+.appointment__friend__checkBox--container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+
+    &input {
+        margin-left: 0.5rem;
+    }
+}
+
+.appointment__friend__checkbox + .appointment__friend__checkbox {
+    margin-top: 1em;
+}
+
+.appointment__friend__checkbox input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1rem;
+    height: 1rem;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    box-shadow: 0 12px 7px -5px rgb(0 0 0 / 35%);
+}
+
+.appointment__friend__checkbox input::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    background-color: CanvasText;
+}
+
+.appointment__friend__checkbox input:checked::before {
+    transform: scale(1);
+}

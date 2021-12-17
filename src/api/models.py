@@ -43,7 +43,7 @@ class Member(db.Model):
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    photo_user = db.Column(db.String(), unique=True, nullable=False)
+    photo_user = db.Column(db.String(), unique=False, nullable=False)
     birth_date = db.Column(db.Date(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
@@ -55,6 +55,7 @@ class Member(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "username": self.username,
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
@@ -66,6 +67,12 @@ class Member(db.Model):
     def get_by_id(cls, member_id):
         member=cls.query.get(member_id)
         return member
+
+    @classmethod
+    def get_all_by_home(cls, id):
+        members= cls.query.filter_by(home_id = id)
+        return members
+        
 
 
 class Task(db.Model):
@@ -140,14 +147,13 @@ class Appointment (db.Model):
     appointment = db.Column(db.String(), nullable=False)
     time_start = db.Column(db.String(), nullable=True)
     time_ends = db.Column(db.String(),  nullable=True)
-    email = db.Column(db.String(), nullable= True)
     location = db.Column(db.String(), nullable=True)
     notes   = db.Column(db.String(), nullable=True)
-
+                                                
     an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
     def __repr__(self):
-        return f'Appointment  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, email: {self.email} location: {self.location}, notes: {self.notes}'
+        return f'Appointment  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, location: {self.location}, notes: {self.notes}'
 
     def to_dict(self):
         return {
@@ -155,7 +161,6 @@ class Appointment (db.Model):
             "appointment": self.appointment,
             "time_start": self.time_start,
             "time_ends": self.time_ends,
-            "email": self.email,
             "location": self.location,
             "notes": self.notes,
             # "member": [member.to_dict() for member in self.an_appointment_for_a_user]
@@ -195,9 +200,12 @@ class Appointment (db.Model):
         return self
 
     # @classmethod
-    # def get_by_item(cls,item):
-    #     account = cls.query.filter_by(item = item).one_or_none()
-    #     return account
+    # def get_all_appointments_from_user(cls,member_id):
+    #     appointments =cls.query.filter_by(id = member_id)
+    #     return appointments
+
+    # @classmethod
+    # def get_event_by_id()
     
 
 
