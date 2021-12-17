@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import "../../styles/button-login.scss";
 
 const ButtonLogin = () => {
-	return (
-		<div className="navbar_login">
-			<Link to="/FormLogin">
-				<button className="navbar_login_button">Login</button>
-			</Link>
-		</div>
-	);
+  return (
+    <Link to="/FormLogin" className="navbar_login">
+      <button className="navbar_login_button">Login</button>
+    </Link>
+  );
 };
 
 export default ButtonLogin;

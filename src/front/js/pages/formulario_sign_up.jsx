@@ -87,13 +87,11 @@ function FormSignUp() {
               type="text"
               name="name"
               id="name"
-              {...register(
-                "name"
-                // , {
-                // required: true,
-                // maxLength: 30,
-                // pattern: /^[a-zA-Z0-9_ ]*$/,}
-              )}
+              {...register("name", {
+                required: true,
+                maxLength: 30,
+                pattern: /^[a-zA-Z0-9_ ]*$/,
+              })}
             />
 
             <label htmlFor="email">Email</label>
@@ -101,10 +99,10 @@ function FormSignUp() {
               type="email"
               name="email"
               id="email"
-              {...register(
-                "email"
-                // { required: true , pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ }
-              )}
+              {...register("email", {
+                required: true,
+                pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              })}
             />
 
             <label htmlFor="password">Password</label>
@@ -112,10 +110,7 @@ function FormSignUp() {
               type="password"
               name="password"
               id="password"
-              {...register(
-                "password"
-                //  { required: true, minLength: 7 }
-              )}
+              {...register("password", { required: true, minLength: 7 })}
             />
             {errors.password && errors.password.type === "minLength" && (
               <span>too short</span>
@@ -127,10 +122,7 @@ function FormSignUp() {
               type="file"
               name="photo_user"
               id="photo_user"
-              {...register(
-                "photo_user"
-                //  { required: true, minLength: 7 }
-              )}
+              {...register("photo_user", { required: true, minLength: 7 })}
             />
             <div className="form_sig_up_type_of_home">
               <label>New home</label>
@@ -163,10 +155,7 @@ function FormSignUp() {
                 type="checkbox"
                 id="condition"
                 className="form__body__sign__up_conditional_checkbox"
-                {...register(
-                  "condition"
-                  //  { required: true }
-                )}
+                {...register("condition", { required: true })}
               />
               <label
                 htmlFor="condition"

@@ -6,12 +6,12 @@ import "../../styles/navbar.scss";
 
 export const Navbar = () => {
   return (
-    <div className="NavBar">
+    <nav className="NavBar">
+      <div className="NavBar_name_kronara_movil">
+        <h2>Welcome to Kronara!</h2>
+      </div>
       <div className="NavBar_name_kronara">
         <h2>Kronara</h2>
-      </div>
-      <div className="NavBar_name_kronara_tablet_movil">
-        <h2>Welcome to Kronara!</h2>
       </div>
       <Link to="/ButtonLogin" className="navbar_button_login">
         <ButtonLogin />
@@ -19,6 +19,6 @@ export const Navbar = () => {
       <Link to="/ButtonSignUp">
         <ButtonSignUp />
       </Link>
-    </div>
+    </nav>
   );
 };

@@ -65,7 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
               "acces_token",
               JSON.stringify(responseAsJSON.token)
             );
-            // console.log("login ready", token);
+            console.log("login ready", token);
           })
           .catch((error) => {
             console.log(error);
