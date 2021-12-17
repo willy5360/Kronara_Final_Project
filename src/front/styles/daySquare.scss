@@ -1,17 +1,30 @@
 @import "index.scss";
+@import "holidayCircle.scss";
 
-.main__container{
+$base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
+
+.main__container {
     width: 74.625rem;
     height: 52.125rem;
     display: flex;
-    flex-direction:row ;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     align-self: center;
     background: $main-background;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: "Ubuntu", sans-serif;
 
-    &--button{
+    &--calendarContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+    }
+
+    &--button {
         border: none;
         background: transparent;
         font-size: 2rem;
@@ -20,14 +33,14 @@
     }
 }
 
-.calendar{
+.calendar {
     display: flex;
-    flex-direction:column ;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
 
-    &__weekDays{
+    &__weekDays {
         display: flex;
         flex-direction: row;
         width: 34.3rem;
@@ -44,47 +57,57 @@
         }
     }
 
-    &__currentMonth{
+    &__currentMonth {
         display: flex;
         flex-direction: row;
         width: 100%;
         font-size: 3rem;
     }
 
-    &__year{
+    &__year {
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 100%;
         font-size: 1.5rem;
 
-        &--previous_button , &--next_button{
+        &--previous_button,
+        &--next_button {
             border: none;
             background: transparent;
             font-size: 1.5rem;
             color: rgba(255, 255, 255, 0.72);
         }
     }
-
-    &__lefside{
+    &__lefside {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
         height: 100%;
     }
+
+    &__main_month {
+        display: flex;
+        flex-wrap: wrap;
+        width: 34.3rem;
+        min-height: 19.6rem;
+        background-color: rgba(196, 196, 196, 0.24);
+        border-radius: 0.625rem;
+        box-shadow: $base_shadow;
+    }
+
+    &__void__todoList {
+        width: 18.75rem;
+        height: 31.25rem;
+        background-color: rgba(196, 196, 196, 0.24);
+        border-radius: 0.625rem;
+        box-shadow: $base_shadow;
+        margin-top: 3rem;
+    }
 }
 
-.calendar__void__todoList{
-    width: 18.75rem;
-    height: 31.25rem;
-    background-color: rgba(196, 196, 196, 0.24);
-    border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-}
-
-
-.day_square{
+.day_square {
     display: flex;
     flex-direction: row;
     width: 4.5rem;
@@ -93,81 +116,123 @@
     background-color: rgba(196, 196, 196, 0.24);
     border-radius: 0.4rem;
     backdrop-filter: blur(1rem);
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-  
-    &--today{
+    box-shadow: $base_shadow;
+    position: relative;
+
+    &:active {
+        background-color: rgba(14, 14, 14, 0.1);
+        border-radius: 0.4rem;
+    }
+
+    &__today {
         display: flex;
         flex-direction: row;
         width: 4.5rem;
         margin: 0.2rem;
-        height: 4.5rem;   
+        height: 4.5rem;
+        z-index: 0;
         border-radius: 0.4rem;
         background: linear-gradient(145deg, #ff7239 80%, #e66030);
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        box-shadow: $base_shadow;
+        position: relative;
     }
 
-    & span {
-        padding :0.3rem 0 0 0.3rem;
+    &__holiday {
+        display: flex;
+        flex-direction: row;
+        width: 4.5rem;
+        margin: 0.2rem;
+        height: 4.5rem;
+        border-radius: 0.4rem;
+        // border: solid #c74444 0.2rem;
+        background: rgba(196, 196, 196, 0.24);
+        backdrop-filter: blur(1rem);
+        box-shadow: $base_shadow;
+        position: relative;
+
+        &--holytest {
+            width: 1rem;
+            height: 1rem;
+            background-image: radial-gradient(
+                circle farthest-corner at 14.2% 24%,
+                rgba(239, 61, 78, 1) 0%,
+                rgba(239, 61, 78, 0.81) 51.8%,
+                rgba(239, 61, 78, 0.63) 84.6%
+            );
+            border-radius: 50%;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+            z-index: 1;
+            position: absolute;
+            margin: 1.5rem 0 0 0.3rem;
+        }
+    }
+
+    &--holidayName {
+        padding: 0.4rem;
+        font-size: 0.6rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &--dayNumber {
+        display: block;
+        z-index: 0;
+        padding: 0.3rem 0 0 0.3rem;
         font-size: 0.8rem;
     }
 
-    &--today{
-        & span{
-            padding :0.3rem 0 0 0.3rem;
-            font-size: 0.8rem;
-        }
+    &__holiday--holytest:active + &--holidayName {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
     }
-}
 
-
-
-.calendar_main_month{
-    display: flex;
-    flex-wrap: wrap;
-    width: 34.3rem;
-    min-height: 19.6rem;
-    background-color: rgba(196, 196, 196, 0.24);
-    border-radius: 0.625rem;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-    
-    & div{
-        & span {
-            width: 100%;         
-        }
+    &__holiday:active &--dayNumber {
+        display: none;
     }
-   
-    & div :hover {
-        background-color: rgba(14, 14, 14, 0.2);
+
+    &__holiday--holytest:active {
+        display: none;
+    }
+
+    &__today:active,
+    &__holiday:active {
+        background-color: rgba(14, 14, 14, 0.1);
         border-radius: 0.4rem;
     }
-
 }
 
-.Monday{
+.Monday {
     margin-left: 0.2rem;
 }
 
-.Tuesday{
+.Tuesday {
     margin-left: 5.1rem;
 }
 
-.Wednesday{
+.Wednesday {
     margin-left: 10rem;
 }
 
-.Thursday{
+.Thursday {
     margin-left: 14.9rem;
 }
 
-.Friday{
+.Friday {
     margin-left: 19.8rem;
 }
 
-.Saturday{
+.Saturday {
     margin-left: 24.7rem;
 }
 
-.Sunday{
+.Sunday {
     margin-left: 29.6rem;
 }
-

@@ -5,26 +5,21 @@ import { Home } from "./pages/home";
 
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import FormSignUp from "./pages/formulario_sign_up.jsx";
+import FormLogin from "./pages/form-login.jsx";
 
 const Layout = () => {
-	
-	const basename = process.env.BASENAME || "";
+    const basename = process.env.BASENAME || "";
 
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-		
-				<Routes>
-					<Route path="/" element={<Home />} />
-					
-				
-				</Routes>
-			
-			</BrowserRouter>
-		</div>
-	);
+    return (
+        <BrowserRouter basename={basename}>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/FormSignUp" element={<FormSignUp />} />
+                <Route path="/FormLogin" element={<FormLogin />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default injectContext(Layout);

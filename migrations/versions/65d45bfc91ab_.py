@@ -1,5 +1,6 @@
 """empty message
 
+<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
 <<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
 Revision ID: 7b2bf7c8380c
 Revises: 
@@ -9,6 +10,17 @@ Revision ID: cbd97b0ec452
 Revises: 
 Create Date: 2021-12-05 13:55:31.348160
 >>>>>>> main:migrations/versions/cbd97b0ec452_.py
+=======
+<<<<<<< HEAD:migrations/versions/65d45bfc91ab_.py
+Revision ID: 65d45bfc91ab
+Revises: 
+Create Date: 2021-12-17 10:47:09.956527
+=======
+Revision ID: 99715c8614e7
+Revises: 
+Create Date: 2021-12-07 11:01:55.915637
+>>>>>>> main:migrations/versions/99715c8614e7_.py
+>>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
 
 """
 from alembic import op
@@ -16,11 +28,19 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
+<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
 <<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
 revision = '7b2bf7c8380c'
 =======
 revision = 'cbd97b0ec452'
 >>>>>>> main:migrations/versions/cbd97b0ec452_.py
+=======
+<<<<<<< HEAD:migrations/versions/65d45bfc91ab_.py
+revision = '65d45bfc91ab'
+=======
+revision = '99715c8614e7'
+>>>>>>> main:migrations/versions/99715c8614e7_.py
+>>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,7 +70,7 @@ def upgrade():
     op.create_table('home',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('city', sa.String(), nullable=False),
+    sa.Column('city', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
@@ -75,12 +95,17 @@ def upgrade():
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
+<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
 <<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
     sa.Column('city', sa.String(), nullable=False),
 =======
 >>>>>>> main:migrations/versions/cbd97b0ec452_.py
     sa.Column('photo_user', sa.String(), nullable=False),
     sa.Column('birth_date', sa.Date(), nullable=False),
+=======
+    sa.Column('photo_user', sa.String(), nullable=True),
+    sa.Column('birth_date', sa.Date(), nullable=True),
+>>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
     sa.Column('home_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['home_id'], ['home.id'], ),
     sa.PrimaryKeyConstraint('id'),
