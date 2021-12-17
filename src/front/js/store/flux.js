@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 city: "Madrid",
             },
             weather: {},
+            holiday: [],
         },
         actions: {
             getEvent: () => {
@@ -132,6 +133,21 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .then((responseAsJSON) => {
                         setStore({ weather: { ...responseAsJSON.main } });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            getHoliday: () => {
+                fetch(
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading Holiday");
+                    })
+                    .then((responseAsJSON) => {
+                        setStore({ holiday: responseAsJSON.holidays });
                     })
                     .catch((error) => {
                         console.log(error);

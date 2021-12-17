@@ -226,9 +226,9 @@ input:checked + .appointment__all__day__switch:active::before {
     padding-bottom: 0.3rem;
     border-radius: 0 0 0.5rem 0.5rem;
     border-top: white solid 1px;
-}
-a {
-    width: 50%;
+    &--link {
+        width: 50%;
+    }
 }
 
 $blue: #5183f5;

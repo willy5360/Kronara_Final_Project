@@ -152,7 +152,7 @@ const Event = () => {
                 </div>
 
                 <div className="appointment__buttons">
-                    <Link to={"/"}>
+                    <Link className="appointment__buttons--link" to={"/"}>
                         <button type="reset" className="form__cancel">
                             {" "}
                             CANCEL

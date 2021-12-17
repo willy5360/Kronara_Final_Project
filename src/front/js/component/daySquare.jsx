@@ -2,15 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../../styles/modal.scss";
+import HolidayCircle from "./holidayCircle.jsx";
 
-const DaySquare = (props) => {
-    const clicked = () => {
-        window.alert(new Date(props.year, props.month, props.day));
-    };
-
-    return (
-        <div className={props.istoday.concat(props.isNumberOne)} onClick={""}>
-            {/* <a href="#modal1" />
+{
+    /* <a href="#modal1" />
       <div id="modal1" class="modalmask">
         <div className="modalbox movedown">
           <a href="#close" title="Close" className="close">
@@ -27,13 +22,43 @@ const DaySquare = (props) => {
           </p>
         </div>
       </div>
-      <span>{props.day}</span> */}
-            <Link to={"/event"}>
-                {" "}
-                <span>{props.day}</span>
-            </Link>
-        </div>
-    );
+      <span>{props.day}</span> */
+}
+
+const DaySquare = (props) => {
+    const clicked = () => {
+        window.alert(new Date(props.year, props.month, props.day));
+    };
+    if (props.holidayName) {
+        return (
+            <div
+                className={props.istoday.concat(props.isNumberOne)}
+                onClick={""}
+            >
+                <HolidayCircle />
+                <span className="day_square--holidayName">
+                    <div>{props.holidayName}</div>
+                </span>
+                <Link className="day_square--link" to={"/event"}>
+                    <span className="day_square--dayNumber">{props.day}</span>
+                </Link>
+            </div>
+        );
+    } else {
+        return (
+            <div
+                className={props.istoday.concat(props.isNumberOne)}
+                onClick={""}
+            >
+                <span className="day_square--holidayName">
+                    <div>{props.holidayName}</div>
+                </span>
+                <Link className="day_square--link" to={"/event"}>
+                    <span className="day_square--dayNumber">{props.day}</span>
+                </Link>
+            </div>
+        );
+    }
 };
 
 DaySquare.propTypes = {
@@ -42,6 +67,7 @@ DaySquare.propTypes = {
     year: PropTypes.number,
     istoday: PropTypes.string,
     isNumberOne: PropTypes.string,
+    holidayName: PropTypes.string,
 };
 
 export default DaySquare;

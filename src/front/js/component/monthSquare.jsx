@@ -1,12 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import { Context } from "../store/appContext";
 import DaySquare from "./daySquare.jsx";
 import WeatherWidget from "./weatherWidget.jsx";
 import "../../styles/daySquare.scss";
-import { Context } from "../store/appContext.js";
+// import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
+    const { store, actions } = useContext(Context);
     const today = new Date();
-    const NumbersToDays = [
+    const weekDays = [
         "Monday",
         "Tuesday",
         "Wednesday",
@@ -20,7 +22,6 @@ const MonthSquare = () => {
     const [week, setWeek] = useState([]);
     const [month, setMonth] = useState(today.getMonth());
     const [year, setYear] = useState(today.getFullYear());
-    const { store, actions } = useContext(Context);
 
     const IsLeapYear = (year) => {
         return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
@@ -77,7 +78,7 @@ const MonthSquare = () => {
         },
     ];
 
-    let firstDay = new Date(year, month, 1).getDay() - 1; //me devueleve el primer dia en numero
+    const firstDay = new Date(year, month, 1).getDay() - 1; //me devueleve el primer dia en numero
 
     const month_days = Array.from(
         { length: numberToMonth[month].day },
@@ -93,13 +94,32 @@ const MonthSquare = () => {
                         <DaySquare
                             key={index.toString()}
                             day={dayNumber}
-                            month={month}
-                            year={year}
                             istoday={"day_square"}
-                            isNumberOne={` ${NumbersToDays[firstDay]}`} //agrega una clase css si conincide con el dia inicial
+                            isNumberOne={` ${weekDays[firstDay]}`} //agrega una clase css si conincide con el dia inicial
+                            holidayName={""}
                         />
                     );
                 }
+
+                // condicional que pinta los festivos en el calendario
+                for (let DATE in store.holiday) {
+                    if (
+                        dayNumber ==
+                            new Date(store.holiday[DATE].date).getDate() &&
+                        month == new Date(store.holiday[DATE].date).getMonth()
+                    ) {
+                        return (
+                            <DaySquare
+                                key={index.toString()}
+                                day={dayNumber}
+                                istoday={"day_square__holiday"}
+                                isNumberOne={""}
+                                holidayName={store.holiday[DATE].name}
+                            />
+                        );
+                    }
+                }
+
                 // condicional que pinta en el dia actual del mes
                 if (
                     dayNumber == today.getDate() &&
@@ -110,10 +130,9 @@ const MonthSquare = () => {
                         <DaySquare
                             key={index.toString()}
                             day={dayNumber}
-                            month={month}
-                            year={year}
-                            istoday={"day_square--today"}
+                            istoday={"day_square__today"}
                             isNumberOne={""}
+                            holidayName={""}
                         />
                     );
                 } else {
@@ -121,8 +140,6 @@ const MonthSquare = () => {
                         <DaySquare
                             key={index.toString()}
                             day={dayNumber}
-                            month={month}
-                            year={year}
                             istoday={"day_square"}
                             isNumberOne={""}
                         />
@@ -131,57 +148,62 @@ const MonthSquare = () => {
             })
         );
         setWeek(
-            NumbersToDays.map((day, index) => {
+            weekDays.map((day, index) => {
                 return <li key={index.toString()}>{day}</li>;
             })
         );
-    }, [month, year]);
+    }, [month, year, store.holiday]);
 
     return (
-        <div className="main__container">
-            <button
-                className="main__container--button"
-                onClick={() =>
-                    month == 0 ? setMonth(11) : setMonth(month - 1)
-                }
-            >
-                <i className="fas fa-chevron-circle-left"></i>
-            </button>
-            <div className="calendar">
-                <div className="calendar__year">
+        <Fragment>
+            <div className="main__container">
+                {/* <MemberWidget /> */}
+                <div className="main__container--calendarContainer">
                     <button
-                        className="calendar__year--previous_button"
-                        onClick={() => setYear(year - 1)}
+                        className="main__container--button"
+                        onClick={() =>
+                            month == 0 ? setMonth(11) : setMonth(month - 1)
+                        }
                     >
                         <i className="fas fa-chevron-circle-left"></i>
                     </button>
-                    {year}
+                    <div className="calendar">
+                        <div className="calendar__year">
+                            <button
+                                className="calendar__year--previous_button"
+                                onClick={() => setYear(year - 1)}
+                            >
+                                <i className="fas fa-chevron-circle-left"></i>
+                            </button>
+                            {year}
+                            <button
+                                className="calendar__year--next_button"
+                                onClick={() => setYear(year + 1)}
+                            >
+                                <i className="fas fa-chevron-circle-right"></i>
+                            </button>
+                        </div>
+                        <div className="calendar__currentMonth">
+                            {numberToMonth[month].month}
+                        </div>
+                        <ul className="calendar__weekDays">{week}</ul>
+                        <div className="calendar__main_month">{calendar}</div>
+                    </div>
+                    <div className="calendar__lefside">
+                        <WeatherWidget />
+                        <div className="calendar__void__todoList"> </div>
+                    </div>
                     <button
-                        className="calendar__year--next_button"
-                        onClick={() => setYear(year + 1)}
+                        className="main__container--button"
+                        onClick={() =>
+                            month == 11 ? setMonth(0) : setMonth(month + 1)
+                        }
                     >
                         <i className="fas fa-chevron-circle-right"></i>
                     </button>
                 </div>
-                <div className="calendar__currentMonth">
-                    {numberToMonth[month].month}
-                </div>
-                <ul className="calendar__weekDays">{week}</ul>
-                <div className="calendar_main_month">{calendar}</div>
             </div>
-            <div className="calendar__lefside">
-                <WeatherWidget />
-                <div className="calendar__void__todoList"> </div>
-            </div>
-            <button
-                className="main__container--button"
-                onClick={() =>
-                    month == 11 ? setMonth(0) : setMonth(month + 1)
-                }
-            >
-                <i className="fas fa-chevron-circle-right"></i>
-            </button>
-        </div>
+        </Fragment>
     );
 };
 
