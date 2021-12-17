@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
       member: [],
       currentMember: {},
+      holiday: [],
       currentHome: {
         id: 1,
         name: "jumbotronas",
@@ -40,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           })
           .catch((error) => {
-            console.log("soy el error de la 41", error);
+            // console.log("soy el error de la 41", error);
           });
       },
       login: (data) => {
@@ -64,13 +65,29 @@ const getState = ({ getStore, getActions, setStore }) => {
               "acces_token",
               JSON.stringify(responseAsJSON.token)
             );
-            console.log("login ready", token);
+            // console.log("login ready", token);
           })
           .catch((error) => {
             console.log(error);
             localStorage.removeItem("access_token");
           });
       },
+      getHoliday: () => {
+        fetch(
+          `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+        )
+          .then((response) => {
+            if (response.ok) return response.json();
+            throw new Error("fail loading Holiday");
+          })
+          .then((responseAsJSON) => {
+            setStore({ holiday: responseAsJSON.holidays });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+
       getWeather: () => {
         fetch(
           `${process.env.WEATHER_BASE_URL}q=${

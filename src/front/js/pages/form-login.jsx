@@ -24,14 +24,14 @@ const FormLogin = () => {
           <input
             type="email"
             placeholder="e-mail"
-            {...register("email", { required: true, maxLength: 20 })}
+            {...register("email", { required: true })}
           />
           {errors.email?.type === "required" && "Email is required"}
 
           <input
             type="password"
             placeholder="password"
-            {...register("password")}
+            {...register("password", { required: true })}
           />
           {errors.password?.type === "required" && "Password is required"}
 
