@@ -12,7 +12,7 @@ const Event = () => {
     const [allDay, setAllday] = useState(false);
 
     const onSubmit = (data) => {
-        console.log("aqui esta el even en front", data);
+        console.log("aqui esta el event en front", data);
         actions.newEvent(data);
     };
 
@@ -50,6 +50,7 @@ const Event = () => {
             >
                 <div className="event__inputs">
                     <h2>Create a event</h2>
+
                     <div className="appointment__input">
                         <i className="fas appointment__icons fa-calendar-check" />
                         <label htmlFor="appointment">Appointment:</label>

@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
-            appointment: [],
+            currentAppointments: [],
             currentMember: {
                 birth_date: "Sat, 05 May 2001 00:00:00 GMT",
                 email: "gloria@jumbotrona.com",
@@ -54,8 +54,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then((responseAsJson) => {
                         // console.log("aqui esta el response asjson", responseAsJson);
                         setStore({
-                            appointment: [
-                                ...getStore().appointment,
+                            currentAppointments: [
+                                ...getStore().currentAppointments,
                                 responseAsJson,
                             ],
                         });
@@ -86,8 +86,8 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .then((responseAsJson) => {
                         setStore({
-                            appointment: [
-                                ...getStore().appointment,
+                            currentAppointments: [
+                                ...getStore().currentAppointments,
                                 responseAsJson,
                             ],
                         });

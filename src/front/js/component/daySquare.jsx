@@ -39,7 +39,7 @@ const DaySquare = (props) => {
                 <span className="day_square--holidayName">
                     <div>{props.holidayName}</div>
                 </span>
-                <Link className="day_square--link" to={"/event"}>
+                <Link className="day_square--link" to={"/day"}>
                     <span className="day_square--dayNumber">{props.day}</span>
                 </Link>
             </div>
@@ -53,7 +53,7 @@ const DaySquare = (props) => {
                 <span className="day_square--holidayName">
                     <div>{props.holidayName}</div>
                 </span>
-                <Link className="day_square--link" to={"/event"}>
+                <Link className="day_square--link" to={"/day"}>
                     <span className="day_square--dayNumber">{props.day}</span>
                 </Link>
             </div>

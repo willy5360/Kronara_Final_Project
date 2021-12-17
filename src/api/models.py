@@ -72,6 +72,16 @@ class Member(db.Model):
     def get_all_by_home(cls, id):
         members= cls.query.filter_by(home_id = id)
         return members
+
+    def get_all_appointments_from_member(self):
+        appointments = self.user_has_an_appointment
+        return appointments
+    
+    
+    def add_appointment_to_member(self, appointment):
+        self.user_has_an_appointment.append(appointment)
+        db.session.commit()
+        return self.user_has_an_appointment
         
 
 

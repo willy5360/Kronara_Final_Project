@@ -128,23 +128,23 @@ def get_event_by_id(home_id,member_id,event_id):
 
 #         return jsonify({'error': 'appointment not found'}), 404
 
-@api.route('/appointment/<int:id>', methods=['PUT','PATCH'])
-# @jwt_required()
-def update_appointment(id):
-    # id_user = get_jwt_identity()
-    if id != id_user.get('home_id', None):
-        return jsonify({'error': 'no esta autorizado'}), 403
+# @api.route('/appointment/<int:id>', methods=['PUT','PATCH'])
+# # @jwt_required()
+# def update_appointment(id):
+#     # id_user = get_jwt_identity()
+#     if id != id_user.get('home_id', None):
+#         return jsonify({'error': 'no esta autorizado'}), 403
     
-    new_item=request.json.get('item', None)
+#     new_item=request.json.get('item', None)
 
-    if not new_item:
-        return jsonify({'error': 'missing items'}), 400
+#     if not new_item:
+#         return jsonify({'error': 'missing items'}), 400
 
-    appointment= Appointment.get_by_id(id)
-    if appointment:
-        appointment=appointment.update(new_item)
+#     appointment= Appointment.get_by_id(id)
+#     if appointment:
+#         appointment=appointment.update(new_item)
 
-    return jsonify({'error': 'appointment not found'}), 404
+#     return jsonify({'error': 'appointment not found'}), 404
 
 @api.route('/home/<int:home_id>/member/<int:member_id>/event/<int:event_id>', methods=['DELETE'])   #FUNCIONA
 # @jwt_required()
