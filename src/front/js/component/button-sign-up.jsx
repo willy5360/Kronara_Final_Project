@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 import "../../styles/button-sign-up.scss";
 
 const ButtonSignUp = () => {
-	const [signUp, setSingUp] = useState("");
+  const [signUp, setSingUp] = useState("");
 
-	return (
-		<div className="navbar_sign_up">
-			<Link to="/FormSignUp">
-				<button className="navbar_sign_up_button">Sign Up</button>
-			</Link>
-		</div>
-	);
+  return (
+    <Link to="/FormSignUp" className="navbar_sign_up">
+      <button className="navbar_sign_up_button">Sign Up</button>
+    </Link>
+  );
 };
 
 export default ButtonSignUp;
