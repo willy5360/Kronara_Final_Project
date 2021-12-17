@@ -1,10 +1,13 @@
 import React, { Fragment, useContext } from "react";
 import "../../styles/home.scss";
-import MonthSquare from "../component/monthSquare.jsx";
+import { Navbar } from "../component/navbar.js";
+
 export const Home = () => {
-	return (
-		<Fragment>
-			<MonthSquare />		
-		</Fragment>
-	);
+  return (
+    <div className="container-home">
+      <div className="container-home-opacity">
+        <Navbar />
+      </div>
+    </div>
+  );
 };

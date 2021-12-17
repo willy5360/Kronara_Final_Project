@@ -1,7 +1,33 @@
-/*
-    home.css: This website contains selectors only used in home.css
+@media only screen and (min-width: 800px){
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+}
+
+@media only screen and (max-width: 799px){
+    .container-home { 
+        background-image: url("https://www.pexels.com/photo/1595391/download/?search_query=work&tracking_id=k2nu7k9pve");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: inherit;
+        width: auto;
+        opacity: 0.75;
+        margin: inherit;
+    }
+    .container-home-opacity {
+        background-color: rgb(14, 53,81,0.7);
+        height: inherit;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .container-home {
+        background-image: url("https://www.pexels.com/photo/1456951/download/?search_query=family&tracking_id=k2nu7k9pve");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .container-home-opacity {
+        background-color: rgb(14, 53,81,0.7);
+        height: inherit;
+        width: auto;
+    }
+}

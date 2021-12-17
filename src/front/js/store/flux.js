@@ -1,3 +1,6 @@
+const PORT = 3001;
+const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
