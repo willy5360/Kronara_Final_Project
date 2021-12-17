@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React from "react";
 import "../../styles/home.scss";
 import { Navbar } from "../component/navbar.js";
 

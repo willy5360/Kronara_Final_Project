@@ -1,83 +1,185 @@
-import React from "react";
-import  { useContext } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import "../../styles/form_sign_up_new_user.scss";
-import { Context } from "../store/appContext"
+import { Context } from "../store/appContext";
 
 function FormSignUp() {
-	const { store , actions} = useContext(Context);
-	const {
-		register,
-		handleSubmit,
-		formState: { errors }
-	} = useForm();
+  const { store, actions } = useContext(Context);
+  const { existingHome, setExistingHome } = useState(false);
+  const [newHome, setNewHome] = useState();
+  const [inputHome, setInputHome] = useState(null);
+  const [registerForm, setRegisterForm] = useState();
 
-	const onSubmit = data => {
-		console.log(data)
-		actions.register(data);
-	};
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm();
 
-	// const setSuccessRegister = required => {
-	// 	if (required == true) {
-	// 		console.log("Register completed");
-	// 	}
-	// };
+  const onSubmit = (data) => {
+    console.log("estoy en onsubmit", data);
+    actions.register(data);
+  };
 
-	return (
-		<div className="container_main_form_sig_up">
-			<form className="form__sign__up__new__user" onSubmit={handleSubmit(onSubmit)}>
-				<header>
-					<h2>Registro</h2>
-					{errors.name &&
-						errors.name.type &&
-						errors.email &&
-						errors.email.type &&
-						errors.password &&
-						errors.password.type === "required" && <span>Invalid e-mail or missing information</span>}
-				</header>
+  useEffect(() => {
+    if (newHome === true) {
+      setInputHome(
+        <Fragment>
+          <input
+            placeholder="New Home"
+            type="text"
+            id="home"
+            {...register("home", { required: true })}
+          />
 
-				<div className="form__body__sign__up__new__user">
-					<label htmlFor="name">Name</label>
-					<input
-						type="text"
-						name="name"
-						id="name"
-						{...register("name", { required: true, maxLength: 30, pattern: /^[a-zA-Z0-9_ ]*$/ })}
-					/>
+          <label htmlFor="city">Select Your city</label>
+          <select {...register("city")} className="form__body__sign__up__city">
+            <option value="madrid" name="city">
+              Madrid
+            </option>
+            <option value="barcelona" name="city">
+              Barcelona
+            </option>
+            <option value="paris" name="city">
+              Paris
+            </option>
+          </select>
+        </Fragment>
+      );
+    } else if (newHome === false) {
+      setInputHome(
+        <Fragment>
+          <input
+            id="home"
+            placeholder="Existing home"
+            type="text"
+            {...register("home", { required: true })}
+          />
+        </Fragment>
+      );
+    }
+  }, [newHome]);
 
-					<label htmlFor="email">Email</label>
-					<input type="email" name="email" id="email" {...register("email", { required: true })} />
+  return (
+    <div className="container_main_form_sig_up">
+      <form
+        className="form__sign__up__new__user"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Fragment>
+          <header>
+            <h2>Register</h2>
+            {errors.name &&
+              errors.name.type &&
+              errors.email &&
+              errors.email.type &&
+              errors.password &&
+              errors.password.type === "required" && (
+                <span>Invalid e-mail or missing information</span>
+              )}
+          </header>
 
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						{...register("password", { required: true, minLength: 7 })}
-					/>
-					{errors.password && errors.password.type === "minLength" && <span>too short</span>}
+          <div className="form__body__sign__up__new__user">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              {...register("name", {
+                required: true,
+                maxLength: 30,
+                pattern: /^[a-zA-Z0-9_ ]*$/,
+              })}
+            />
 
-					<label htmlFor="condition" className="form__body__sign__up_conditional">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry
-					</label>
-					<input
-						type="radio"
-						id="condition"
-						className="form__body__sign__up_conditional_checkbox"
-						{...register("condition", { required: true })}
-					/>
-				</div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              {...register("email", {
+                required: true,
+                pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              })}
+            />
 
-				<div className="form__footer__sign__up__new__user">
-					<input value="Send" className="form_sign_up_new_user_button" type="submit" />
-					<span>
-						Already an account?
-						<a href="">Log in</a>
-					</span>
-				</div>
-			</form>
-		</div>
-	);
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              {...register("password", { required: true, minLength: 7 })}
+            />
+            {errors.password && errors.password.type === "minLength" && (
+              <span>too short</span>
+            )}
+
+            <label htmlFor="photo_user">Photo user</label>
+            <input
+              className="input_photo_user"
+              type="file"
+              name="photo_user"
+              id="photo_user"
+              {...register("photo_user", { required: true, minLength: 7 })}
+            />
+            <div className="form_sig_up_type_of_home">
+              <label>New home</label>
+              <input
+                type="radio"
+                id="new_home"
+                name="home_status"
+                value="new_home"
+                onClick={() => {
+                  setNewHome(true);
+                }}
+                {...register("home_status")}
+              />
+
+              <label>Existing home</label>
+              <input
+                type="radio"
+                value="existing_home"
+                id="existing_home"
+                name="home_status"
+                onClick={() => {
+                  setNewHome(false);
+                }}
+                {...register("home_status")}
+              />
+            </div>
+            {inputHome}
+            <div className="form_sig_up_conditional">
+              <input
+                type="checkbox"
+                id="condition"
+                className="form__body__sign__up_conditional_checkbox"
+                {...register("condition", { required: true })}
+              />
+              <label
+                htmlFor="condition"
+                className="form__body__sign__up_conditional"
+              >
+                Lorem Ipsum is simply dummy text of the printing
+              </label>
+            </div>
+          </div>
+        </Fragment>
+        <div className="form__footer__sign__up__new__user">
+          <input
+            value="Send"
+            className="form_sign_up_new_user_button"
+            type="submit"
+          />
+          <div className="already_account_container">
+            <p>Already an account?</p>
+            <a href="">Log in</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default FormSignUp;
