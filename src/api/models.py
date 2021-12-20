@@ -58,8 +58,8 @@ class Member(db.Model):
             "is_active": self.is_active,
             "birth_date": self.birth_date,
             "home_id": self.home_id,
-            "photo_user": self.photo_user
-            # "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
+            "photo_user": self.photo_user,
+            "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
     def create_member(self):

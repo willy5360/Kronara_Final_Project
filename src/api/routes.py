@@ -30,7 +30,7 @@ def get_member_by_id():
     
     return jsonify({'error':'Not member found'}), 404
 
-
+#solo registra
 @api.route('/member/', methods=['POST'])
 def create_member(): 
     print ("estas en el back", request.json)
