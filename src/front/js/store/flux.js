@@ -8,17 +8,24 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             baseUrlRegister: `${PROTOCOL}://${PORT}-${HOST}/api/member/`,
             baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
-            baseURLTask: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             list: [],
+            baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
+            member: [],
+            currentMember: {
+                birth_date: "Sat, 05 May 2001 00:00:00 GMT",
+                email: "gloria@jumbotrona.com",
+                home_id: 1,
+                id: 2,
+                is_active: true,
+                username: "Gloria",
+            },
+            holiday: [],
             currentHome: {
                 id: 1,
                 name: "jumbotronas",
                 city: "Madrid",
             },
 
-            member: [],
-            currentMember: {},
-            holiday: [],
             weather: {},
         },
         actions: {
@@ -45,7 +52,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             getTask: () => {
                 fetch(
-                    getStore().baseURLTask.concat(
+                    getStore().baseURL.concat(
                         "home/",
                         getStore().currentHome.id,
                         "/task"
@@ -69,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             deleteTask: (indexList) => {
                 fetch(
-                    getStore().baseURLTask.concat(
+                    getStore().baseURL.concat(
                         "home/",
                         getStore().currentHome.id,
                         "/task/",
@@ -92,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             submitTask: (item) => {
                 fetch(
-                    getStore().baseURLTask.concat(
+                    getStore().baseURL.concat(
                         "home/",
                         getStore().currentHome.id,
                         "/task"
@@ -166,16 +173,24 @@ const getState = ({ getStore, getActions, setStore }) => {
                         localStorage.removeItem("access_token");
                     });
             },
-            getHoliday: () => {
+            getMembers: () => {
                 fetch(
-                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/member"
+                    )
                 )
                     .then((response) => {
-                        if (response.ok) return response.json();
-                        throw new Error("fail loading Holiday");
+                        if (!response.ok) {
+                            throw new Error("Fail");
+                        }
+                        return response.json();
                     })
-                    .then((responseAsJSON) => {
-                        setStore({ holiday: responseAsJSON.holidays });
+                    .then((responseAsJson) => {
+                        setStore({
+                            member: [...getStore().member, ...responseAsJson],
+                        });
                     })
                     .catch((error) => {
                         console.log(error);
@@ -192,11 +207,26 @@ const getState = ({ getStore, getActions, setStore }) => {
                         throw new Error("fail loading weather");
                     })
                     .then((responseAsJSON) => {
-                        console.log(
-                            "aqui esta el response asjson",
-                            responseAsJSON.main
-                        );
                         setStore({ weather: { ...responseAsJSON.main } });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            setCurrentMember: (member) => {
+                console.log("aqui esta el member", member);
+                setStore({ currentMember: member });
+            },
+            getHoliday: () => {
+                fetch(
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading Holiday");
+                    })
+                    .then((responseAsJSON) => {
+                        setStore({ holiday: responseAsJSON.holidays });
                     })
                     .catch((error) => {
                         console.log(error);

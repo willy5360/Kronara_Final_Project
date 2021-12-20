@@ -20,7 +20,7 @@ data = {
     "Member":[
         {
             "id":1,
-            "username":"Ana Gonzales",
+            "username":"Ana",
             "password":"1234",
             "email":"ana@jumbotrona.com",
             "is_active":True,
@@ -30,7 +30,7 @@ data = {
         },
         {
             "id":2,
-            "username": "Gloria Silvia",
+            "username": "Gloria",
             "password": "1234",
             "email": "gloria@jumbotrona.com",
             "is_active":True,
@@ -40,7 +40,7 @@ data = {
         },
         {
             "id":3,
-            "username":"Williams Padilla",
+            "username":"Williams",
             "password":"1234",
             "email":"willy@jumbotrona.com",
             "is_active":True,

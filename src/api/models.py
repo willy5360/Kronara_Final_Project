@@ -59,10 +59,21 @@ class Member(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
+            "photo_user":self.photo_user,
             "home_id": self.home_id,
             "photo_user": self.photo_user,
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
+
+    @classmethod
+    def get_by_id(cls, member_id):
+        member=cls.query.get(member_id)
+        return member
+
+    @classmethod
+    def get_all_by_home(cls, id):
+        members= cls.query.filter_by(home_id = id)
+        return members
 
     def create_member(self):
         db.session.add(self)
@@ -126,8 +137,6 @@ class Member(db.Model):
         db.session.commit()
         return self.user_has_an_appointment
         
-
-
 class Task(db.Model):
     __tablename__: "task"
 
@@ -282,6 +291,9 @@ class Appointment (db.Model):
     # def get_event_by_id()
     
 
+    # def get_by_item(cls,item):
+    #     account = cls.query.filter_by(item = item).one_or_none()
+    #     return account
 
 # Esta tablita va solita 
 class Habits(db.Model):

@@ -4,7 +4,7 @@ import DaySquare from "./daySquare.jsx";
 import WeatherWidget from "./weatherWidget.jsx";
 import "../../styles/daySquare.scss";
 import List from "./list.jsx";
-// import MemberWidget from "./memberWidget.jsx";
+import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
     const { store, actions } = useContext(Context);
@@ -130,7 +130,7 @@ const MonthSquare = () => {
                     return (
                         <DaySquare
                             key={index.toString()}
-                            // day={dayNumber}
+                            day={dayNumber}
                             istoday={"day_square__today"}
                             isNumberOne={""}
                             holidayName={""}
@@ -158,7 +158,7 @@ const MonthSquare = () => {
     return (
         <Fragment>
             <div className="main__container">
-                {/* <MemberWidget /> */}
+                <MemberWidget />
                 <div className="main__container--calendarContainer">
                     <button
                         className="main__container--button"

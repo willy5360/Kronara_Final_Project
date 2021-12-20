@@ -29,8 +29,9 @@ const injectContext = (PassedComponent) => {
              * store, instead use actions, like this:
              **/
             state.actions.getTask();
-            state.actions.getHoliday(); // <---- calling this function from the flux.js actions
-            // state.actions.submitTask(); // <---- calling this function from the flux.js actions
+            state.actions.getWeather(); // <---- calling this function from the flux.js actions
+            state.actions.getMembers(); // <---- calling this function from the flux.js actions
+            state.actions.getHoliday();
         }, []);
 
         // The initial value for the context is not null anymore, but the current state of this component,
