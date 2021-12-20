@@ -13,7 +13,7 @@ const WeatherWidget = () => {
 
     return (
         <div className="weather__container">
-            <img src={store.weather.temp < 10 ? COLD : SUN} />
+            <img src={store.weather.temp < 16 ? COLD : SUN} />
             <ul>
                 <li>Temperature: {store.weather.temp} °C</li>
                 <li>Min: {store.weather.temp_min} °C</li>
