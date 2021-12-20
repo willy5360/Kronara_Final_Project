@@ -10,14 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             member: [],
-            currentMember: {
-                birth_date: "Sat, 05 May 2001 00:00:00 GMT",
-                email: "gloria@jumbotrona.com",
-                home_id: 1,
-                id: 2,
-                is_active: true,
-                username: "Gloria",
-            },
+            currentMember: {},
             holiday: [],
             currentHome: {
                 id: 1,
