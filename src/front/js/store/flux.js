@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             baseUrlRegister: `${PROTOCOL}://${PORT}-${HOST}/api/member/`,
             baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
-            URL: `${PROTOCOL}://${PORT}-${HOST}/api/task/`,
+            baseURLTask: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             list: [],
             currentHome: {
                 id: 1,
@@ -44,9 +44,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
             },
             getTask: () => {
-                fetch(getStore().URL, {
-                    method: "GET",
-                })
+                fetch(
+                    getStore().baseURLTask.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task"
+                    ),
+                    {
+                        method: "GET",
+                    }
+                )
                     .then((response) => {
                         if (!response.ok) {
                             throw new Error("Fail");
@@ -61,7 +68,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
             },
             deleteTask: (indexList) => {
-                fetch(getStore().URL.concat(indexList), { method: "DELETE" })
+                fetch(
+                    getStore().baseURLTask.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task/",
+                        indexList
+                    ),
+                    {
+                        method: "DELETE",
+                    }
+                )
                     .then((response) => {
                         if (!response.ok) {
                             throw new Error("Fail");
@@ -74,13 +91,20 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .catch((err) => console.log(err));
             },
             submitTask: (item) => {
-                fetch(getStore().URL, {
-                    method: "POST",
-                    body: JSON.stringify(item),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
+                fetch(
+                    getStore().baseURLTask.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task"
+                    ),
+                    {
+                        method: "POST",
+                        body: JSON.stringify(item),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
                     .then((res) => res.json())
                     .then((responseAsJason) => {
                         setStore({

@@ -80,40 +80,40 @@ data = {
         }
     ],
 
-    "ToDoList":[
+    "Task":[
         {
             "id":1,
-            "task":"poner la navidad",
+            "item":"poner la navidad",
             "done":False,
             "home_id":1
         },
         {
             "id":2,
-            "task":"limpiar el baño",
+            "item":"limpiar el baño",
             "done":False,
             "home_id":1
         },
         {
             "id":3,
-            "task":"recoger la haitaciones de los peques",
+            "item":"recoger la haitaciones de los peques",
             "done":False,
             "home_id":1
         },
         {
             "id":4,
-            "task":"limpiar la nevera",
+            "item":"limpiar la nevera",
             "done":False,
             "home_id":2
         },
         {
             "id":5,
-            "task":"ir al mercadona",
+            "item":"ir al mercadona",
             "done":False,
             "home_id":2
         },
         {
             "id":6,
-            "task":"terminar de lavar la ropa",
+            "item":"terminar de lavar la ropa",
             "done":False,
             "home_id":2
         }
@@ -169,7 +169,7 @@ data = {
             "appointment":"Ir al cine",
             "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
             "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"Cine de principe Pio",
+            "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato"
         },
         {
@@ -177,7 +177,7 @@ data = {
             "appointment":"limpiar el garage",
             "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
             "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"Mi casa",
+            "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito"
         },
         {
@@ -185,7 +185,7 @@ data = {
             "appointment":"ir a donar libros",
             "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
             "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"biblioteca de villaverde",
+            "location":"biblioteca de villaverde",
             "notes":"me sobran libros"
         },
     ],

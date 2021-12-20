@@ -1,26 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-Revision ID: 7b2bf7c8380c
+Revision ID: 7604aafa1055
 Revises: 
-Create Date: 2021-12-09 14:31:28.324107
-=======
-Revision ID: cbd97b0ec452
-Revises: 
-Create Date: 2021-12-05 13:55:31.348160
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
-=======
-<<<<<<< HEAD:migrations/versions/65d45bfc91ab_.py
-Revision ID: 65d45bfc91ab
-Revises: 
-Create Date: 2021-12-17 10:47:09.956527
-=======
-Revision ID: 99715c8614e7
-Revises: 
-Create Date: 2021-12-07 11:01:55.915637
->>>>>>> main:migrations/versions/99715c8614e7_.py
->>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
+Create Date: 2021-12-20 10:04:28.988576
 
 """
 from alembic import op
@@ -28,19 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-revision = '7b2bf7c8380c'
-=======
-revision = 'cbd97b0ec452'
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
-=======
-<<<<<<< HEAD:migrations/versions/65d45bfc91ab_.py
-revision = '65d45bfc91ab'
-=======
-revision = '99715c8614e7'
->>>>>>> main:migrations/versions/99715c8614e7_.py
->>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
+revision = '7604aafa1055'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,34 +21,23 @@ def upgrade():
     op.create_table('appointment',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('appointment', sa.String(), nullable=False),
-    sa.Column('time_start', sa.DateTime(), nullable=False),
-    sa.Column('time_ends', sa.DateTime(), nullable=False),
-    sa.Column('ubication', sa.String(), nullable=False),
-    sa.Column('notes', sa.String(), nullable=False),
+    sa.Column('time_start', sa.String(), nullable=True),
+    sa.Column('time_ends', sa.String(), nullable=True),
+    sa.Column('location', sa.String(), nullable=True),
+    sa.Column('notes', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('habits',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('habits', sa.String(), nullable=False),
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('habits')
-=======
     sa.PrimaryKeyConstraint('id')
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
     )
     op.create_table('home',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('city', sa.String(), nullable=True),
+    sa.Column('city', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
-    )
-    op.create_table('task',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('item', sa.String(), nullable=False),
-    sa.Column('done', sa.Boolean(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('humedity_and_temperature',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -95,21 +54,11 @@ def upgrade():
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-<<<<<<< HEAD:migrations/versions/cbd97b0ec452_.py
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-    sa.Column('city', sa.String(), nullable=False),
-=======
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
     sa.Column('photo_user', sa.String(), nullable=False),
     sa.Column('birth_date', sa.Date(), nullable=False),
-=======
-    sa.Column('photo_user', sa.String(), nullable=True),
-    sa.Column('birth_date', sa.Date(), nullable=True),
->>>>>>> 83da702267e2e973acd04c6ad3427526be29836b:migrations/versions/65d45bfc91ab_.py
     sa.Column('home_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['home_id'], ['home.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('photo_user'),
     sa.UniqueConstraint('username')
     )
     op.create_table('sokect',
@@ -123,20 +72,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-    op.create_table('Appointment_member',
-=======
-    op.create_table('to_do_list',
+    op.create_table('task',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('task', sa.String(), nullable=False),
+    sa.Column('item', sa.String(), nullable=False),
     sa.Column('done', sa.Boolean(), nullable=False),
     sa.Column('home_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['home_id'], ['home.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('task')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('appointment_member',
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
     sa.Column('member', sa.Integer(), nullable=False),
     sa.Column('appointment', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['appointment'], ['appointment.id'], ),
@@ -148,16 +92,11 @@ def upgrade():
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-<<<<<<< HEAD:migrations/versions/7b2bf7c8380c_.py
-    op.drop_table('Appointment_member')
-=======
     op.drop_table('appointment_member')
-    op.drop_table('to_do_list')
->>>>>>> main:migrations/versions/cbd97b0ec452_.py
+    op.drop_table('task')
     op.drop_table('sokect')
     op.drop_table('member')
     op.drop_table('humedity_and_temperature')
-    op.drop_table('task')
     op.drop_table('home')
     op.drop_table('habits')
     op.drop_table('appointment')
