@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import HolidayCircle from "./holidayCircle.jsx";
 
 const DaySquare = (props) => {
-    const clicked = () => {
-        window.alert("You've clicked me");
-    };
     if (props.holidayName) {
         return (
             <div className={props.istoday.concat(props.isNumberOne)}>

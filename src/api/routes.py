@@ -10,7 +10,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, Member, Home, ToDoList, HumedityAndTemperature, Sokect, Appointment, Habits
+from api.models import db, Member, Home, Task, HumedityAndTemperature, Sokect, Appointment, Habits
 from api.utils import generate_sitemap, APIException
 from sqlalchemy import exc
 
@@ -140,13 +140,14 @@ def create_event(home_id, member_id):
 
     new_event = Appointment(appointment = appointment, time_start = time_start, time_ends = time_ends, email = email, location = location, notes = notes )
     
-    # try:
-    event_created = new_event.create()
-    
-    # except exc.IntegrityError:
-    #     return jsonify({'error':'fail in data'}), 400
+    try:
 
-    return jsonify(event_created.to_dict()), 201
+        event_created = new_event.create()
+        return jsonify(event_created.to_dict()), 201
+    
+    except exc.IntegrityError:
+        return jsonify({'error':'fail in data'}), 400
+
 
 
 @api.route('/home/<int:home_id>/member',methods=['GET'])

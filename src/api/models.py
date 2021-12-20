@@ -115,8 +115,8 @@ class Member(db.Model):
     #     is_valid = check_password_hash(self._password, password)
     #     return is_valid
         
-class ToDoList(db.Model):
-    __tablename__: "to_do_list"
+class Task(db.Model):
+    __tablename__: "task"
 
     id = db.Column(db.Integer, primary_key=True)
     item = db.Column(db.String(), unique=False, nullable=False)
@@ -216,6 +216,7 @@ class Appointment (db.Model):
         return self
 
     def create(self):
+        print("aqui est self",self)
         db.session.add(self)
         db.session.commit()
         return self
