@@ -27,12 +27,12 @@ class Home(db.Model):
         db.session.commit()
         return self
 
-    @classmethod 
-    def get_home_by_name(cls): 
-        home = cls.query.get(name)
+    @classmethod
+    def get_by_id(cls, home_id):
+        home=cls.query.get(home_id)
         return home
 
-#Member se relaciona con la home y con la media
+#User se relaciona con la home y con la media
 class Member(db.Model):
     __tablename__: "member"
 
@@ -57,10 +57,21 @@ class Member(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
+            "photo_user":self.photo_user,
             "home_id": self.home_id,
             "photo_user": self.photo_user
             # "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
+
+    @classmethod
+    def get_by_id(cls, member_id):
+        member=cls.query.get(member_id)
+        return member
+
+    @classmethod
+    def get_all_by_home(cls, id):
+        members= cls.query.filter_by(home_id = id)
+        return members
 
     def create_member(self):
         db.session.add(self)
@@ -104,21 +115,21 @@ class Member(db.Model):
     #     is_valid = check_password_hash(self._password, password)
     #     return is_valid
         
-class ToDoList(db.Model):
-    __tablename__: "to_do_list"
+class Task(db.Model):
+    __tablename__: "task"
 
     id = db.Column(db.Integer, primary_key=True)
-    task = db.Column(db.String(), unique=True, nullable=False)
+    item = db.Column(db.String(), unique=False, nullable=False)
     done = db.Column(db.Boolean(), unique=False, nullable=False)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'ToDoList  {self.task} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
+        return f'Task  {self.item} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
 
     def to_dict(self):
         return {
             "id": self.id,
-            "task": self.task,
+            "item": self.item,
             "done": self.done,
             "home_id": self.id_home
         }
@@ -174,15 +185,16 @@ class Appointment (db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     appointment = db.Column(db.String(), nullable=False)
-    time_start = db.Column(db.DateTime, nullable=False)
-    time_ends = db.Column(db.DateTime, nullable=False)
-    ubication = db.Column(db.String(), nullable=False)
-    notes   = db.Column(db.String(), nullable=False)
+    time_start = db.Column(db.String(), nullable=True)
+    time_ends = db.Column(db.String(),  nullable=True)
+    email = db.Column(db.String(), nullable= True)
+    location = db.Column(db.String(), nullable=True)
+    notes   = db.Column(db.String(), nullable=True)
 
     an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
     def __repr__(self):
-        return f'Sokect  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, ubication: {self.ubication}, notes: {self.notes}'
+        return f'Appointment  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, email: {self.email} location: {self.location}, notes: {self.notes}'
 
     def to_dict(self):
         return {
@@ -190,10 +202,50 @@ class Appointment (db.Model):
             "appointment": self.appointment,
             "time_start": self.time_start,
             "time_ends": self.time_ends,
-            "ubication": self.ubication,
+            "email": self.email,
+            "location": self.location,
             "notes": self.notes,
-            "member": [member.to_dict() for member in self.an_appointment_for_a_user]
+            # "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
+
+    def create_event_friend(self,friends):
+        db.session.add(self)
+        for friend in friends:
+            self.an_appointment_for_a_user.append(friend)
+        db.session.commit()
+        return self
+
+    def create(self):
+        print("aqui est self",self)
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_by_id(cls,id_appointment):
+        appointment= cls.query.filter_by(id=id_appointment).one_or_none()
+        return appointment
+    
+
+    @classmethod
+    def get_all(cls):
+        appointments= cls.query.all()
+        return appointments
+
+    def update(self, item):
+        self.item=item
+        db.session.commit()
+        return self
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
+    # @classmethod
+    # def get_by_item(cls,item):
+    #     account = cls.query.filter_by(item = item).one_or_none()
+    #     return account
 
 # Esta tablita va solita 
 class Habits(db.Model):
