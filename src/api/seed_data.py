@@ -20,7 +20,7 @@ data = {
     "Member":[
         {
             "id":1,
-            "username":"Ana Gonzales",
+            "username":"Ana",
             "password":"1234",
             "email":"ana@jumbotrona.com",
             "is_active":True,
@@ -30,7 +30,7 @@ data = {
         },
         {
             "id":2,
-            "username": "Gloria Silvia",
+            "username": "Gloria",
             "password": "1234",
             "email": "gloria@jumbotrona.com",
             "is_active":True,
@@ -40,7 +40,7 @@ data = {
         },
         {
             "id":3,
-            "username":"Williams Padilla",
+            "username":"Williams",
             "password":"1234",
             "email":"willy@jumbotrona.com",
             "is_active":True,
@@ -80,40 +80,40 @@ data = {
         }
     ],
 
-    "ToDoList":[
+    "Task":[
         {
             "id":1,
-            "task":"poner la navidad",
+            "item":"poner la navidad",
             "done":False,
             "home_id":1
         },
         {
             "id":2,
-            "task":"limpiar el baño",
+            "item":"limpiar el baño",
             "done":False,
             "home_id":1
         },
         {
             "id":3,
-            "task":"recoger la haitaciones de los peques",
+            "item":"recoger la haitaciones de los peques",
             "done":False,
             "home_id":1
         },
         {
             "id":4,
-            "task":"limpiar la nevera",
+            "item":"limpiar la nevera",
             "done":False,
             "home_id":2
         },
         {
             "id":5,
-            "task":"ir al mercadona",
+            "item":"ir al mercadona",
             "done":False,
             "home_id":2
         },
         {
             "id":6,
-            "task":"terminar de lavar la ropa",
+            "item":"terminar de lavar la ropa",
             "done":False,
             "home_id":2
         }
@@ -167,25 +167,28 @@ data = {
         {
             "id":1,
             "appointment":"Ir al cine",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"Cine de principe Pio",
+            "time_start":"20:15",
+            "time_ends":"20:15",
+            "email":"willy@hotmail.com",
+            "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato"
         },
         {
             "id":2,
             "appointment":"limpiar el garage",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"Mi casa",
+            "time_start":"20:15",
+            "time_ends":"20:15",
+            "email":"ana@hotmail.com",
+            "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito"
         },
         {
             "id":3,
             "appointment":"ir a donar libros",
-            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
-            "ubication":"biblioteca de villaverde",
+            "time_start":"20:15",
+            "time_ends":"20:15",
+            "email":"gloria@hotmail.com",
+            "location":"biblioteca de villaverde",
             "notes":"me sobran libros"
         },
     ],
