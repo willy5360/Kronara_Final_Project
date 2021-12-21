@@ -50,16 +50,11 @@ def create_member():
     if not condition:
         return jsonify({'error': 'Yoy should accept de Terms'}), 403
 
-    if home_status == 'existing_home':
-        home = Home.get_home_by_name(home)
-        if home:
-            new_member = Member( 
-                username = name, 
-                password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8),
+        if home_status == 'existing_home':
                 email = email, 
                 is_active = True,
                 home_id = home.id, 
-            )
+            
         else:
             return jsonify({'error': "Home doesn't exist"}), 404
 
@@ -109,3 +104,13 @@ def login():
         return jsonify({'token': access_token}), 200
 
     return jsonify({"msg": "Wrong username or password"}), 401
+
+@api.route("/habits", methods=["GET"])
+def get_habits_by_id(): 
+    habits = Habits.get_all_habits()
+
+    if habits:
+        all_habits = [habit.to_dict() for habit in habits]
+        return jsonify(all_habits), 200
+    
+    return jsonify({'error':'Not member found'}), 404

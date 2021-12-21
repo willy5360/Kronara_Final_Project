@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         city: "Madrid",
       },
       weather: {},
+      listHabits: [],
     },
     actions: {
       register: (data) => {
@@ -101,6 +102,31 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((responseAsJSON) => {
             console.log("aqui esta el response asjson", responseAsJSON.main);
             setStore({ weather: { ...responseAsJSON.main } });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+
+      getHabits: () => {
+        fetch(
+          "https://3001-salmon-moth-yk5yf7fo.ws-eu23.gitpod.io/api/habits",
+          {
+            method: "GET",
+          }
+        )
+          .then((response) => {
+            console.log(response);
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error("Fail");
+          })
+          .then((responseAsJSON) => {
+            console.log("aca estan tus habitos", responseAsJSON);
+            setStore({
+              listHabits: [...responseAsJSON],
+            });
           })
           .catch((error) => {
             console.log(error);

@@ -1,0 +1,30 @@
+@media only screen and (min-width: 800px) {
+  .habitsWidget_box_container {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 799px) {
+  .habitsWidget_box_container {
+    width: 20rem;
+    height: 8.75rem;
+    background-color: #ffff;
+    border-radius: 5px;
+    opacity: 0.5;
+    & p {
+      font-size: 1rem;
+      color: #000000;
+      font-weight: lighter;
+      text-align: center;
+      padding-top: 40px;
+      width: 80%;
+      margin: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .habitsWidget_box_container {
+    display: none;
+  }
+}
