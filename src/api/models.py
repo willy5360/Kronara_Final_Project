@@ -59,8 +59,8 @@ class Member(db.Model):
             "birth_date": self.birth_date,
             "photo_user":self.photo_user,
             "home_id": self.home_id,
-            "photo_user": self.photo_user
-            # "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
+            "photo_user": self.photo_user,
+            "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
     @classmethod
@@ -262,3 +262,13 @@ class Habits(db.Model):
             "id": self.id,
             "habits": self.habits,
         }
+    
+    @classmethod 
+    def get_habits_by_id (cls, id): 
+        habit = cls.query.get(id)
+        return habit
+
+    @classmethod
+    def get_all_habits (cls): 
+        habits = cls.query.all()
+        return habits

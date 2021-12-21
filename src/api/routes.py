@@ -30,7 +30,7 @@ def get_member_by_id():
     
     return jsonify({'error':'Not member found'}), 404
 
-
+#solo registra
 @api.route('/member/', methods=['POST'])
 def create_member(): 
     print ("estas en el back", request.json)
@@ -50,16 +50,11 @@ def create_member():
     if not condition:
         return jsonify({'error': 'Yoy should accept de Terms'}), 403
 
-    if home_status == 'existing_home':
-        home = Home.get_home_by_name(home)
-        if home:
-            new_member = Member( 
-                username = name, 
-                password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8),
+        if home_status == 'existing_home':
                 email = email, 
                 is_active = True,
                 home_id = home.id, 
-            )
+            
         else:
             return jsonify({'error': "Home doesn't exist"}), 404
 
@@ -159,5 +154,16 @@ def get_all_members(home_id):
     
     members = Member.get_all_by_home(home_id)
     all_members = [member.to_dict() for member in members]
-
     return jsonify(all_members), 200
+
+
+
+@api.route("/habits", methods=["GET"])
+def get_habits_by_id(): 
+    habits = Habits.get_all_habits()
+
+    if habits:
+        all_habits = [habit.to_dict() for habit in habits]
+        return jsonify(all_habits), 200
+    
+    return jsonify({'error':'Not habits found'}), 404
