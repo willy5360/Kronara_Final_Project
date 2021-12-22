@@ -250,7 +250,8 @@ data = {
             "time_start":"20:15",
             "time_ends":"20:15",
             "location":"Cine de principe Pio",
-            "notes":"si no terminaos los deberes no va ni el tato"
+            "notes":"si no terminaos los deberes no va ni el tato",
+            "date":date(2000,1,5)
         },
         {
             "id":2,
@@ -258,7 +259,8 @@ data = {
             "time_start":"20:15",
             "time_ends":"20:15",
             "location":"Mi casa",
-            "notes":"tiene que quedar muuuuy limpito"
+            "notes":"tiene que quedar muuuuy limpito",
+            "date":date(1999,5,5)
         },
         {
             "id":3,
@@ -266,7 +268,8 @@ data = {
             "time_start":"20:15",
             "time_ends":"20:15",
             "location":"biblioteca de villaverde",
-            "notes":"me sobran libros"
+            "notes":"me sobran libros",
+            "date":date(2020,4,1)
         },
     ],
 

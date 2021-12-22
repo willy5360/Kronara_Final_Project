@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         actions: {
             getEvent: () => {
-                console.log(
+                fetch(
                     getStore().baseURL.concat(
                         "home/",
                         getStore().currentHome.id,
@@ -33,30 +33,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                         getStore().currentMember.id,
                         "/event"
                     )
-                );
-                fetch(
-                    getStore().baseURL.concat(
-                        "home/",
-                        getStore().currentHome.id,
-                        "/member/",
-                        getStore().currentMember.id
-                    ),
-                    {
-                        method: "GET",
-                    }
                 )
                     .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Fail");
-                        }
-                        return response.json();
+                        console.log("aqui esta el response de event", response);
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading events");
                     })
                     .then((responseAsJson) => {
-                        // console.log("aqui esta el response asjson", responseAsJson);
                         setStore({
                             currentAppointments: [
                                 ...getStore().currentAppointments,
-                                responseAsJson,
+                                ...responseAsJson,
                             ],
                         });
                     })
@@ -64,35 +51,24 @@ const getState = ({ getStore, getActions, setStore }) => {
                         console.log(error);
                     });
             },
-            newEvent: (event) => {
+            newEvent: async (event) => {
                 console.log(
                     "aqui esta el event en el flux",
                     JSON.stringify(event)
                 );
-                console.log(
-                    "aqui esta el url",
-                    getStore().baseURL.concat("home/1/member/2/event")
+                const response = await fetch(
+                    getStore().baseURL.concat("home/1/member/2/event"),
+                    {
+                        method: "POST",
+                        body: JSON.stringify(event),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
                 );
-                fetch(getStore().baseURL.concat("home/1/member/2/event"), {
-                    method: "POST",
-                    body: JSON.stringify(event),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then((res) => {
-                        console.log("aqui esta res", res);
-                        res.json();
-                    })
-                    .then((responseAsJson) => {
-                        setStore({
-                            currentAppointments: [
-                                ...getStore().currentAppointments,
-                                responseAsJson,
-                            ],
-                        });
-                    })
-                    .catch((err) => console.log(err));
+
+                const get = await getActions().getEvent();
+                return true;
             },
             getMembers: () => {
                 fetch(
@@ -109,10 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         return response.json();
                     })
                     .then((responseAsJson) => {
-                        console.log(
-                            "aqui esta el response asjson",
-                            responseAsJson
-                        );
+                        console.log("aqui esta el members", responseAsJson);
                         setStore({
                             member: [...getStore().member, ...responseAsJson],
                         });

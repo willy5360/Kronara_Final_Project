@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import DaySquare from "./daySquare.jsx";
 import WeatherWidget from "./weatherWidget.jsx";
 import "../../styles/daySquare.scss";
+import Day from "./day.jsx";
 // import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
@@ -97,6 +98,8 @@ const MonthSquare = () => {
                             istoday={"day_square"}
                             isNumberOne={` ${weekDays[firstDay]}`} //agrega una clase css si conincide con el dia inicial
                             holidayName={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 }
@@ -115,6 +118,8 @@ const MonthSquare = () => {
                                 istoday={"day_square__holiday"}
                                 isNumberOne={""}
                                 holidayName={store.holiday[DATE].name}
+                                month={month}
+                                year={year}
                             />
                         );
                     }
@@ -133,6 +138,8 @@ const MonthSquare = () => {
                             istoday={"day_square__today"}
                             isNumberOne={""}
                             holidayName={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 } else {
@@ -142,6 +149,8 @@ const MonthSquare = () => {
                             day={dayNumber}
                             istoday={"day_square"}
                             isNumberOne={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 }

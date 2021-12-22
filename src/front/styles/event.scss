@@ -16,6 +16,25 @@ h2 {
     color: white;
     font-weight: bold;
     margin: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    background: $main-background;
+    width: 74.625rem;
+    min-height: 52.125rem;
+    flex-direction: row;
+    align-self: center;
+    position: absolute;
+    z-index: 2000;
+    left: -8.85rem;
+    top: -11.9rem;
+}
+.main__container__appointment__visible {
+    font-family: lato;
+    color: white;
+    font-weight: bold;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,11 +42,14 @@ h2 {
     background: $main-background;
     width: 74.625rem;
     min-height: 52.125rem;
-    display: flex;
     flex-direction: row;
     align-self: center;
-    z-index: -1000;
+    position: absolute;
+    z-index: 2000;
+    left: -8.85rem;
+    top: -11.9rem;
 }
+
 .event__inputs {
     padding: 1.5rem;
 }
@@ -53,6 +75,11 @@ h2 {
 * {
     box-shadow: none;
 }
+
+.appointment__date {
+    display: none;
+}
+
 .appointment__friend {
     display: grid;
     grid-template-columns: 0.2fr 3fr;

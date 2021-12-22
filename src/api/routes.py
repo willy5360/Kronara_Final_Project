@@ -9,8 +9,7 @@ from datetime import timedelta
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
-# from flask_jwt_extended import create_access_token, get_jwt_identity,  JWTManager
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity,  JWTManager, jwt_required
 from sqlalchemy import exc
 
 
@@ -31,6 +30,7 @@ def create_event(home_id, member_id):
     time_ends = request.json.get('time_ends', None)
     location = request.json.get('location', None)
     notes = request.json.get('notes', None)
+    date = request.json.get('date', None)
 
 
     home= Home.get_by_id(home_id)
@@ -43,7 +43,7 @@ def create_event(home_id, member_id):
         if not appointment:
             return jsonify({'error': 'Missing parameters'}), 400
 
-    new_event = Appointment(appointment = appointment, time_start = time_start, time_ends = time_ends, location = location, notes = notes )
+    new_event = Appointment(appointment = appointment, time_start = time_start, time_ends = time_ends, location = location, notes = notes, date = date )
     
     # try:
     event_created = new_event.create()

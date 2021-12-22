@@ -4,16 +4,20 @@ import "../../styles/event.scss";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
+import "regenerator-runtime/runtime";
 
-const Event = () => {
+const Event = (props) => {
     const { register, handleSubmit } = useForm();
     const { store, actions } = useContext(Context);
     const [members, setMembers] = useState([]);
     const [allDay, setAllday] = useState(false);
 
-    const onSubmit = (data) => {
-        console.log("aqui esta el event en front", data);
-        actions.newEvent(data);
+    const onSubmit = async (data) => {
+        let response = await actions.newEvent(data);
+        if (response) {
+            props.isClicked();
+        }
     };
 
     useEffect(() => {
@@ -43,13 +47,30 @@ const Event = () => {
     }, [store.member]);
 
     return (
-        <div className="main__container__appointment">
+        <div className="main__container__appointment__visible">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="main__appointment__form"
             >
                 <div className="event__inputs">
+                    <h2>{props.eventDate}</h2>
                     <h2>Create a event</h2>
+
+                    <div className="appointment__date">
+                        <label htmlFor="date"></label>
+                        <input
+                            id="date"
+                            type="text"
+                            defaultValue={`${new Date(
+                                props.eventDate
+                            ).getFullYear()}-${new Date(
+                                props.eventDate
+                            ).getMonth() + 1}-${new Date(
+                                props.eventDate
+                            ).getDate()}`}
+                            {...register("date", { required: true })}
+                        />
+                    </div>
 
                     <div className="appointment__input">
                         <i className="fas appointment__icons fa-calendar-check" />
@@ -153,12 +174,13 @@ const Event = () => {
                 </div>
 
                 <div className="appointment__buttons">
-                    <Link className="appointment__buttons--link" to={"/"}>
-                        <button type="reset" className="form__cancel">
-                            {" "}
-                            CANCEL
-                        </button>
-                    </Link>
+                    <button
+                        onClick={() => props.isClicked()}
+                        type="reset"
+                        className="form__cancel"
+                    >
+                        CANCEL
+                    </button>
                     <button type="submit" className="form__submit">
                         SEND
                     </button>
@@ -166,6 +188,11 @@ const Event = () => {
             </form>
         </div>
     );
+};
+
+Event.propTypes = {
+    eventDate: PropTypes.string,
+    isClicked: PropTypes.func,
 };
 
 export default Event;
