@@ -1,5 +1,6 @@
 from datetime import date
 import datetime
+from werkzeug.security import generate_password_hash
 
 data = {
 
@@ -21,7 +22,7 @@ data = {
         {
             "id":1,
             "username":"Ana",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"ana@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -31,7 +32,7 @@ data = {
         {
             "id":2,
             "username": "Gloria",
-            "password": "1234",
+            "password": generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email": "gloria@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3366753/pexels-photo-3366753.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -41,7 +42,7 @@ data = {
         {
             "id":3,
             "username":"Williams",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"willy@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2765557/pexels-photo-2765557.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -51,7 +52,7 @@ data = {
         {
             "id":4,
             "username":"Jaime Sotomayor",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"soto@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/4061551/pexels-photo-4061551.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -61,7 +62,7 @@ data = {
         {
             "id":5,
             "username":"Carol Chan",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"carol@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -71,7 +72,7 @@ data = {
         {
             "id":6,
             "username":"Limones Chan",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"limones@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3807713/pexels-photo-3807713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -191,30 +192,87 @@ data = {
     ],
 
     "Habits":[
-        {
+         {
             "id":1,
-            "habits":"lavate los dientes",
+            "habits":" See beauty in the simple things",
         },
         {
             "id":2,
-            "habits":"duerme 8 horas todos los dias",
+            "habits":"Be kind to yourself",
         },
         {
             "id":3,
-            "habits":"Comer frutas y verduras todos los dias",
+            "habits":"Identify important-but-not-urgent tasks.",
         },
         {
             "id":4,
-            "habits":"corre al menos 30 minutos diariamente",
+            "habits":"Never go to bed angry. Never. Always kiss and hug before you fall asleep and express your appreciate for your one another.",
         },
         {
             "id":5,
-            "habits":"reduce el consumo de frituras",
+            "habits":"Understand the other person's point of view and find some common ground. ",
         },
         {
             "id":6,
-            "habits":"bebe 2 litros de agua diario",
-        },        
+            "habits":"An apple each day really will keep the doctor away. That fiber goes a long way in your system to help with blood-sugar levels, digestion and more. ",
+        },
+        {
+            "id":7,
+            "habits":" You need to drink a lot of water throughout the day. ",
+        },
+        {
+            "id":8,
+            "habits":"Work to rewire the habitual negative thinking in your mind and blow past limiting behaviors and thoughts ",
+        },   
+        {
+            "id":9,
+            "habits":" Find ways you can add value to the lives of others. Don't seek something in return. Just add value.",
+        },   
+        {
+            "id":10,
+            "habits":"Ask questions and look for synergies where you can help them solve a problem or fill a void in their lives. ",
+        },   
+        {
+            "id":11,
+            "habits":"Spend five minutes each day organizing your workspace. Even if it's just a drawer or a shelf at a time, you'll build momentum by enacting this habit.  ",
+        },   
+        {
+            "id":12,
+            "habits":"Take responsibility for your actions. If you make mistakes, own up to them.",
+        },   
+        {
+            "id":13,
+            "habits":"Never discount the importance of being friendly with others. Not fake. Not rude. Just friendly. ",
+        },   
+        {
+            "id":14,
+            "habits":" Declutter and organize your inbox if you're looking to make progress towards things. ",
+        },   
+        {
+            "id":15,
+            "habits":"Don't overdo it, but say yes to things from time to time that you would normally dismiss.",
+        },   
+        {
+            "id":16,
+            "habits":"Start journaling. This self-care practice can be therapeutic and can help clear your mind.",
+        },   
+        {
+            "id":17,
+            "habits":" Breathe deeply for at least two minutes. Focus on your breaths. ",
+        },             
+        {
+            "id":18,
+            "habits":"   Find something that makes you a little nervous, like talking to strangers, and strive to do it one time every day to build your confidence.",
+        },   
+         {
+            "id":19,
+            "habits":" Write out how a person you encountered that day could enrich your life journey.",
+        },  
+        {
+            "id":20,
+            "habits":"Be sure to speak up at least once in every meeting. You need to be noticed and heard.",
+        },  
+      
     ],
     
     "AppointmentUser":[

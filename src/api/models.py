@@ -309,5 +309,14 @@ class Habits(db.Model):
         return {
             "id": self.id,
             "habits": self.habits,
-            "data": self.data
         }
+    
+    @classmethod 
+    def get_habits_by_id (cls, id): 
+        habit = cls.query.get(id)
+        return habit
+
+    @classmethod
+    def get_all_habits (cls): 
+        habits = cls.query.all()
+        return habits
