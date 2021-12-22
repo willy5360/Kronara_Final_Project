@@ -1,6 +1,15 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import os
+from datetime import timedelta
+
+from flask_migrate import Migrate
+from flask_swagger import swagger
+from flask_cors import CORS
+
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 from api.models import db, Member, Home, Task, HumedityAndTemperature, Sokect, Appointment, Habits
