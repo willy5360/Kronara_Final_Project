@@ -1,24 +1,24 @@
-
-import os
-from datetime import timedelta
-
-from flask_migrate import Migrate
-from flask_swagger import swagger
-from flask_cors import CORS
-
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
-from werkzeug.security import check_password_hash, generate_password_hash
+"""
+This module takes care of starting the API Server, Loading the DB and Adding the endpoints
+"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 from api.models import db, Member, Home, Task, HumedityAndTemperature, Sokect, Appointment, Habits
 from api.utils import generate_sitemap, APIException
 from sqlalchemy import exc
 
-app = Flask(__name__)
-
-JWTManager(app)
-
 api = Blueprint('api', __name__)
+
+
+
+@api.errorhandler(APIException)
+def handle_invalid_usage(error):
+    return jsonify(error.to_dict()), error.status_code
+
+# generate sitemap with all your endpoints
+@api.route('/')
+def sitemap():
+    return generate_sitemap(app)
 
 @api.route('/member/', methods=['GET'])
 def get_member_by_id():
@@ -44,7 +44,6 @@ def create_member():
     new_name = ""
 
     if not (email and password and name and home_status and home and condition):
-        print("en este validamos el email, password , name...")
         return jsonify({'error': 'Missing parameters'}), 409
         
     if not condition:
@@ -155,6 +154,63 @@ def get_all_members(home_id):
     members = Member.get_all_by_home(home_id)
     all_members = [member.to_dict() for member in members]
     return jsonify(all_members), 200
+    
+
+@api.route('home/<int:home_id>/task', methods=['GET'])
+def get_task(home_id):
+    home = Home.get_by_id(home_id)
+    if not home:
+        return jsonify({'error': 'home not found'}), 404
+
+    tasks= Task.get_all_by_home(home_id)
+    all_tasks=[task.to_dict() for task in tasks]
+    return jsonify(all_tasks), 200
+
+@api.route('home/<int:home_id>/task/<int:task_id>', methods=['GET'])
+def get_task_by_id(home_id, task_id):
+    home = Home.get_by_id(home_id)
+    task = Task.get_by_id(task_id)
+
+    if not home and task:
+        return jsonify({'error': 'task not found'}), 404
+    
+    return jsonify(task.to_dict()), 200
+
+
+@api.route('home/<int:home_id>/task', methods=['POST'])
+def create_item(home_id):
+
+    home=Home.get_by_id(home_id)
+    new_item=request.json.get('item',None)
+    
+
+    if not home and new_item:
+        return jsonify({'error':'missing items'}), 400
+
+    task= Task(item=new_item, done=False, home_id=home_id)
+    print("aqui esta el new item", new_item)
+  
+    task_created=task.create()
+    return jsonify(task_created.to_dict()), 201
+    
+    
+
+
+@api.route('home/<int:home_id>/task/<int:task_id>', methods=['DELETE'])
+def delete_task(home_id, task_id):
+    home = Home.get_by_id(home_id)
+    task = Task.get_by_id(task_id)
+
+    if not home and task:
+        return jsonify({'error':'task not found'}), 404
+
+    task.delete()
+    all_task = Task.get_all_by_home(home_id)
+    all_task_dict = [task.to_dict() for task in all_task]
+    
+    return jsonify(all_task_dict), 200
+
+
 
 
 

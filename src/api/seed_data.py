@@ -1,5 +1,6 @@
 from datetime import date
 import datetime
+from werkzeug.security import generate_password_hash
 
 data = {
 
@@ -21,7 +22,7 @@ data = {
         {
             "id":1,
             "username":"Ana",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"ana@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -31,7 +32,7 @@ data = {
         {
             "id":2,
             "username": "Gloria",
-            "password": "1234",
+            "password": generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email": "gloria@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3366753/pexels-photo-3366753.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -41,7 +42,7 @@ data = {
         {
             "id":3,
             "username":"Williams",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"willy@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2765557/pexels-photo-2765557.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -51,7 +52,7 @@ data = {
         {
             "id":4,
             "username":"Jaime Sotomayor",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"soto@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/4061551/pexels-photo-4061551.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -61,7 +62,7 @@ data = {
         {
             "id":5,
             "username":"Carol Chan",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"carol@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
@@ -71,7 +72,7 @@ data = {
         {
             "id":6,
             "username":"Limones Chan",
-            "password":"1234",
+            "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
             "email":"limones@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3807713/pexels-photo-3807713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -167,27 +168,24 @@ data = {
         {
             "id":1,
             "appointment":"Ir al cine",
-            "time_start":"20:15",
-            "time_ends":"20:15",
-            "email":"willy@hotmail.com",
+            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
             "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato"
         },
         {
             "id":2,
             "appointment":"limpiar el garage",
-            "time_start":"20:15",
-            "time_ends":"20:15",
-            "email":"ana@hotmail.com",
+            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
             "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito"
         },
         {
             "id":3,
             "appointment":"ir a donar libros",
-            "time_start":"20:15",
-            "time_ends":"20:15",
-            "email":"gloria@hotmail.com",
+            "time_start":datetime.datetime(2020, 5, 6, 15, 25,25),
+            "time_ends":datetime.datetime(2020, 5, 6, 15, 25,25),
             "location":"biblioteca de villaverde",
             "notes":"me sobran libros"
         },

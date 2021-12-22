@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         store: {
             baseUrlRegister: `${PROTOCOL}://${PORT}-${HOST}/api/member/`,
             baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
+            list: [],
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             member: [],
             currentMember: {
@@ -24,10 +25,102 @@ const getState = ({ getStore, getActions, setStore }) => {
                 name: "jumbotronas",
                 city: "Madrid",
             },
+
             weather: {},
             listHabits: [],
         },
         actions: {
+            getWeather: () => {
+                fetch(
+                    `${process.env.WEATHER_BASE_URL}q=${
+                        getStore().currentHome.city
+                    }&units=metric&APPID=${process.env.WEATHER_API_KEY}`
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading weather");
+                    })
+                    .then((responseAsJSON) => {
+                        console.log(
+                            "aqui esta el response asjson",
+                            responseAsJSON.main
+                        );
+                        setStore({ weather: { ...responseAsJSON.main } });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            getTask: () => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task"
+                    ),
+                    {
+                        method: "GET",
+                    }
+                )
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Fail");
+                        }
+                        return response.json();
+                    })
+                    .then((responseAsJason) => {
+                        setStore({ list: [...responseAsJason] });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            deleteTask: (indexList) => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task/",
+                        indexList
+                    ),
+                    {
+                        method: "DELETE",
+                    }
+                )
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Fail");
+                        }
+                        return response.json();
+                    })
+                    .then((responseAsJason) => {
+                        return setStore({ list: responseAsJason });
+                    })
+                    .catch((err) => console.log(err));
+            },
+            submitTask: (item) => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/task"
+                    ),
+                    {
+                        method: "POST",
+                        body: JSON.stringify(item),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
+                    .then((res) => res.json())
+                    .then((responseAsJason) => {
+                        setStore({
+                            list: [...getStore().list, responseAsJason],
+                        });
+                    })
+                    .catch((err) => console.log(err));
+            },
             register: (data) => {
                 console.log("inicio flux", data);
 

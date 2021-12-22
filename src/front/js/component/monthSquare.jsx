@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import DaySquare from "./daySquare.jsx";
 import WeatherWidget from "./weatherWidget.jsx";
 import "../../styles/daySquare.scss";
-// import List from "./list.jsx";
+import List from "./list.jsx";
 import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
@@ -193,7 +193,7 @@ const MonthSquare = () => {
                     <div className="calendar__lefside">
                         <WeatherWidget />
                         <div className="calendar__void__todoList">
-                            {/* <List /> */}
+                            <List />
                         </div>
                     </div>
                     <button
