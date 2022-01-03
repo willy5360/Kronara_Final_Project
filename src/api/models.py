@@ -59,9 +59,63 @@ class Member(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
+            "photo_user":self.photo_user,
             "home_id": self.home_id,
+            "photo_user": self.photo_user,
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
+
+    @classmethod
+    def get_by_id(cls, member_id):
+        member=cls.query.get(member_id)
+        return member
+
+    @classmethod
+    def get_all_by_home(cls, id):
+        members= cls.query.filter_by(home_id = id)
+        return members
+
+    def create_member(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    def validate_password(self, password):
+        is_valid = check_password_hash(self._password, password)
+        return is_valid
+
+
+    @classmethod
+    def get_by_email(cls,email):
+        member = cls.query.filter_by(email=email).one_or_none()
+        return member
+
+    @classmethod 
+    def get_member_by_id(cls,id): 
+        member = cls.query.get(id)
+        return member
+
+    @classmethod 
+    def get_all_member(cls):
+        all_members = cls.query.all()
+        return all_members
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key == "_password" and not value:
+                continue
+            setattr(self, key, value)
+        db.session.commit()
+        return self
+
+    def validate_password(self,password):
+        is_valid = check_password_hash(self._password,password)
+        print(is_valid)
+        return is_valid
+
+    # def validate_password(self, password):
+    #     is_valid = check_password_hash(self._password, password)
+    #     return is_valid
 
     @classmethod
     def get_by_id(cls, member_id):
@@ -84,7 +138,6 @@ class Member(db.Model):
         return self.user_has_an_appointment
         
 
-
 class Task(db.Model):
     __tablename__: "task"
 
@@ -94,15 +147,36 @@ class Task(db.Model):
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     def __repr__(self):
-        return f'Task  {self.item} , id: {self.id}, done: {self.done}, id_home:  {self.home_id}'
+        return f'Task  {self.item} , id: {self.id}, done: {self.done}, home_id  {self.home_id}'
 
     def to_dict(self):
         return {
             "id": self.id,
             "item": self.item,
             "done": self.done,
-            "home_id": self.id_home
+            "home_id": self.home_id
         }
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+        return self
+
+    @classmethod
+    def get_all_by_home(cls, id):
+        tasks= cls.query.filter_by(home_id = id)
+        return tasks
+
+    @classmethod
+    def get_by_id(cls, id):
+        task = cls.query.get(id)
+        return task
+    
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return self
+
 
 class HumedityAndTemperature(db.Model):
     __tablename__: "humedity_and_temperature"
@@ -220,6 +294,9 @@ class Appointment (db.Model):
     # def get_event_by_id()
     
 
+    # def get_by_item(cls,item):
+    #     account = cls.query.filter_by(item = item).one_or_none()
+    #     return account
 
 # Esta tablita va solita 
 class Habits(db.Model):
@@ -235,5 +312,14 @@ class Habits(db.Model):
         return {
             "id": self.id,
             "habits": self.habits,
-            "data": self.data
         }
+    
+    @classmethod 
+    def get_habits_by_id (cls, id): 
+        habit = cls.query.get(id)
+        return habit
+
+    @classmethod
+    def get_all_habits (cls): 
+        habits = cls.query.all()
+        return habits

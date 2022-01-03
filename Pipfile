@@ -17,7 +17,9 @@ flask-cors = "*"
 gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
+init = "*"
 flask-jwt-extended = "*"
+
 
 [requires]
 python_version = "3.8"

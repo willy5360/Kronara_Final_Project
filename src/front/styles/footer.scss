@@ -1,0 +1,26 @@
+@import "index.scss";
+
+.main__footer{
+    background-color: rgba(5, 41, 74, 1);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    color: rgba(173, 183, 206, 1);
+    font-family: 'Ubuntu', sans-serif;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align:baseline;
+}
+p{
+    margin: 0;
+}
+
+.footer__copy{
+    align-self: center;
+}
+.fab{
+    margin-right: 1rem;
+}
+a{
+    color: rgba(173, 183, 206, 1);
+    text-decoration: none;
+}
