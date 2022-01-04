@@ -119,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             getHoliday: () => {
                 fetch(
-                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2021`
                 )
                     .then((response) => {
                         if (response.ok) return response.json();
