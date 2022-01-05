@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: c1349bacd334
+Revision ID: f027c47ea82e
 Revises: 
-Create Date: 2021-12-22 15:03:52.428368
+Create Date: 2022-01-03 12:56:27.883773
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c1349bacd334'
+revision = 'f027c47ea82e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,9 +23,9 @@ def upgrade():
     sa.Column('appointment', sa.String(), nullable=False),
     sa.Column('time_start', sa.String(), nullable=True),
     sa.Column('time_ends', sa.String(), nullable=True),
-    sa.Column('email', sa.String(), nullable=True),
     sa.Column('location', sa.String(), nullable=True),
     sa.Column('notes', sa.String(), nullable=True),
+    sa.Column('date', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('habits',
@@ -36,7 +36,7 @@ def upgrade():
     op.create_table('home',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('city', sa.String(), nullable=True),
+    sa.Column('city', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
@@ -55,12 +55,11 @@ def upgrade():
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.Column('photo_user', sa.String(), nullable=True),
-    sa.Column('birth_date', sa.Date(), nullable=True),
+    sa.Column('photo_user', sa.String(), nullable=False),
+    sa.Column('birth_date', sa.Date(), nullable=False),
     sa.Column('home_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['home_id'], ['home.id'], ),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('photo_user'),
     sa.UniqueConstraint('username')
     )
     op.create_table('sokect',

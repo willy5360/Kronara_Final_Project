@@ -137,6 +137,7 @@ class Member(db.Model):
         db.session.commit()
         return self.user_has_an_appointment
         
+
 class Task(db.Model):
     __tablename__: "task"
 
@@ -232,11 +233,12 @@ class Appointment (db.Model):
     time_ends = db.Column(db.String(),  nullable=True)
     location = db.Column(db.String(), nullable=True)
     notes   = db.Column(db.String(), nullable=True)
+    date = db.Column(db.String(), nullable=False)
                                                 
     an_appointment_for_a_user = db.relationship("Member", secondary=AppointmentUser, back_populates="user_has_an_appointment")
 
     def __repr__(self):
-        return f'Appointment  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, location: {self.location}, notes: {self.notes}'
+        return f'Appointment  {self.appointment} , id: {self.id} , time_start: {self.time_start}, time_ends: {self.time_ends}, location: {self.location}, notes: {self.notes}, date: {self.date}'
 
     def to_dict(self):
         return {
@@ -246,6 +248,7 @@ class Appointment (db.Model):
             "time_ends": self.time_ends,
             "location": self.location,
             "notes": self.notes,
+            "date": self.date
             # "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
 

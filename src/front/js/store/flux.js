@@ -28,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
             weather: {},
             listHabits: [],
+            currentAppointments: [],
         },
         actions: {
             getWeather: () => {
@@ -143,7 +144,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         });
                     })
                     .catch((error) => {
-                        // console.log("soy el error de la 41", error);
+                        console.log("soy el error de la 41", error);
                     });
             },
             login: (data) => {
@@ -217,10 +218,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             setCurrentMember: (member) => {
                 console.log("aqui esta el member", member);
                 setStore({ currentMember: member });
+                getActions().getEvent();
             },
             getHoliday: () => {
                 fetch(
-                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2021`
                 )
                     .then((response) => {
                         if (response.ok) return response.json();
@@ -234,21 +236,16 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
             },
             getHabits: () => {
-                fetch(
-                    "https://3001-salmon-moth-yk5yf7fo.ws-eu23.gitpod.io/api/habits",
-                    {
-                        method: "GET",
-                    }
-                )
+                fetch(getStore().baseURL.concat("habits"), {
+                    method: "GET",
+                })
                     .then((response) => {
-                        console.log(response);
                         if (response.ok) {
                             return response.json();
                         }
                         throw new Error("Fail");
                     })
                     .then((responseAsJSON) => {
-                        console.log("aca estan tus habitos", responseAsJSON);
                         setStore({
                             listHabits: [...responseAsJSON],
                         });
@@ -256,6 +253,80 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .catch((error) => {
                         console.log(error);
                     });
+            },
+            newEvent: async (event) => {
+                console.log(
+                    "aqui esta el event en el flux",
+                    JSON.stringify(event)
+                );
+                const response = await fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/member/",
+                        getStore().currentMember.id,
+                        "/event"
+                    ),
+                    {
+                        method: "POST",
+                        body: JSON.stringify(event),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+                const get = await getActions().getEvent();
+                return true;
+            },
+            getEvent: () => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/member/",
+                        getStore().currentMember.id,
+                        "/event"
+                    )
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading events");
+                    })
+                    .then((responseAsJson) => {
+                        setStore({
+                            currentAppointments: [...responseAsJson],
+                        });
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            deleteEvent: (indexEvent) => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentHome.id,
+                        "/member/",
+                        getStore().currentMember.id,
+                        "/event/",
+                        indexEvent
+                    ),
+                    {
+                        method: "DELETE",
+                    }
+                )
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Fail");
+                        }
+                        return response.json();
+                    })
+                    .then((responseAsJason) => {
+                        return setStore({
+                            currentAppointments: responseAsJason,
+                        });
+                    })
+                    .catch((err) => console.log(err));
             },
         },
     };
