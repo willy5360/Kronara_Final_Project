@@ -79,6 +79,56 @@ data = {
             "birth_date":date(1990,6,2),
             "home_id": 2
         }
+        # {
+        #     "id":18,
+        #     "username":"jimena",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":19,
+        #     "username":"eliana",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":20,
+        #     "username":"cielo",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":21,
+        #     "username":"victor",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # },
+        # {
+        #     "id":22,
+        #     "username":"perro",
+        #     "password":"1234",
+        #     "email":"ana@jumbotrona.com",
+        #     "is_active":True,
+        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        #     "birth_date":date(1999,5,5),
+        #     "home_id":1
+        # }
     ],
 
     "Task":[
@@ -170,55 +220,112 @@ data = {
             "appointment":"Ir al cine",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"willy@hotmail.com",
             "location":"Cine de principe Pio",
-            "notes":"si no terminaos los deberes no va ni el tato"
+            "notes":"si no terminaos los deberes no va ni el tato",
+            "date":date(2000,1,5)
         },
         {
             "id":2,
             "appointment":"limpiar el garage",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"ana@hotmail.com",
             "location":"Mi casa",
-            "notes":"tiene que quedar muuuuy limpito"
+            "notes":"tiene que quedar muuuuy limpito",
+            "date":date(1999,5,5)
         },
         {
             "id":3,
             "appointment":"ir a donar libros",
             "time_start":"20:15",
             "time_ends":"20:15",
-            "email":"gloria@hotmail.com",
             "location":"biblioteca de villaverde",
-            "notes":"me sobran libros"
+            "notes":"me sobran libros",
+            "date":date(2020,4,1)
         },
     ],
 
     "Habits":[
-        {
+         {
             "id":1,
-            "habits":"lavate los dientes",
+            "habits":" See beauty in the simple things",
         },
         {
             "id":2,
-            "habits":"duerme 8 horas todos los dias",
+            "habits":"Be kind to yourself",
         },
         {
             "id":3,
-            "habits":"Comer frutas y verduras todos los dias",
+            "habits":"Identify important-but-not-urgent tasks.",
         },
         {
             "id":4,
-            "habits":"corre al menos 30 minutos diariamente",
+            "habits":"Never go to bed angry. Never. Always kiss and hug before you fall asleep and express your appreciate for your one another.",
         },
         {
             "id":5,
-            "habits":"reduce el consumo de frituras",
+            "habits":"Understand the other person's point of view and find some common ground. ",
         },
         {
             "id":6,
-            "habits":"bebe 2 litros de agua diario",
-        },        
+            "habits":"An apple each day really will keep the doctor away. That fiber goes a long way in your system to help with blood-sugar levels, digestion and more. ",
+        },
+        {
+            "id":7,
+            "habits":" You need to drink a lot of water throughout the day. ",
+        },
+        {
+            "id":8,
+            "habits":"Work to rewire the habitual negative thinking in your mind and blow past limiting behaviors and thoughts ",
+        },   
+        {
+            "id":9,
+            "habits":" Find ways you can add value to the lives of others. Don't seek something in return. Just add value.",
+        },   
+        {
+            "id":10,
+            "habits":"Ask questions and look for synergies where you can help them solve a problem or fill a void in their lives. ",
+        },   
+        {
+            "id":11,
+            "habits":"Spend five minutes each day organizing your workspace. Even if it's just a drawer or a shelf at a time, you'll build momentum by enacting this habit.  ",
+        },   
+        {
+            "id":12,
+            "habits":"Take responsibility for your actions. If you make mistakes, own up to them.",
+        },   
+        {
+            "id":13,
+            "habits":"Never discount the importance of being friendly with others. Not fake. Not rude. Just friendly. ",
+        },   
+        {
+            "id":14,
+            "habits":" Declutter and organize your inbox if you're looking to make progress towards things. ",
+        },   
+        {
+            "id":15,
+            "habits":"Don't overdo it, but say yes to things from time to time that you would normally dismiss.",
+        },   
+        {
+            "id":16,
+            "habits":"Start journaling. This self-care practice can be therapeutic and can help clear your mind.",
+        },   
+        {
+            "id":17,
+            "habits":" Breathe deeply for at least two minutes. Focus on your breaths. ",
+        },             
+        {
+            "id":18,
+            "habits":"   Find something that makes you a little nervous, like talking to strangers, and strive to do it one time every day to build your confidence.",
+        },   
+         {
+            "id":19,
+            "habits":" Write out how a person you encountered that day could enrich your life journey.",
+        },  
+        {
+            "id":20,
+            "habits":"Be sure to speak up at least once in every meeting. You need to be noticed and heard.",
+        },  
+      
     ],
     
     "AppointmentUser":[
