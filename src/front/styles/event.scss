@@ -411,7 +411,7 @@ $blue: #5183f5;
 }
 
 .appointment__friend__checkbox {
-    --form-control-color: rgba(100, 223, 212, 1);
+    // --form-control-color: rgba(100, 223, 212, 1);
     font-family: system-ui, sans-serif;
     font-size: 1rem;
     font-weight: 700;
@@ -463,8 +463,9 @@ $blue: #5183f5;
     transition: 120ms transform ease-in-out;
     box-shadow: inset 1em 1em var(--form-control-color);
     background-color: CanvasText;
+    background: none;
 }
 
 .appointment__friend__checkbox input:checked::before {
-    transform: scale(1);
+    transition: 0.5s;
 }

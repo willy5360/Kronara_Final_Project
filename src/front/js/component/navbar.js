@@ -5,21 +5,20 @@ import ButtonLogin from "../component/button-login.jsx";
 import "../../styles/navbar.scss";
 
 export const Navbar = () => {
-  return (
-    <nav className="NavBar">
-      <div className="NavBar_name_kronara_movil">
-        <h2>Welcome to Kronara!</h2>
-      </div>
-      <div className="NavBar_name_kronara">
-        <h2>Kronara</h2>
-      </div>
-      <Link to="/ButtonLogin" className="navbar_button_login">
-        <ButtonLogin />
-      </Link>
-      <Link to="/ButtonSignUp">
-        <ButtonSignUp />
-      </Link>
-    </nav>
-  );
+    return (
+        <nav className="NavBar">
+            <div className="NavBar_name_kronara_movil">
+                <h2>Welcome to Kronara!</h2>
+            </div>
+            <div className="NavBar_name_kronara">
+                <h2>Kronara</h2>
+            </div>
+            <Link to="/ButtonLogin" className="navbar_button_login">
+                <ButtonLogin />
+            </Link>
+            <Link to="/ButtonSignUp">
+                <ButtonSignUp />
+            </Link>
+        </nav>
+    );
 };
-

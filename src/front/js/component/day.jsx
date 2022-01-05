@@ -5,9 +5,10 @@ import "../../styles/day.scss";
 import { Context } from "../store/appContext";
 import Event from "./event.jsx";
 import PropTypes from "prop-types";
+import AppointmentCard from "./appointmentCard.jsx";
 
 const Day = (props) => {
-    const { actions, store } = useContext(Context);
+    const { store, actions } = useContext(Context);
     const [memberEvent, setMemberEvent] = useState([]);
     const [show, setShow] = useState(false);
 
@@ -21,18 +22,16 @@ const Day = (props) => {
                     new Date(event.date).toDateString()
                 ) {
                     return (
-                        <div key={index.toString()}>
-                            <div className="day_appointment__title">
-                                Appointment: {event.appointment}
-                            </div>
-                            <div>Time start:{event.time_start}</div>
-                            <div>Time ends:{event.time_ends}</div>
-                            <div>Location: {event.location}</div>
-                            <div>Notes: {event.notes}</div>
-                        </div>
+                        <AppointmentCard
+                            key={index.toString()}
+                            appointment={event.appointment.toUpperCase()}
+                            time_start={event.time_start}
+                            time_ends={event.time_ends}
+                            location={event.location}
+                            notes={event.notes}
+                            id={event.id}
+                        />
                     );
-                } else {
-                    return null;
                 }
             })
         );
@@ -45,9 +44,7 @@ const Day = (props) => {
                     <label htmlFor="">Today</label>
                     <div>{props.date.toDateString()}</div>
                 </div>
-                <div className="day__appointment__all">
-                    <div className="day__appointment__event">{memberEvent}</div>
-                </div>
+                <div className="day__appointment__event">{memberEvent}</div>
                 {show ? (
                     <Event
                         isClicked={() => setShow(false)}

@@ -135,19 +135,6 @@ $base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
     //     display: flex;
     // }
 
-    &__today {
-        display: flex;
-        flex-direction: row;
-        width: 4.5rem;
-        margin: 0.2rem;
-        height: 4.5rem;
-        z-index: 0;
-        border-radius: 0.4rem;
-        background: linear-gradient(145deg, #ff7239 80%, #e66030);
-        box-shadow: $base_shadow;
-        position: relative;
-    }
-
     &__holiday {
         display: flex;
         flex-direction: row;
@@ -217,11 +204,32 @@ $base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
         display: none;
     }
 
-    &__today:active,
     &__holiday:active {
         background-color: rgba(14, 14, 14, 0.1);
         border-radius: 0.4rem;
     }
+}
+
+.today {
+    background: linear-gradient(145deg, #ff7239 80%, #e66030);
+
+    &:active {
+        background-color: rgba(14, 14, 14, 0.1);
+        border-radius: 0.4rem;
+    }
+}
+
+.AppointmentCircle {
+    width: 1rem;
+    height: 1rem;
+    background-color: #238f41;
+
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.35);
+    z-index: 900;
+    position: absolute;
+    margin: 1.5rem 0 0 0.3rem;
+    top: 1.3rem;
 }
 
 .Monday {

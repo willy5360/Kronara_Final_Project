@@ -1,29 +1,16 @@
 @import "index.scss";
-
-.main__container__day {
-    font-family: lato;
-    color: white;
-    font-weight: bold;
-    margin: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    flex-direction: row;
-    align-self: center;
-    z-index: 1000;
-    position: absolute;
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
 
 .main__container__day__visible {
-    font-family: lato;
+    font-family: "Lato", sans-serif;
     color: white;
-    font-weight: bold;
+
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+
     flex-direction: column;
     align-self: center;
     z-index: 1000;
@@ -52,7 +39,7 @@
     width: 4rem;
     height: 4rem;
     border-radius: 3rem;
-    background-color: rgba(100, 223, 212, 1);
+    background-color: #e66030;
 
     display: flex;
     justify-content: center;
@@ -65,8 +52,15 @@
 .day__appointment {
     margin-top: 2rem;
 }
+.day__appointment__content {
+    color: rgb(19, 18, 18);
+    font-family: "Lato", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
 .day__back__button {
-    color: black;
+    color: rgb(56, 55, 55);
     width: 4rem;
     height: 4rem;
     border-radius: 3rem;
@@ -79,10 +73,34 @@
     padding: 0.5rem;
 }
 .day__appointment__event {
-    background-color: rgba(196, 196, 196, 0.24);
-    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.day__appointment__all {
-    // display: flex;
-    // flex-direction: row;
+
+.day__appointment__main {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    background-color: hsl(242deg 73% 85% / 66%);
+    border-radius: 0.625rem;
+    box-shadow: rgb(0 0 0 / 7%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 2px,
+        rgb(0 0 0 / 7%) 0px 4px 4px, rgb(0 0 0 / 7%) 0px 8px 8px,
+        rgb(0 0 0 / 7%) 0px 16px 16px;
+}
+.day__appointment__button {
+    background: transparent;
+    border: none;
+}
+.day_appointment__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: cadetblue;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    height: 2rem;
+    border-radius: 0.625rem 0.625rem 0 0;
 }

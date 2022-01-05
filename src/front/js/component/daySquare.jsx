@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
-import "../../styles/modal.scss";
+
 import HolidayCircle from "./holidayCircle.jsx";
 import Day from "./day.jsx";
+import AppointmentCircle from "./appointmentCircle.jsx";
+
+import "../../styles/modal.scss";
 
 const DaySquare = (props) => {
     const [show, setShow] = useState(false);
@@ -19,6 +22,8 @@ const DaySquare = (props) => {
                 <span className="day_square--holidayName">
                     <div>{props.holidayName}</div>
                 </span>
+
+                {props.appointmentDate ? <AppointmentCircle /> : ""}
                 <span className="day_square--dayNumber">{props.day}</span>
             </div>
             {show ? (
@@ -38,6 +43,7 @@ DaySquare.propTypes = {
     istoday: PropTypes.string,
     isNumberOne: PropTypes.string,
     holidayName: PropTypes.string,
+    appointmentDate: PropTypes.string,
 };
 
 export default DaySquare;
