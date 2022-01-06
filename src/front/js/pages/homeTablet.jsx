@@ -9,6 +9,7 @@ import WidgetCalendar from "../component/widget-calendar.jsx";
 import WidgetDomotic from "../component/widget-domotic.jsx";
 import { Context } from "../store/appContext.js";
 import "../../styles/homeTabletView.scss";
+import List from "../component/list.jsx";
 
 export const HomeTabletView = () => {
     const { store, action } = useContext(Context);
@@ -40,7 +41,9 @@ export const HomeTabletView = () => {
                 <div className="six">
                     <HabitsWidget />
                 </div>
-                <div className="seven">ToDoList</div>
+                <div className="seven">
+                    <List />
+                </div>
                 <div className="eight">
                     <WidgetDomotic />
                 </div>

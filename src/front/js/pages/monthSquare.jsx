@@ -3,9 +3,10 @@ import { Context } from "../store/appContext";
 import DaySquare from "../component/daySquare.jsx";
 import WeatherWidget from "../component/weatherWidget.jsx";
 import "../../styles/daySquare.scss";
-
-// import MemberWidget from "../component/memberWidget.jsx";
 import NavbarTabletView from "../component/navbarTabletview.jsx";
+import Day from "../component/day.jsx";
+import List from "../component/list.jsx";
+// import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
     const { store, actions } = useContext(Context);
@@ -99,6 +100,8 @@ const MonthSquare = () => {
                             istoday={"day_square"}
                             isNumberOne={` ${weekDays[firstDay]}`} //agrega una clase css si conincide con el dia inicial
                             holidayName={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 }
@@ -114,9 +117,46 @@ const MonthSquare = () => {
                             <DaySquare
                                 key={index.toString()}
                                 day={dayNumber}
-                                istoday={"day_square__holiday"}
+                                istoday={"day_square"}
                                 isNumberOne={""}
                                 holidayName={store.holiday[DATE].name}
+                                appointmentDate={""}
+                                month={month}
+                                year={year}
+                            />
+                        );
+                    }
+                }
+
+                //condicional que pinta si hay algun appointment en el dia
+
+                for (let DATE in store.currentAppointments) {
+                    if (
+                        dayNumber ==
+                            new Date(
+                                store.currentAppointments[DATE].date
+                            ).getDate() &&
+                        month ==
+                            new Date(
+                                store.currentAppointments[DATE].date
+                            ).getMonth() &&
+                        year ==
+                            new Date(
+                                store.currentAppointments[DATE].date
+                            ).getFullYear()
+                    ) {
+                        return (
+                            <DaySquare
+                                key={index.toString()}
+                                day={dayNumber}
+                                istoday={"day_square"}
+                                isNumberOne={""}
+                                holidayName={""}
+                                appointmentDate={
+                                    store.currentAppointments[DATE].appointment
+                                }
+                                month={month}
+                                year={year}
                             />
                         );
                     }
@@ -132,9 +172,12 @@ const MonthSquare = () => {
                         <DaySquare
                             key={index.toString()}
                             day={dayNumber}
-                            istoday={"day_square__today"}
+                            istoday={"day_square today"}
                             isNumberOne={""}
                             holidayName={""}
+                            appointmentDate={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 } else {
@@ -143,7 +186,10 @@ const MonthSquare = () => {
                             key={index.toString()}
                             day={dayNumber}
                             istoday={"day_square"}
+                            appointmentDate={""}
                             isNumberOne={""}
+                            month={month}
+                            year={year}
                         />
                     );
                 }
@@ -154,7 +200,14 @@ const MonthSquare = () => {
                 return <li key={index.toString()}>{day}</li>;
             })
         );
-    }, [month, year, store.holiday]);
+    }, [
+        month,
+        year,
+        store.holiday,
+        store.currentAppointments,
+        store.currentMember,
+        store.member,
+    ]);
 
     return (
         <Fragment>
@@ -195,7 +248,7 @@ const MonthSquare = () => {
                     <div className="calendar__lefside">
                         <WeatherWidget />
                         <div className="calendar__void__todoList">
-                            <h3>ToDoList</h3>
+                            <List />
                         </div>
                     </div>
                     <button

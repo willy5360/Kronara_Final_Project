@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ButtonSignUp from "../component/button-sign-up.jsx";
 import ButtonLogin from "../component/button-login.jsx";
 import "../../styles/navbar.scss";

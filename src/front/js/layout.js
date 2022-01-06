@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/home";
+
 import injectContext from "./store/appContext";
+
 import FormSignUp from "./pages/formulario_sign_up.jsx";
 import FormLogin from "./pages/form-login.jsx";
 import { HomeTabletView } from "./pages/homeTablet.jsx";
