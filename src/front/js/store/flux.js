@@ -31,27 +31,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentAppointments: [],
         },
         actions: {
-            getWeather: () => {
-                fetch(
-                    `${process.env.WEATHER_BASE_URL}q=${
-                        getStore().currentHome.city
-                    }&units=metric&APPID=${process.env.WEATHER_API_KEY}`
-                )
-                    .then((response) => {
-                        if (response.ok) return response.json();
-                        throw new Error("fail loading weather");
-                    })
-                    .then((responseAsJSON) => {
-                        console.log(
-                            "aqui esta el response asjson",
-                            responseAsJSON.main
-                        );
-                        setStore({ weather: { ...responseAsJSON.main } });
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            },
             getTask: () => {
                 fetch(
                     getStore().baseURL.concat(

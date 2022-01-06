@@ -43,8 +43,8 @@ class Member(db.Model):
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    photo_user = db.Column(db.String(), unique=False, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=False)
+    photo_user = db.Column(db.String(), unique=False, nullable=True)
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     user_has_an_appointment = db.relationship("Appointment", secondary=AppointmentUser, back_populates="an_appointment_for_a_user")

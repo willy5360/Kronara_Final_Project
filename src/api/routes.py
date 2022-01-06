@@ -164,14 +164,15 @@ def create_member():
     print ("estas en el back", request.json)
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-    name = request.json.get('name', None)
+    username = request.json.get('username', None)
     home_status = request.json.get('home_status', None)
     home = request.json.get("home", None)
     condition = request.json.get('condition', None)
     new_city = ""
     new_name = ""
 
-    if not (email and password and name and home_status and home and condition):
+    if not (email and password and username and home_status and home and condition):
+        
         return jsonify({'error': 'Missing parameters'}), 409
         
     if not condition:
@@ -187,7 +188,7 @@ def create_member():
 
     elif home_status == 'new_home':
         new_city = request.json.get("city", None)
-        new_name = request.json.get("name", None)
+        new_name = home
 
     if not new_city and new_name:
         print("este es el error de validacion de city y name")
@@ -199,7 +200,7 @@ def create_member():
 
     if new_home: 
         new_member = Member (
-            username = name,
+            username = username,
             password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8), 
             email = email, 
             is_active = True, 
