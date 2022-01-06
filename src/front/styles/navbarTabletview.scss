@@ -1,0 +1,35 @@
+@import "index.scss";
+
+// @media only screen and (min-width: 800px) {
+// }
+
+// @media only screen and (max-width: 799px) {
+.navbar_tablet_view_container {
+    display: flex;
+    width: 100%;
+
+    background-image: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+.navbar_tablet_view_settings i {
+    font-size: 1.5rem;
+    color: #64dfd4;
+}
+.navbar_tablet_view_kronara {
+    & h2 {
+        font-size: 1.5rem;
+        color: #ffffff78;
+        font-weight: lighter;
+        margin-left: 12px;
+    }
+}
+.navbar_tablet_view_users {
+    margin: 0;
+    padding: 0;
+}
+// }
+
+// @media only screen and (max-width: 599px) {
+// }

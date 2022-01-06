@@ -1,0 +1,50 @@
+@import "index.scss";
+
+.container_buttons_domotic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container_domotic {
+    display: flex;
+}
+
+.button_light {
+    width: 8.68rem;
+    height: $button-height;
+    background: rgb(66, 135, 184);
+    background: linear-gradient(
+        342deg,
+        rgba(66, 135, 184, 0.8645833333333334) 0%,
+        rgba(23, 87, 133, 1) 39%
+    );
+    box-shadow: $widget-box-shadow;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 2rem;
+    margin: 10px;
+    align-items: center;
+
+    & .button_light_text {
+        font-size: 0.75rem;
+    }
+
+    & i {
+        color: #c4c4c4;
+    }
+
+    & h5 {
+        margin: 0;
+        color: #adb7ce;
+        font-size: inherit;
+        color: #adb7cede;
+    }
+
+    & h6 {
+        font-size: 10px;
+        color: #adb7cead;
+    }
+}

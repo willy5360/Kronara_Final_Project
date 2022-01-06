@@ -10,18 +10,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             member: [],
-            currentMember: {
-                birth_date: "Sat, 05 May 2001 00:00:00 GMT",
-                email: "gloria@jumbotrona.com",
-                home_id: 1,
-                id: 2,
-                is_active: true,
-                username: "Gloria",
-            },
+            currentMember: {},
             holiday: [],
             currentHome: {
                 id: 1,
-                name: "jumbotronas",
+                name: "Jumbotronas",
                 city: "Madrid",
             },
             weather: {},
@@ -127,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             getHoliday: () => {
                 fetch(
-                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2020`
+                    `${process.env.HOLIDAY_BASE_URL}${process.env.HOLIDAY_API_KEY}&country=ES&year=2021`
                 )
                     .then((response) => {
                         if (response.ok) return response.json();
@@ -141,12 +134,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
             },
             getHabits: () => {
-                fetch(
-                    "https://3001-salmon-moth-yk5yf7fo.ws-eu23.gitpod.io/api/habits",
-                    {
-                        method: "GET",
-                    }
-                )
+                fetch(getStore().baseURL.concat("habits"), {
+                    method: "GET",
+                })
                     .then((response) => {
                         console.log(response);
                         if (response.ok) {

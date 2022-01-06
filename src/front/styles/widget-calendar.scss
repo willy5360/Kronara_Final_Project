@@ -1,0 +1,27 @@
+@import "index.scss";
+
+.container-widget-calendar {
+    // background-repeat: no-repeat;
+    width: 100%;
+    height: 90%;
+    // margin: 10px;
+    display: flex;
+    background-position: center;
+    border-radius: 8px;
+    background-color: $widget-background;
+    align-items: center;
+    justify-content: center;
+    & h2 {
+        border-radius: 8px;
+        // background-color: #2e2f3080;
+        color: #64dfd4;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    & img {
+        border-radius: 5px;
+    }
+}

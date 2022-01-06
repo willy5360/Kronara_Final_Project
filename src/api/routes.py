@@ -36,14 +36,14 @@ def create_member():
     print ("estas en el back", request.json)
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-    name = request.json.get('name', None)
+    username = request.json.get('username', None)
     home_status = request.json.get('home_status', None)
     home = request.json.get("home", None)
     condition = request.json.get('condition', None)
     new_city = ""
     new_name = ""
 
-    if not (email and password and name and home_status and home and condition):
+    if not (email and password and username and home_status and home and condition):
         print("en este validamos el email, password , name...")
         return jsonify({'error': 'Missing parameters'}), 409
         
@@ -66,22 +66,23 @@ def create_member():
         print("este es el error de validacion de city y name")
         return jsonify({'error': 'Missing parameters'}), 409
 
-    new_home = Home(city = new_city, name = new_name)
+    new_home = Home(city = new_city, name = home)
 
     new_home_created = new_home.create_home()
 
     if new_home: 
         new_member = Member (
-            username = name,
+            username = username,
             password =  generate_password_hash(password, method='pbkdf2:sha256', salt_length=8), 
             email = email, 
             is_active = True, 
-            home_id = new_home_created.id, 
+            home_id = new_home_created.id,
         )
     else: 
         return jsonify({'error': "Home already exist"}), 404
     
     try:
+        print("aqui esta ,new_member" , new_member)
         new_member.create_member()
         access_token = create_access_token(identity=new_member.to_dict(), expires_delta = timedelta(minutes=100))
         return jsonify({"token": access_token, "member" : new_member.to_dict()}), 201

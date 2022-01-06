@@ -1,3 +1,5 @@
+@import "index.scss";
+
 .memberWidget {
     &__container {
         width: 20rem;
@@ -21,6 +23,6 @@
     box-sizing: border-box;
 }
 
-.unselected{
+.unselected {
     opacity: 60%;
 }
