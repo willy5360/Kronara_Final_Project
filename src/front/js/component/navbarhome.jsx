@@ -1,13 +1,13 @@
 import React from "react";
 import ButtonSignUp from "../component/button-sign-up.jsx";
 import ButtonLogin from "../component/button-login.jsx";
-import "../../styles/navbar.scss";
+import "../../styles/navbar-landing.scss";
 
-export const Navbar = () => {
+export const NavbarLanding = () => {
     return (
-        <nav className="NavBar">
-            <div className="NavBar_name_kronara_movil">
-                <h2>Welcome to Kronara!</h2>
+        <nav className="NavBarLanding">
+            <div className="NavBar_name_kronara-Landing">
+                <h2>Kronara</h2>
             </div>
             <div>
                 <ButtonLogin />

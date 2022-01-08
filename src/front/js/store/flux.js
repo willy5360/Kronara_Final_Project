@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             holiday: [],
             currentHome: {
                 id: 1,
-                name: "lasso",
+                name: "Jumbotrona",
                 city: "Madrid",
             },
 
@@ -133,9 +133,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .then((responseAsJSON) => {
                         let token = jwt_decode(responseAsJSON.token);
+                        console.log("aqui esta el token.sub", token.sub);
                         setStore({
                             currentMember: token.sub,
                         });
+                        getActions().getEvent();
                         localStorage.setItem(
                             "acces_token",
                             JSON.stringify(responseAsJSON.token)

@@ -1,33 +1,47 @@
 @import "index.scss";
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1194px) {
+    .container_main_footer {
+        margin: 0;
+    }
     .main__footer {
         background-color: rgba(5, 41, 74, 1);
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 8px;
+        grid-auto-rows: minmax(20px, auto);
+        justify-items: center;
         color: rgba(173, 183, 206, 1);
         font-family: "Ubuntu", sans-serif;
-        padding: 1rem;
         font-size: 1rem;
-        text-align: baseline;
+        & a {
+            color: rgba(173, 183, 206, 1);
+            text-decoration: none;
+        }
     }
-    p {
+
+    .container_box_footer_contact,
+    .container_box_footer_redes,
+    .container_box_footer_github {
         margin: 0;
+        & p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
     }
 
     .footer__copy {
         align-self: center;
+        grid-column: 2;
+        padding: 4px;
     }
     .fab {
         margin-right: 1rem;
     }
-    a {
-        color: rgba(173, 183, 206, 1);
-        text-decoration: none;
-    }
 }
 
-@media only screen and (max-width: 799px) {
+@media only screen and (max-width: 1193px) {
     .main__footer {
         display: none;
     }

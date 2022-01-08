@@ -11,14 +11,9 @@
 }
 
 .button_light {
-    width: 8.68rem;
+    width: 10rem;
     height: $button-height;
-    background: rgb(66, 135, 184);
-    background: linear-gradient(
-        342deg,
-        rgba(66, 135, 184, 0.8645833333333334) 0%,
-        rgba(23, 87, 133, 1) 39%
-    );
+    background: #175785;
     box-shadow: $widget-box-shadow;
     display: flex;
     justify-content: space-between;
@@ -27,9 +22,10 @@
     font-size: 2rem;
     margin: 10px;
     align-items: center;
+    font-family: lato;
 
     & .button_light_text {
-        font-size: 0.75rem;
+        font-size: 1.2rem;
     }
 
     & i {
@@ -38,9 +34,8 @@
 
     & h5 {
         margin: 0;
-        color: #adb7ce;
         font-size: inherit;
-        color: #adb7cede;
+        color: #ffff;
     }
 
     & h6 {

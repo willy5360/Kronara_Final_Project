@@ -3,15 +3,26 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/widget-calendar.scss";
 import MonthSquare from "../pages/monthSquare.jsx";
+import JANUARY from "../../img/january.png";
 
 const WidgetCalendar = () => {
     return (
         // este widget te lleva a la vista de calendarios
         <div className="container-widget-calendar">
+            <div className="calendar__days">
+                <div>Mon </div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+            </div>
+            <div className="linea"></div>
+
             <Link to="/MonthSquare">
-                <h2>Enero</h2>
                 <img
-                    src="https://www.pexels.com/photo/5386754/download/?search_query=calendario&tracking_id=k2nu7k9pve"
+                    src={JANUARY}
                     alt="calendario"
                     width="100%"
                     heigth="100%"

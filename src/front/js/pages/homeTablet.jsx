@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import NavbarTabletView from "../component/navbarTabletview.jsx";
 import WeatherWidget from "../component/weatherWidget.jsx";
 import HabitsWidget from "../component/habitsWidget.jsx";
@@ -13,6 +13,7 @@ import List from "../component/list.jsx";
 
 export const HomeTabletView = () => {
     const { store, action } = useContext(Context);
+    let today = new Date();
 
     return (
         <div className="home_tablet_view">
@@ -22,6 +23,7 @@ export const HomeTabletView = () => {
             <div className="wrapper">
                 <div className="one">
                     <div className="hi-member">
+                        <h1>{today.toDateString()}</h1>
                         <h4>Good Afternoon, {store.currentHome.name} </h4>
                     </div>
                 </div>

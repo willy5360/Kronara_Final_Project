@@ -1,27 +1,26 @@
 @import "index.scss";
 
 .container-widget-calendar {
-    // background-repeat: no-repeat;
-    width: 100%;
+    width: 85%;
     height: 90%;
-    // margin: 10px;
     display: flex;
+    flex-direction: column;
     background-position: center;
     border-radius: 8px;
-    background-color: $widget-background;
-    align-items: center;
     justify-content: center;
-    & h2 {
-        border-radius: 8px;
-        // background-color: #2e2f3080;
-        color: #64dfd4;
-        padding: 12px;
-        border-radius: 8px;
-        text-align: center;
-        font-weight: lighter;
-    }
+}
+.linea {
+    font-weight: bold;
+    margin: 0.5rem 0 0.5rem 0;
+    background-color: grey;
+    height: 0.08rem;
+    border-top: 1px solid grey;
+}
 
-    & img {
-        border-radius: 5px;
-    }
+.calendar__days {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.8rem 0 0.1rem;
+    font-size: 0.8rem;
+    color: #ffff;
 }

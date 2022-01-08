@@ -19,11 +19,7 @@ const HabitsWidget = () => {
         );
     }, [store.listHabits]);
 
-    return (
-        <div className="habitsWidget_box_container">
-            <h3>{habit}</h3>
-        </div>
-    );
+    return <div className="habitsWidget_box_container">{habit}</div>;
 };
 
 export default HabitsWidget;

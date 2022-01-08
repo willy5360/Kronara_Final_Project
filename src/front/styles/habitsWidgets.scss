@@ -6,26 +6,33 @@
 
 // @media only screen and (max-width: 799px) {
 .habitsWidget_box_container {
-    width: 100%;
+    width: 20rem;
     height: 8.75rem;
-
+    font-family: lato;
     border-radius: 0.625rem;
-
-    background-color: rgba(196, 196, 196, 0.24);
-
+    background-image: linear-gradient(
+        109.6deg,
+        rgba(62, 161, 219, 1) 11.2%,
+        rgba(93, 52, 236, 1) 100.2%
+    );
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
         rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
         rgba(0, 0, 0, 0.07) 0px 16px 16px;
-
-    opacity: 0.5;
+    opacity: 1;
+    display: flex;
+    align-items: stretch;
     & p {
         font-size: 1rem;
-        color: #c4c4c4;
+        color: #ffff;
         font-weight: lighter;
         text-align: center;
-        padding-top: 15px;
-        width: 80%;
-        margin: auto;
+        font-family: lato;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        align-items: center;
     }
 }
 // }
