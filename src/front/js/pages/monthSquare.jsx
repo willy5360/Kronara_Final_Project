@@ -1,11 +1,12 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import DaySquare from "./daySquare.jsx";
-import WeatherWidget from "./weatherWidget.jsx";
+import DaySquare from "../component/daySquare.jsx";
+import WeatherWidget from "../component/weatherWidget.jsx";
 import "../../styles/daySquare.scss";
-import Day from "./day.jsx";
-import List from "./list.jsx";
-import MemberWidget from "./memberWidget.jsx";
+import NavbarTabletView from "../component/navbarTabletview.jsx";
+import Day from "../component/day.jsx";
+import List from "../component/list.jsx";
+// import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
     const { store, actions } = useContext(Context);
@@ -211,7 +212,8 @@ const MonthSquare = () => {
     return (
         <Fragment>
             <div className="main__container">
-                <MemberWidget />
+                {/* <MemberWidget /> */}
+                <NavbarTabletView />
                 <div className="main__container--calendarContainer">
                     <button
                         className="main__container--button"

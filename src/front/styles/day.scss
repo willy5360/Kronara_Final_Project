@@ -15,6 +15,7 @@
     align-self: center;
     z-index: 1000;
     position: absolute;
+    font-weight: bold;
 }
 
 .main__day__form {
@@ -40,7 +41,7 @@
     height: 4rem;
     border-radius: 3rem;
     background-color: #e66030;
-
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,12 +67,28 @@
     border-radius: 3rem;
     background-color: rgba(196, 196, 196, 0.53);
     border: none;
+    font-weight: bold;
 }
 .day__buttons {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
 }
+
+.day__holiday {
+    background-image: linear-gradient(
+        109.6deg,
+        rgba(231, 76, 60, 1) 11.2%,
+        rgba(203, 67, 53, 1) 91.1%
+    );
+    color: white;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+}
+
 .day__appointment__event {
     display: flex;
     flex-direction: column;
@@ -82,7 +99,7 @@
     display: flex;
     flex-direction: column;
     margin: 0.5rem;
-    background-color: hsl(242deg 73% 85% / 66%);
+    background-color: #e9ecf0;
     border-radius: 0.625rem;
     box-shadow: rgb(0 0 0 / 7%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 2px,
         rgb(0 0 0 / 7%) 0px 4px 4px, rgb(0 0 0 / 7%) 0px 8px 8px,
@@ -97,7 +114,11 @@
     justify-content: center;
     align-items: center;
 
-    background-color: cadetblue;
+    background-image: linear-gradient(
+        109.6deg,
+        rgba(45, 116, 213, 1) 11.2%,
+        rgba(121, 137, 212, 1) 91.2%
+    );
     text-align: center;
     font-family: "Lato", sans-serif;
     font-weight: bold;
