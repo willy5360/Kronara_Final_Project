@@ -53,8 +53,10 @@ const Event = (props) => {
                 className="main__appointment__form"
             >
                 <div className="event__inputs">
-                    <h2>{props.eventDate}</h2>
-                    <h2>Create a event</h2>
+                    <div className="appointment__date__title">
+                        {props.eventDate}
+                    </div>
+                    <div className="appointment__title">Create a event</div>
 
                     <div className="appointment__date">
                         <label htmlFor="date"></label>

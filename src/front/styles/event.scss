@@ -1,10 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Road+Rage&display=swap");
 @import "index.scss";
 
-h2 {
+.appointment__title {
     font-family: "Ubuntu", sans-serif;
     font-size: 1.5rem;
     color: rgba(35, 165, 173, 1);
+    margin-left: 1rem;
+    font-weight: bold;
+}
+.appointment__date__title {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    color: black;
     margin-left: 1rem;
     font-weight: bold;
 }
@@ -66,6 +73,23 @@ h2 {
     background-color: rgba(196, 196, 196, 0.24);
     justify-content: center;
     border: white solid 1px;
+
+    & input {
+        font-weight: bold;
+        border-radius: 0.3rem;
+    }
+
+    & input:checked + .appointment__all__day__switch {
+        background: #72da67;
+    }
+    & input:checked + .appointment__all__day__switch::before {
+        left: 27px;
+        background: #fff;
+    }
+    & input:checked + .appointment__all__day__switch:active::before {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28),
+            0 0 0 20px rgba(0, 150, 136, 0.2);
+    }
 }
 .appointment__input {
     display: grid;
@@ -125,35 +149,6 @@ h2 {
     margin: 1rem;
 }
 
-input {
-    width: 100%;
-    box-sizing: border-box;
-    background: none;
-    outline: none;
-    resize: none;
-    border: 0;
-    border-bottom: 2px solid #bebed2;
-    color: #0a020285;
-}
-
-input:focus {
-    border-bottom: 2px solid rgba(35, 165, 173, 1);
-    background: transparent;
-}
-
-p:before {
-    content: attr(type);
-    display: block;
-    margin: 28px 0 0;
-    font-size: 14px;
-    color: #5a5a5a;
-    background-color: transparent;
-}
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #05294acf inset !important;
-    -webkit-text-fill-color: #0a020285 !important;
-}
 .appointment__all__day__switch {
     display: inline-block;
     position: relative;
@@ -183,16 +178,6 @@ input:-webkit-autofill {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28),
         0 0 0 20px rgba(128, 128, 128, 0.1);
 }
-input:checked + .appointment__all__day__switch {
-    background: #72da67;
-}
-input:checked + .appointment__all__day__switch::before {
-    left: 27px;
-    background: #fff;
-}
-input:checked + .appointment__all__day__switch:active::before {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
-}
 
 .main__appointment__form .form__submit {
     position: relative;
@@ -209,6 +194,7 @@ input:checked + .appointment__all__day__switch:active::before {
     transition: box-shadow 0.2s, top 0.2s, background-color 0.2s,
         flex-basis 0.2s;
     width: 50%;
+    font-weight: bold;
 }
 .main__appointment__form .form__submit:hover,
 .main__appointment__form .form__submit:focus {
@@ -235,6 +221,7 @@ input:checked + .appointment__all__day__switch:active::before {
     transition: box-shadow 0.2s, top 0.2s, background-color 0.2s,
         flex-basis 0.2s;
     width: 90%;
+    font-weight: bold;
 }
 .main__appointment__form .form__cancel:hover,
 .main__appointment__form .form__cancel:focus {
@@ -429,8 +416,38 @@ $blue: #5183f5;
     align-items: center;
     width: 100%;
 
-    &input {
-        margin-left: 0.5rem;
+    & input {
+        border-radius: 0.5rem;
+    }
+    & input[type="checkbox"] {
+        -webkit-appearance: none;
+        outline: none;
+        position: relative;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 0.1rem;
+        background: none;
+        border: rgba(173, 183, 206, 1) 0.15rem solid;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+            rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+            rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        transition: 3s;
+        margin-right: 1rem;
+    }
+    & input[type="checkbox"]:checked {
+        background: none;
+    }
+    & input[type="checkbox"]:checked:before {
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        width: 0.6rem;
+        height: 1.3rem;
+        bottom: 0.1rem;
+        border-bottom: 5px solid rgba(255, 107, 53, 1);
+        border-right: 5px solid rgba(255, 107, 53, 1);
+        transform: rotate(45deg);
+        transition: 0.1s;
     }
 }
 

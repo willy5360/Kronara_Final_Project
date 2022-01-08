@@ -1,0 +1,20 @@
+@import "index.scss";
+
+.button_temperature {
+    border: none;
+    border-radius: 8px;
+    color: #ffff;
+    background: rgba(23, 87, 133, 1);
+    width: $button-width;
+    font-family: lato;
+    height: $button-height;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: $widget-box-shadow;
+    & i {
+        color: #64dfd4;
+        font-size: 24px;
+    }
+}

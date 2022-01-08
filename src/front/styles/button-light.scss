@@ -1,0 +1,45 @@
+@import "index.scss";
+
+.container_buttons_domotic {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container_domotic {
+    display: flex;
+}
+
+.button_light {
+    width: 10rem;
+    height: $button-height;
+    background: #175785;
+    box-shadow: $widget-box-shadow;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 2rem;
+    margin: 10px;
+    align-items: center;
+    font-family: lato;
+
+    & .button_light_text {
+        font-size: 1.2rem;
+    }
+
+    & i {
+        color: #c4c4c4;
+    }
+
+    & h5 {
+        margin: 0;
+        font-size: inherit;
+        color: #ffff;
+    }
+
+    & h6 {
+        font-size: 10px;
+        color: #adb7cead;
+    }
+}

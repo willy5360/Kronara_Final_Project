@@ -1,0 +1,20 @@
+@import "index.scss";
+
+.button_humedity {
+    border: none;
+    border-radius: 8px;
+    color: #ffff;
+    background: $button-background;
+    width: $button-width;
+    height: $button-height;
+    font-size: 1.5rem;
+    font-family: lato;
+    display: flex;
+    margin-right: 6px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: $widget-box-shadow;
+    & i {
+        color: #64dfd4;
+    }
+}

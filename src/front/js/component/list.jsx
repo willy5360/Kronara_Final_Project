@@ -36,7 +36,7 @@ const List = () => {
     return (
         <div className="main__list__container">
             <div className="to__do__form">
-                <h1>To do list</h1>
+                <div className="list__title">To do list</div>
                 <form
                     className="list-wrapper"
                     onSubmit={handleSubmit(onSubmit)}

@@ -1,6 +1,9 @@
 from datetime import date
+from werkzeug.security import generate_password_hash
 import datetime
 from werkzeug.security import generate_password_hash
+
+
 
 data = {
 
@@ -19,7 +22,7 @@ data = {
     ],
 
     "Member":[
-        {
+          {
             "id":1,
             "username":"Ana",
             "password":generate_password_hash("12345678", method='pbkdf2:sha256', salt_length=8),
