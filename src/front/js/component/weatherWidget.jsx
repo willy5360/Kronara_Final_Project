@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/weatherWidget.scss";
 import SUN from "../../img/sun.gif";
-import COLD from "../../img/cold.gif";
+import COLD from "../../img/98ae728aefbcffb5b6368c105535d8ba.gif";
 
 const WeatherWidget = () => {
     const { store, actions } = useContext(Context);

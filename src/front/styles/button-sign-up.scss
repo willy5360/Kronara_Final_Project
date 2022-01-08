@@ -7,16 +7,23 @@
     }
 
     .navbar_sign_up_button {
-        color: #0E3551;
-        background-color: #ADB7CE;
+        color: #0e3551;
+        background-color: #8bc6ec;
+        background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+        box-shadow: 1px 1px 3px #ffffff;
         border: none;
+        border-radius: 0.5rem;
         width: 9.37rem;
         height: 1.875rem;
-    }    
+    }
+
+    .navbar_sign_up_button:hover {
+        transition: 0.5s;
+        box-shadow: none;
+    }
 }
 
 @media only screen and (max-width: 799px) {
-
     .navbar_sign_up {
         display: flex;
         justify-content: center;
@@ -24,17 +31,16 @@
     }
 
     .navbar_sign_up_button {
-       width: 18.75rem; 
-       height: 2.813rem;
-       padding: 0.75rem;
-       border: none;
-       opacity: 0.75;
-       border-radius: 2px;
-       background-color: #ADB7CE;
-       color: black;
-       box-shadow: 5px 5px 5px #3b424d;
+        width: 18.75rem;
+        height: 2.813rem;
+        padding: 0.75rem;
+        border: none;
+        opacity: 0.75;
+        border-radius: 2px;
+        background-color: #adb7ce;
+        color: black;
+        box-shadow: 5px 5px 5px #3b424d;
     }
- 
 }
 
 @media only screen and (max-width: 599px) {
@@ -45,14 +51,14 @@
     }
 
     .navbar_sign_up_button {
-       width: 18.75rem; 
-       height: 2.813rem;
-       padding: 0.75rem;
-       border: none;
-       opacity: 0.75;
-       border-radius: 2px;
-       background-color: #ADB7CE;
-       color: black;
-       box-shadow: 5px 5px 5px #3b424d;
-    }   
+        width: 18.75rem;
+        height: 2.813rem;
+        padding: 0.75rem;
+        border: none;
+        opacity: 0.75;
+        border-radius: 2px;
+        background-color: #adb7ce;
+        color: black;
+        box-shadow: 5px 5px 5px #3b424d;
+    }
 }
