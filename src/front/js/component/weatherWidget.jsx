@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/weatherWidget.scss";
-import SUN from "../../img/sun.gif";
-import COLD from "../../img/98ae728aefbcffb5b6368c105535d8ba.gif";
+import SUNNY from "../../img/sunny.gif";
+import RAINNY from "../../img/rainny.gif";
 
 const WeatherWidget = () => {
     const { store, actions } = useContext(Context);
@@ -13,12 +13,24 @@ const WeatherWidget = () => {
 
     return (
         <div className="weather__container">
-            <img src={store.weather.temp < 16 ? COLD : SUN} />
+            <img src={store.weather.temp < 16 ? RAINNY : SUNNY} />
             <ul>
-                <li>Temperature: {store.weather.temp} °C</li>
-                <li>Min: {store.weather.temp_min} °C</li>
-                <li>Max: {store.weather.temp_max} °C</li>
-                <li>Humidity: {store.weather.humidity} %</li>
+                <li>
+                    <div className="weather__description">Temperature: </div>
+                    {store.weather.temp} °C
+                </li>
+                <li>
+                    <div className="weather__description">Min: </div>
+                    {store.weather.temp_min} °C
+                </li>
+                <li>
+                    <div className="weather__description">Max: </div>
+                    {store.weather.temp_max} °C
+                </li>
+                <li>
+                    <div className="weather__description">Humidity: </div>
+                    {store.weather.humidity} %
+                </li>
             </ul>
         </div>
     );

@@ -11,18 +11,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             list: [],
             baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             member: [],
-            currentMember: {
-                birth_date: "Sat, 05 May 2001 00:00:00 GMT",
-                email: "gloria@jumbotrona.com",
-                home_id: 1,
-                id: 2,
-                is_active: true,
-                username: "Gloria",
-            },
+            currentMember: {},
             holiday: [],
             currentHome: {
                 id: 1,
-                name: "jumbotronas",
+                name: "Jumbotrona",
                 city: "Madrid",
             },
 
@@ -31,27 +24,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentAppointments: [],
         },
         actions: {
-            getWeather: () => {
-                fetch(
-                    `${process.env.WEATHER_BASE_URL}q=${
-                        getStore().currentHome.city
-                    }&units=metric&APPID=${process.env.WEATHER_API_KEY}`
-                )
-                    .then((response) => {
-                        if (response.ok) return response.json();
-                        throw new Error("fail loading weather");
-                    })
-                    .then((responseAsJSON) => {
-                        console.log(
-                            "aqui esta el response asjson",
-                            responseAsJSON.main
-                        );
-                        setStore({ weather: { ...responseAsJSON.main } });
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            },
             getTask: () => {
                 fetch(
                     getStore().baseURL.concat(
@@ -161,9 +133,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .then((responseAsJSON) => {
                         let token = jwt_decode(responseAsJSON.token);
+                        console.log("aqui esta el token.sub", token.sub);
                         setStore({
                             currentMember: token.sub,
                         });
+                        getActions().getEvent();
                         localStorage.setItem(
                             "acces_token",
                             JSON.stringify(responseAsJSON.token)

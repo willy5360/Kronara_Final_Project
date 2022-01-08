@@ -1,0 +1,24 @@
+@import "index.scss";
+
+.container-widget-domotic {
+    width: 100%;
+    height: 90%;
+
+    border-radius: 15px;
+    background-color: $widget-background;
+    box-shadow: $widget-box-shadow;
+
+    & h2 {
+        border-radius: 8px;
+        color: #ffff;
+        padding: 6px;
+        border-radius: 8px;
+        font-family: "Ubuntu", sans-serif;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    & img {
+        border-radius: 5px;
+    }
+}

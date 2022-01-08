@@ -1,0 +1,8 @@
+@import "index.scss";
+.widgetImgFamily_box_container img {
+    border-radius: 0.625rem;
+
+    background-color: $widget-background;
+
+    box-shadow: $widget-box-shadow;
+}

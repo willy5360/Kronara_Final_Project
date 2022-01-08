@@ -43,8 +43,8 @@ class Member(db.Model):
     password = db.Column(db.String(), unique=False, nullable=False)
     email = db.Column(db.String(), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    photo_user = db.Column(db.String(), unique=False, nullable=False)
-    birth_date = db.Column(db.Date(), unique=False, nullable=False)
+    photo_user = db.Column(db.String(), unique=False, nullable=True)
+    birth_date = db.Column(db.Date(), unique=False, nullable=True)
     home_id = db.Column(db.Integer(), db.ForeignKey('home.id'), unique=False, nullable=False)
 
     user_has_an_appointment = db.relationship("Appointment", secondary=AppointmentUser, back_populates="an_appointment_for_a_user")
@@ -59,12 +59,12 @@ class Member(db.Model):
             "email": self.email,
             "is_active": self.is_active,
             "birth_date": self.birth_date,
-            "photo_user":self.photo_user,
             "home_id": self.home_id,
-            "photo_user": self.photo_user,
+            "photo_user": self.photo_user,  #esto estabba repetido
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
+    #repetidas en la linea 90 otra vez
     @classmethod
     def get_by_id(cls, member_id):
         member=cls.query.get(member_id)
@@ -108,6 +108,7 @@ class Member(db.Model):
         db.session.commit()
         return self
 
+    #esta esta repetida validate password en la linea 81
     def validate_password(self,password):
         is_valid = check_password_hash(self._password,password)
         print(is_valid)
