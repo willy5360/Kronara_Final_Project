@@ -4,7 +4,6 @@ import Robot from "../../img/—Pngtree—high-tech brain_5406718.png";
 import SmartHouse from "../../img/smart-home.png";
 import SmartHouse2 from "../../img/AdobeStock_217810633_klein.jpg";
 import SmartHouse3 from "../../img/Home-Automation1.jpg";
-// import WeatherWidget from "../component/weatherWidget.jsx";
 
 export const LandingPage = () => {
     return (
@@ -13,7 +12,6 @@ export const LandingPage = () => {
                 <img src={Robot} className="roboPhoto" />
                 <h1 className="landingPage__mainTitle">Kronara</h1>
                 <p className="landingPage__slogan">SmartHousing made easy</p>
-                {/* <WeatherWidget /> */}
             </div>
 
             <div className="landingPage__features">

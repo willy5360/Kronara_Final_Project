@@ -8,6 +8,10 @@
     background-position: center;
     border-radius: 8px;
     justify-content: center;
+
+    & img {
+        border-radius: 0.5rem;
+    }
 }
 .linea {
     font-weight: bold;

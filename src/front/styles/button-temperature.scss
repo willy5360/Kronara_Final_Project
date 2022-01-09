@@ -4,7 +4,7 @@
     border: none;
     border-radius: 8px;
     color: #ffff;
-    background: rgba(23, 87, 133, 1);
+    background: $button-background;
     width: $button-width;
     font-family: lato;
     height: $button-height;
@@ -16,5 +16,8 @@
     & i {
         color: #64dfd4;
         font-size: 24px;
+    }
+    & h4 {
+        margin: 0;
     }
 }

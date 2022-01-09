@@ -141,11 +141,7 @@ const Event = (props) => {
                     <div className="appointment__alert">
                         <i className="far appointment__icons fa-bell" />
                         <label htmlFor="alert">Alert</label>
-                        <select
-                            id="alert"
-                            // {...register("alert")}
-                            className="select-dropdown"
-                        >
+                        <select id="alert" className="select-dropdown">
                             <option value="At time">At time of event</option>
                             <option value="5 mins">5 mins before</option>
                             <option value="10 mins">10 mins before</option>

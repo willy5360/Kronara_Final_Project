@@ -34,7 +34,6 @@ class Home(db.Model):
         home=cls.query.get(home_id)
         return home
 
-#User se relaciona con la home y con la media
 class Member(db.Model):
     __tablename__: "member"
 
@@ -60,11 +59,10 @@ class Member(db.Model):
             "is_active": self.is_active,
             "birth_date": self.birth_date,
             "home_id": self.home_id,
-            "photo_user": self.photo_user,  #esto estabba repetido
+            "photo_user": self.photo_user,  
             "appointment": [appointment.to_dict() for appointment in self.user_has_an_appointment]
         }
 
-    #repetidas en la linea 90 otra vez
     @classmethod
     def get_by_id(cls, member_id):
         member=cls.query.get(member_id)
@@ -108,15 +106,11 @@ class Member(db.Model):
         db.session.commit()
         return self
 
-    #esta esta repetida validate password en la linea 81
+    
     def validate_password(self,password):
         is_valid = check_password_hash(self._password,password)
         print(is_valid)
         return is_valid
-
-    # def validate_password(self, password):
-    #     is_valid = check_password_hash(self._password, password)
-    #     return is_valid
 
     @classmethod
     def get_by_id(cls, member_id):
@@ -224,7 +218,6 @@ class Sokect(db.Model):
         }
 
 
-#Esta tablita va con la relacional la de medio
 class Appointment (db.Model):
     __tablename__: "appointment"
 
@@ -250,7 +243,6 @@ class Appointment (db.Model):
             "location": self.location,
             "notes": self.notes,
             "date": self.date
-            # "member": [member.to_dict() for member in self.an_appointment_for_a_user]
         }
 
     def create_event_friend(self,friends):
@@ -286,20 +278,6 @@ class Appointment (db.Model):
         db.session.commit()
         return self
 
-    # @classmethod
-    # def get_all_appointments_from_user(cls,member_id):
-    #     appointments =cls.query.filter_by(id = member_id)
-    #     return appointments
-
-    # @classmethod
-    # def get_event_by_id()
-    
-
-    # def get_by_item(cls,item):
-    #     account = cls.query.filter_by(item = item).one_or_none()
-    #     return account
-
-# Esta tablita va solita 
 class Habits(db.Model):
     __tablename__: "habits"
 

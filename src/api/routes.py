@@ -21,14 +21,8 @@ from sqlalchemy import exc
 api = Blueprint('api', __name__)
 
 
-@api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['POST']) #¡LISTO! un miembro de una casa añade un evento y agrega a otros miembros LISTO!
-# @jwt_required()
+@api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['POST']) 
 def create_event(home_id, member_id):
-    # id_user = get_jwt_identity()
-    # if id != id_user.get('home_id', None):
-    #     return jsonify({'error': 'no esta autorizado'}), 403
-    print("estoy dentro de la ruta", request.json)
-
     appointment = request.json.get("appointment", None)
     friend = request.json.get('friend', None)
     time_start = request.json.get('time_start', None)
@@ -50,7 +44,7 @@ def create_event(home_id, member_id):
 
     new_event = Appointment(appointment = appointment, time_start = time_start, time_ends = time_ends, location = location, notes = notes, date = date )
     
-    # try:
+    
     event_created = new_event.create()
     appointment_to_be_assigned = Appointment.get_by_id(event_created.id)
 
@@ -60,12 +54,7 @@ def create_event(home_id, member_id):
        
 
         return jsonify(event_created.to_dict()), 200
-        # return jsonify(member_appointments), 200
-
-
-    # except exc.IntegrityError:
-    #     return jsonify({'error':'fail in data'}), 400
-
+       
     return jsonify({"error":"fail on adding appointment"}), 400
 
 
@@ -82,12 +71,9 @@ def get_all_members(home_id):
     return jsonify(all_members), 200
 
 
-@api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['GET']) #¡LISTO! ver todos los eventos de un miembro de una casa
-# @jwt_required()
+@api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['GET']) 
 def get_event(home_id,member_id):
-    # id_user = get_jwt_identity()
-    # if id != id_user.get('home_id', None):
-    #     return jsonify({'error': 'no esta autorizado'}), 403
+    
     home= Home.get_by_id(home_id)
     member = Member.get_by_id(member_id)
 
@@ -100,7 +86,6 @@ def get_event(home_id,member_id):
     return jsonify({'error','missing appointments'}),400
 
 @api.route('/home/<int:home_id>/member/<int:member_id>/event/<int:event_id>', methods=['GET'])
-# @jwt_required()
 def get_event_by_id(home_id,member_id,event_id):
     appointment= Appointment.get_by_id(event_id)
     print("aqui esta el event id",event_id)
@@ -118,12 +103,8 @@ def get_event_by_id(home_id,member_id,event_id):
     return jsonify({'error','missing appointments'}),400
 
 
-@api.route('/home/<int:home_id>/member/<int:member_id>/event/<int:event_id>', methods=['DELETE'])   #FUNCIONA
-# @jwt_required()
+@api.route('/home/<int:home_id>/member/<int:member_id>/event/<int:event_id>', methods=['DELETE'])   
 def delete_appointment(home_id, member_id,event_id):
-    # id_user = get_jwt_identity()
-    # if id != id_user.get('home_id', None):
-    #     return jsonify({'error': 'no esta autorizado'}), 403
 
     
     home= Home.get_by_id(home_id)
@@ -143,7 +124,6 @@ def delete_appointment(home_id, member_id,event_id):
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
-# generate sitemap with all your endpoints
 @api.route('/')
 def sitemap():
     return generate_sitemap(app)
@@ -158,10 +138,8 @@ def get_member_by_id():
     
     return jsonify({'error':'Not member found'}), 404
 
-#solo registra
 @api.route('/member/', methods=['POST'])
 def create_member(): 
-    print ("estas en el back", request.json)
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     username = request.json.get('username', None)
@@ -172,7 +150,6 @@ def create_member():
     new_name = ""
 
     if not (email and password and username and home_status and home and condition):
-        print("en este validamos el email, password , name...")
         return jsonify({'error': 'Missing parameters'}), 409
         
     if not condition:
@@ -191,7 +168,6 @@ def create_member():
         new_name = home
 
     if not new_city and new_name:
-        print("este es el error de validacion de city y name")
         return jsonify({'error': 'Missing parameters'}), 409
 
     new_home = Home(city = new_city, name = home)
@@ -210,7 +186,6 @@ def create_member():
         return jsonify({'error': "Home already exist"}), 404
     
     try:
-        print("aqui esta ,new_member" , new_member)
         new_member.create_member()
         access_token = create_access_token(identity=new_member.to_dict(), expires_delta = timedelta(minutes=100))
         return jsonify({"token": access_token, "member" : new_member.to_dict()}), 201
@@ -263,7 +238,6 @@ def create_item(home_id):
         return jsonify({'error':'missing items'}), 400
 
     task= Task(item=new_item, done=False, home_id=home_id)
-    print("aqui esta el new item", new_item)
   
     task_created=task.create()
     return jsonify(task_created.to_dict()), 201

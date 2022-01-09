@@ -7,7 +7,6 @@ const HabitsWidget = () => {
     const [habit, setHabits] = useState([]);
 
     let randomized = Math.floor(Math.random() * 20) + 1;
-    console.log("aca esta el habit random", randomized);
 
     useEffect(() => {
         setHabits(

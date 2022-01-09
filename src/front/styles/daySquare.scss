@@ -131,10 +131,6 @@ $base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
         border-radius: 0.4rem;
     }
 
-    // &:active + .main__container__day {
-    //     display: flex;
-    // }
-
     &__holiday {
         display: flex;
         flex-direction: row;
@@ -142,15 +138,10 @@ $base_shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
         margin: 0.2rem;
         height: 4.5rem;
         border-radius: 0.4rem;
-        // border: solid #c74444 0.2rem;
         background: rgba(196, 196, 196, 0.24);
         backdrop-filter: blur(1rem);
         box-shadow: $base_shadow;
         position: relative;
-
-        // &:active + .main__container__day {
-        //     display: flex;
-        // }
 
         &--holytest {
             width: 1rem;

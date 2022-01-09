@@ -18,7 +18,7 @@ const NavbarTabletView = () => {
 
             <div className="navbar_tablet_view_settings">
                 <input type="checkbox" id="drop-4" hidden />
-                <label className="dropHeader dropHeader-4" for="drop-4">
+                <label className="dropHeader dropHeader-4" htmlFor="drop-4">
                     <i className="fas fa-cogs"></i>
                 </label>
 

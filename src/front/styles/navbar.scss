@@ -11,9 +11,10 @@
 @media only screen and (max-width: 1193px) {
     .NavBar {
         text-align: center;
-        padding-top: 14rem;
+        padding-top: 4rem;
 
         h2 {
+            font-family: "Ubuntu", sans-serif;
             color: #64dfd4;
             font-size: 3.125rem;
         }
@@ -21,6 +22,11 @@
 
     .navbar_login {
         padding-top: 2rem;
+    }
+
+    .roboPhoto {
+        width: 25%;
+        height: auto;
     }
 }
 

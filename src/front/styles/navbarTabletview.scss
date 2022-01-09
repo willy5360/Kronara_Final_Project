@@ -1,9 +1,5 @@
 @import "index.scss";
 
-// @media only screen and (min-width: 800px) {
-// }
-
-// @media only screen and (max-width: 799px) {
 .navbar_tablet_view_container {
     display: flex;
     width: 100%;
@@ -19,6 +15,7 @@
     margin-right: 2rem;
 }
 .navbar_tablet_view_kronara {
+    margin-left: 2rem;
     & h2 {
         font-size: 1.5rem;
         color: #ffffff;
@@ -27,14 +24,6 @@
         margin-left: 12px;
     }
 }
-// .navbar_tablet_view_users {
-//     margin: 0;
-//     padding: 0;
-// }
-// }
-
-// @media only screen and (max-width: 599px) {
-// }
 
 // css de dropdown
 .navbar_tablet_view_settings {
