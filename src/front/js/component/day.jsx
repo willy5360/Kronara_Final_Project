@@ -17,7 +17,6 @@ const Day = (props) => {
     useEffect(() => {
         setMemberEvent(
             store.currentAppointments.map((event, index) => {
-                // console.log("aqui esta event", event);
                 if (
                     props.date.toDateString() ==
                     new Date(event.date).toDateString()

@@ -13,7 +13,7 @@
 .button_light {
     width: 10rem;
     height: $button-height;
-    background: #175785;
+    background: $button-background;
     box-shadow: $widget-box-shadow;
     display: flex;
     justify-content: space-between;

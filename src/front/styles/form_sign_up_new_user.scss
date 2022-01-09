@@ -97,12 +97,6 @@
         opacity: 0.25;
     }
 
-    // .form__body__sign__up_conditional,
-    // .form__body__sign__up_conditional_checkbox {
-    //    width: 5%;
-    //    display: inline;
-    // }
-
     .form_sig_up_type_of_home {
         display: flex;
         align-items: baseline;
@@ -163,8 +157,6 @@
 
         input {
             padding: 0.15rem;
-            // background-color: #ffffff;
-            // opacity: 0.25;
             border: none;
             border-radius: 0.313rem;
         }
@@ -184,7 +176,6 @@
         input {
             background-color: #adb7ce;
             border-radius: 0.313rem;
-            // padding: 0.25rem 10.8rem;
             color: #05294a;
             font-weight: lighter;
             margin-top: 1.25rem;
@@ -204,12 +195,6 @@
         align-items: center;
     }
 
-    // .form__body__sign__up_conditional,
-    // .form__body__sign__up_conditional_checkbox {
-    //   visibility: none;
-    //   display: none;
-    // }
-
     .form__body__sign__up__city {
         margin: 0.5rem;
         border-radius: 5px;
@@ -225,7 +210,6 @@
         justify-content: center;
         font-weight: lighter;
         height: inherit;
-        //  padding-top: 3rem;
 
         header h2 {
             visibility: hidden;

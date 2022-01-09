@@ -3,12 +3,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #05294a;
+        background-image: linear-gradient(to right, #517fa4 0%, #243949 100%);
         padding-left: 2rem;
         padding-right: 2rem;
 
         h2 {
-            color: #adb7ce;
+            color: white;
+            font-family: "Ubuntu", sans-serif;
+            font-weight: lighter;
         }
     }
 }

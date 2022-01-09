@@ -5,13 +5,11 @@
     General Styles
 */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,700&display=swap");
 
-$main-background: linear-gradient(
-    135deg,
-    rgba(5, 41, 74, 1) 50%,
-    rgba(5, 41, 74, 0.42) 100%
-);
-$button-background: rgba(23, 87, 133, 1);
+$main-background: linear-gradient(to right, #243949 0%, #517fa4 100%);
+
+$button-background: #2171ab;
 $button-width: 9.688rem;
 $button-height: 3.438rem;
 $widget-background: rgba(196, 196, 196, 0.24);

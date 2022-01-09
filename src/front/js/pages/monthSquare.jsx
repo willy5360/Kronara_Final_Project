@@ -6,7 +6,6 @@ import "../../styles/daySquare.scss";
 import NavbarTabletView from "../component/navbarTabletview.jsx";
 import Day from "../component/day.jsx";
 import List from "../component/list.jsx";
-// import MemberWidget from "./memberWidget.jsx";
 
 const MonthSquare = () => {
     const { store, actions } = useContext(Context);
@@ -81,7 +80,7 @@ const MonthSquare = () => {
         },
     ];
 
-    const firstDay = new Date(year, month, 1).getDay() - 1; //me devueleve el primer dia en numero
+    const firstDay = new Date(year, month, 1).getDay() - 1;
 
     const month_days = Array.from(
         { length: numberToMonth[month].day },
@@ -212,7 +211,6 @@ const MonthSquare = () => {
     return (
         <Fragment>
             <div className="main__container">
-                {/* <MemberWidget /> */}
                 <NavbarTabletView />
                 <div className="main__container--calendarContainer">
                     <button

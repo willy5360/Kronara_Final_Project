@@ -82,56 +82,7 @@ data = {
             "birth_date":date(1990,6,2),
             "home_id": 2
         }
-        # {
-        #     "id":18,
-        #     "username":"jimena",
-        #     "password":"1234",
-        #     "email":"ana@jumbotrona.com",
-        #     "is_active":True,
-        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        #     "birth_date":date(1999,5,5),
-        #     "home_id":1
-        # },
-        # {
-        #     "id":19,
-        #     "username":"eliana",
-        #     "password":"1234",
-        #     "email":"ana@jumbotrona.com",
-        #     "is_active":True,
-        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        #     "birth_date":date(1999,5,5),
-        #     "home_id":1
-        # },
-        # {
-        #     "id":20,
-        #     "username":"cielo",
-        #     "password":"1234",
-        #     "email":"ana@jumbotrona.com",
-        #     "is_active":True,
-        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        #     "birth_date":date(1999,5,5),
-        #     "home_id":1
-        # },
-        # {
-        #     "id":21,
-        #     "username":"victor",
-        #     "password":"1234",
-        #     "email":"ana@jumbotrona.com",
-        #     "is_active":True,
-        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        #     "birth_date":date(1999,5,5),
-        #     "home_id":1
-        # },
-        # {
-        #     "id":22,
-        #     "username":"perro",
-        #     "password":"1234",
-        #     "email":"ana@jumbotrona.com",
-        #     "is_active":True,
-        #     "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-        #     "birth_date":date(1999,5,5),
-        #     "home_id":1
-        # }
+
     ],
 
     "Task":[
@@ -149,7 +100,7 @@ data = {
         },
         {
             "id":3,
-            "item":"recoger la haitaciones de los peques",
+            "item":"recoger la habitaciones de los peques",
             "done":False,
             "home_id":1
         },
@@ -225,7 +176,7 @@ data = {
             "time_ends":"20:15",
             "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato",
-            "date":date(2000,1,5)
+            "date":date(2022,1,5)
         },
         {
             "id":2,
@@ -234,7 +185,7 @@ data = {
             "time_ends":"20:15",
             "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito",
-            "date":date(1999,5,5)
+            "date":date(2022,1,15)
         },
         {
             "id":3,
@@ -243,7 +194,7 @@ data = {
             "time_ends":"20:15",
             "location":"biblioteca de villaverde",
             "notes":"me sobran libros",
-            "date":date(2020,4,1)
+            "date":date(2022,1,18)
         },
     ],
 

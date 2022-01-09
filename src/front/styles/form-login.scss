@@ -9,14 +9,21 @@
 @media only screen and (max-width: 1193px) {
     .container_main_form_login {
         color: #ffffff;
-        background: $main-background;
-        display: flex;
-        justify-content: center;
+        background-image: linear-gradient(to right, #517fa4 0%, #243949 100%);
         width: 100%;
         font-weight: lighter;
         font-family: lato;
-        padding-top: 12rem;
         height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .roboPhotoLogin {
+        width: 25%;
+        height: auto;
+        margin-top: -14rem;
     }
 
     .already_account_container {
@@ -45,14 +52,17 @@
             width: 21.875rem;
         }
         button {
-            background-color: #adb7ce;
+            border: none;
+            font-size: 1.4rem;
+            background-color: #fe6847;
+            color: white;
+            box-shadow: 5px 5px 5px #3b424d;
+
             border-radius: 0.313rem;
-            color: #000000;
             font-weight: lighter;
             margin-top: 1.25rem;
             font-family: lato;
             width: 21.875rem;
-            padding: 5px;
         }
     }
 }

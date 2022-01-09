@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar.js";
 import { useNavigate } from "react-router-dom";
+import Robot from "../../img/—Pngtree—high-tech brain_5406718.png";
 
 import "../../styles/form-login.scss";
 
@@ -17,11 +18,6 @@ const FormLogin = () => {
 
     const onSubmit = (data) => actions.login(data);
 
-    // function loginNavigate(event) {
-    //     event.preventDefault();
-    //     navigate("/HomeTabletView", { replace: true });
-    // }
-
     useEffect(() => {
         if (Object.keys(store.currentMember).length) {
             navigate("/HomeTabletView");
@@ -30,9 +26,9 @@ const FormLogin = () => {
 
     return (
         <Fragment>
-            {/* <Navbar /> */}
-
             <div className="container_main_form_login">
+                <img src={Robot} className="roboPhotoLogin" />
+
                 <form onSubmit={handleSubmit(onSubmit)} className="form_login">
                     <input
                         type="email"

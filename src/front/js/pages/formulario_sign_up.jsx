@@ -22,7 +22,6 @@ function FormSignUp() {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log("estoy en onsubmit", data);
         actions.register(data);
     };
 

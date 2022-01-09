@@ -3,16 +3,13 @@
 
 @media only screen and (max-width: 1193px) {
     .container-home {
-        background-image: url("https://www.pexels.com/photo/1595391/download/?search_query=work&tracking_id=k2nu7k9pve");
-        background-repeat: no-repeat;
-        background-size: cover;
         height: inherit;
         width: auto;
-        opacity: 0.75;
+        opacity: 1;
         margin: inherit;
     }
     .container-home-opacity {
-        background-color: rgb(14, 53, 81, 0.7);
+        background-image: linear-gradient(to right, #517fa4 0%, #243949 100%);
         height: inherit;
         width: auto;
     }
@@ -28,5 +25,6 @@
         background-color: rgb(14, 53, 81, 0.7);
         height: inherit;
         width: auto;
+        position: relative;
     }
 }
