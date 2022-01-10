@@ -1,12 +1,14 @@
 import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => {
-    let backend_url = process.env.BACKEND_URL;
+    let backend_url = "";
 
     if (process.env.GITPOD_WORKSPACE_URL) {
         const PORT = 3001;
         const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
         backend_url = `${PROTOCOL}://${PORT}-${HOST}`;
+    } else {
+        backend_url = process.env.BACKEND_URL;
     }
 
     return {
