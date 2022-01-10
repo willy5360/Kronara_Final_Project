@@ -2,13 +2,16 @@ import jwt_decode from "jwt-decode";
 
 const getState = ({ getStore, getActions, setStore }) => {
     const PORT = 3001;
+    const [PROTOCOL, HOST] = process.env.GITPOD_WORKSPACE_URL.split("://");
 
     return {
         store: {
-            baseUrlRegister: `${process.env.BACKEND_URL}api/member/`,
-            baseUrlLogin: `${process.env.BACKEND_URL}api/login/`,
+            baseUrlRegister: `${PROTOCOL}://${PORT}-${HOST}/api/member/`,
+
+            baseUrlLogin: `${PROTOCOL}://${PORT}-${HOST}/api/login/`,
+
             list: [],
-            baseURL: `${process.env.BACKEND_URL}api/`,
+            baseURL: `${PROTOCOL}://${PORT}-${HOST}/api/`,
             member: [],
             currentMember: {},
             holiday: [],
