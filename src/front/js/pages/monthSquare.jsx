@@ -88,6 +88,10 @@ const MonthSquare = () => {
     );
 
     useEffect(() => {
+        actions.getEvent();
+    }, [store.currentHome]);
+
+    useEffect(() => {
         setCalendar(
             month_days.map((dayNumber, index) => {
                 // condicional que empuja el dia 1 correspondiente al mes seleccionado

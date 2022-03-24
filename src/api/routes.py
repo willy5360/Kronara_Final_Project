@@ -20,6 +20,19 @@ from sqlalchemy import exc
 
 api = Blueprint('api', __name__)
 
+@api.route("/login/", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    member = Member.get_by_email(email)
+
+    if member and check_password_hash(member.password, password):
+        access_token = create_access_token(identity=member.to_dict(), expires_delta= timedelta(minutes=100))
+        return jsonify({'token': access_token}), 200
+        
+    return jsonify({"msg": "Wrong username or password"}), 401
+
 
 @api.route('/home/<int:home_id>/member/<int:member_id>/event', methods=['POST']) 
 def create_event(home_id, member_id):
@@ -94,9 +107,7 @@ def get_event_by_id(home_id,member_id,event_id):
 
     if home and member and appointment:
         member_appointment= member.get_event_by_id()
-
-
-
+        
         one_appointment=[appointment.to_dict() for appointment in member_appointment]
         return jsonify(one_appointment), 200
 
@@ -145,11 +156,12 @@ def create_member():
     username = request.json.get('username', None)
     home_status = request.json.get('home_status', None)
     home = request.json.get("home", None)
+    photo_user = request.json.get("photo_user",None)
     condition = request.json.get('condition', None)
     new_city = ""
     new_name = ""
 
-    if not (email and password and username and home_status and home and condition):
+    if not (email and password and username and home_status and home and condition and photo_user):
         return jsonify({'error': 'Missing parameters'}), 409
         
     if not condition:
@@ -181,6 +193,7 @@ def create_member():
             email = email, 
             is_active = True, 
             home_id = new_home_created.id,
+            photo_user = photo_user
         )
     else: 
         return jsonify({'error': "Home already exist"}), 404
@@ -194,18 +207,7 @@ def create_member():
     except exc.IntegrityError:
         return {'error': 'Something is wrong'}, 409
         
-@api.route("/login/", methods=["POST"])
-def login():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
 
-    member = Member.get_by_email(email)
-
-    if member and check_password_hash(member.password, password):
-        access_token = create_access_token(identity=member.to_dict(), expires_delta= timedelta(minutes=100))
-        return jsonify({'token': access_token}), 200
-        
-    return jsonify({"msg": "Wrong username or password"}), 401
 
 @api.route('home/<int:home_id>/task', methods=['GET'])
 def get_task(home_id):
@@ -265,3 +267,13 @@ def get_habits_by_id():
         return jsonify(all_habits), 200
     
     return jsonify({'error':'Not habits found'}), 404
+
+@api.route("home/<int:id>", methods=["GET"])
+def get_home_by_Id(id):
+    home = Home.get_by_id(id)
+
+    if not home:
+        return jsonify({'error':'home not found'})
+    
+    return jsonify(home.to_dict()), 200
+

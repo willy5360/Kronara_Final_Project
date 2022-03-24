@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/button-humedity.scss";
+import { Context } from "../store/appContext";
 
 const ButtonHumedity = () => {
+    const { store, actions } = useContext(Context);
+
     const [humidity, setHumidity] = useState("");
 
     const number = [89, 90, 91];
 
     useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
             setHumidity(number[Math.floor(Math.random() * number.length)]);
         }, 2000);
-    }, []);
+    }, [store.currentHome]);
 
     return (
         <div className="container_button_humedity">

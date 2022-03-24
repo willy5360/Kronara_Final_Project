@@ -5,6 +5,11 @@ import HomeTabletView from "../pages/homeTablet.jsx";
 import "../../styles/navbarTabletview.scss";
 
 const NavbarTabletView = () => {
+    const logOut = () => {
+        localStorage.removeItem("acces_token");
+        return "/";
+    };
+
     return (
         <div className="navbar_tablet_view_container">
             <div className="navbar_tablet_view_kronara">
@@ -24,7 +29,8 @@ const NavbarTabletView = () => {
 
                 <div className="dropdown dropdown-4">
                     <div className="settings__item">
-                        <Link to="/FormSignUp">
+                        <Link to={logOut()}>
+                            {/* {localStorage.removeItem("acces_token")} */}
                             <p>Sign out</p>
                         </Link>
                     </div>

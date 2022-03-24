@@ -9,7 +9,7 @@ const WeatherWidget = () => {
 
     useEffect(() => {
         actions.getWeather();
-    }, []);
+    }, [store.currentHome]);
 
     return (
         <div className="weather__container">

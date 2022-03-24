@@ -12,8 +12,14 @@ import "../../styles/homeTabletView.scss";
 import List from "../component/list.jsx";
 
 export const HomeTabletView = () => {
-    const { store, action } = useContext(Context);
+    const { store, actions } = useContext(Context);
     let today = new Date();
+
+    useEffect(() => {
+        actions.getTask();
+        actions.getEvent();
+        actions.getMembers();
+    }, [store.currentHome]);
 
     return (
         <div className="home_tablet_view">

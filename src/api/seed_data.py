@@ -1,7 +1,5 @@
-from datetime import date
 from werkzeug.security import generate_password_hash
 import datetime
-from werkzeug.security import generate_password_hash
 
 
 
@@ -29,7 +27,7 @@ data = {
             "email":"ana@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2690323/pexels-photo-2690323.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-            "birth_date":date(1999,5,5),
+            "birth_date":datetime.date(1999,5,5),
             "home_id":1
         },
         {
@@ -39,7 +37,7 @@ data = {
             "email": "gloria@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3366753/pexels-photo-3366753.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "birth_date":date(2001,5,5),
+            "birth_date":datetime.date(2001,5,5),
             "home_id": 1
         },
         {
@@ -49,7 +47,7 @@ data = {
             "email":"willy@jumbotrona.com",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/2765557/pexels-photo-2765557.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-            "birth_date":date(1994,12,5),
+            "birth_date":datetime.date(1994,12,5),
             "home_id":1
         },
         {
@@ -59,7 +57,7 @@ data = {
             "email":"soto@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/4061551/pexels-photo-4061551.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "birth_date":date(1995,10,3),
+            "birth_date":datetime.date(1995,10,3),
             "home_id":2
         },
         {
@@ -69,7 +67,7 @@ data = {
             "email":"carol@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-            "birth_date":date(1999,5,28),
+            "birth_date":datetime.date(1999,5,28),
             "home_id":2
         },
         {
@@ -79,7 +77,7 @@ data = {
             "email":"limones@pythonera.es",
             "is_active":True,
             "photo_user":"https://images.pexels.com/photos/3807713/pexels-photo-3807713.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "birth_date":date(1990,6,2),
+            "birth_date":datetime.date(1990,6,2),
             "home_id": 2
         }
 
@@ -176,7 +174,7 @@ data = {
             "time_ends":"20:15",
             "location":"Cine de principe Pio",
             "notes":"si no terminaos los deberes no va ni el tato",
-            "date":date(2022,1,5)
+            "date":datetime.datetime(2022,1,5)
         },
         {
             "id":2,
@@ -185,7 +183,7 @@ data = {
             "time_ends":"20:15",
             "location":"Mi casa",
             "notes":"tiene que quedar muuuuy limpito",
-            "date":date(2022,1,15)
+            "date":datetime.datetime(2022,1,15)
         },
         {
             "id":3,
@@ -194,7 +192,7 @@ data = {
             "time_ends":"20:15",
             "location":"biblioteca de villaverde",
             "notes":"me sobran libros",
-            "date":date(2022,1,18)
+            "date":datetime.datetime(2022,1,18)
         },
     ],
 

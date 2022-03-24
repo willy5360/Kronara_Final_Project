@@ -5,10 +5,8 @@ import { Context } from "../store/appContext.js";
 
 const List = () => {
     const INPUT = document.querySelector("#task");
-    const [list, setList] = useState([]);
     const [toDoList, setToDoList] = useState([]);
     const { register, handleSubmit } = useForm();
-    const [update, setUpdate] = useState(false);
     const { store, actions } = useContext(Context);
     const onSubmit = (data) => {
         actions.submitTask(data);

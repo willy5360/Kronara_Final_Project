@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import Axios from "axios";
 import { useContext } from "react";
 
 import { NavbarLanding } from "../component/navbarhome.jsx";
@@ -9,10 +10,10 @@ import { Context } from "../store/appContext";
 
 function FormSignUp() {
     const { store, actions } = useContext(Context);
-    const { existingHome, setExistingHome } = useState(false);
     const [newHome, setNewHome] = useState();
     const [inputHome, setInputHome] = useState(null);
-    const [registerForm, setRegisterForm] = useState();
+    const cloudUrl =
+        "https://api.cloudinary.com/v1_1/willykronara/image/upload";
 
     const {
         register,
@@ -22,7 +23,16 @@ function FormSignUp() {
     } = useForm();
 
     const onSubmit = (data) => {
-        actions.register(data);
+        const formData = new FormData();
+        formData.append("file", data.photo_user[0]);
+        formData.append("upload_preset", "kronara");
+
+        Axios.post(cloudUrl, formData)
+            .then((res) => res.data.secure_url)
+            .then((newUrl) => {
+                data.photo_user = newUrl;
+                actions.register(data);
+            });
     };
 
     useEffect(() => {

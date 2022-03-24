@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import "../../styles/button-temperature.scss";
+import { Context } from "../store/appContext";
 
 const ButtonTemperature = () => {
+    const { store, actions } = useContext(Context);
     const [temperature, setTemperature] = useState("");
-
     const number = [21, 22, 23];
 
     useEffect(() => {
-        setInterval(() => {
+        setTimeout(() => {
             setTemperature(number[Math.floor(Math.random() * number.length)]);
         }, 2000);
-    }, []);
+    }, [store.currentHome]);
 
     return (
         <div className="container_button_temperature">

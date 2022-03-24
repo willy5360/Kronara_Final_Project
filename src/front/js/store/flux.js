@@ -21,9 +21,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentMember: {},
             holiday: [],
             currentHome: {
-                id: 1,
-                name: "Jumbotrona",
-                city: "Madrid",
+                // id: 1,
+                // name: "Jumbotrona",
+                // city: "Madrid",
             },
 
             weather: {},
@@ -32,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         actions: {
             getTask: () => {
+                // console.log("aqui esta la casa", getStore().currentHome.id);
                 fetch(
                     getStore().baseURL.concat(
                         "home/",
@@ -144,16 +145,47 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({
                             currentMember: token.sub,
                         });
-                        getActions().getEvent();
+                        console.log(
+                            "aqui esta el currentMember",
+                            getStore().currentMember
+                        );
+
                         localStorage.setItem(
                             "acces_token",
                             JSON.stringify(responseAsJSON.token)
                         );
+                        getActions().getHome();
+                        // getActions().getTask();
+                        // getActions().getEvent();
                         console.log("login ready", token);
                     })
                     .catch((error) => {
                         console.log(error);
                         localStorage.removeItem("access_token");
+                    });
+            },
+            getHome: () => {
+                fetch(
+                    getStore().baseURL.concat(
+                        "home/",
+                        getStore().currentMember.home_id
+                    )
+                )
+                    .then((response) => {
+                        if (response.ok) return response.json();
+                        throw new Error("fail loading home");
+                    })
+                    .then((responseAsJSON) => {
+                        setStore({
+                            currentHome: responseAsJSON,
+                        });
+                        console.log(
+                            "current home en gethome",
+                            getStore().currentHome
+                        );
+                    })
+                    .catch((error) => {
+                        console.log(error);
                     });
             },
             getMembers: () => {
@@ -172,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .then((responseAsJson) => {
                         setStore({
-                            member: [...getStore().member, ...responseAsJson],
+                            member: responseAsJson,
                         });
                     })
                     .catch((error) => {
